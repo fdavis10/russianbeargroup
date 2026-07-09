@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", system-ui, sans-serif;
+  --color-bg: #0a0a0a;
+  --color-bg-card: #121212;
+  --color-bg-elevated: #1a1a1a;
+  --color-sand: #c4a35a;
+  --color-sand-light: #e8d5a3;
+  --color-olive: #2a2a2a;
+  --color-olive-light: #333333;
+  --color-cream: #f0ece4;
+  --color-muted: #9a9a9a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-cream font-sans antialiased;
+    background-color: #0a0a0a;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 35%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.025) 3px,
+        rgba(255, 255, 255, 0.025) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.35) 3px,
+        rgba(0, 0, 0, 0.35) 4px
+      ),
+      linear-gradient(160deg, #161616 0%, #0a0a0a 45%, #050505 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-sand/30 text-cream;
+  }
+}
+
+@layer utilities {
+  .bg-carbon {
+    background-color: #0a0a0a;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.03) 3px,
+        rgba(255, 255, 255, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 3px,
+        rgba(0, 0, 0, 0.4) 3px,
+        rgba(0, 0, 0, 0.4) 4px
+      ),
+      linear-gradient(145deg, #1c1c1c 0%, #101010 50%, #080808 100%);
+  }
+
+  .text-gradient-sand {
+    @apply bg-gradient-to-r from-sand-light via-sand to-sand-light bg-clip-text text-transparent;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-bg-card/90 backdrop-blur-md;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        rgba(255, 255, 255, 0.02) 3px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.25) 2px,
+        rgba(0, 0, 0, 0.25) 3px
+      );
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:border-sand/35 hover:shadow-[0_8px_32px_rgba(196,163,90,0.12)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-sand px-8 py-4 font-bold text-bg transition-all hover:bg-sand-light hover:shadow-[0_0_30px_rgba(196,163,90,0.35)];
+  }
+}
