@@ -100,8 +100,21 @@ src/
 
 ## Деплой
 
-- Frontend: Vercel / Netlify (`npm run build`)
-- Backend: Render / Railway / Heroku
+Подробная инструкция: **[DEPLOY.md](./DEPLOY.md)** — SSH, Git, Docker Compose.
+
+Кратко на сервере:
+
+```bash
+git clone <repo-url> /opt/russianbeargroup && cd /opt/russianbeargroup
+cp .env.example .env   # заполните переменные
+docker compose build
+docker compose up -d
+docker compose exec backend python manage.py createsuperuser
+```
+
+- Frontend + API: nginx на порту `80`
+- Telegram-бот: отдельный контейнер `bot`
+- БД: SQLite в Docker volume `backend_data`
 
 ## Админка
 
