@@ -6,9 +6,5 @@ export function useContactSubmit() {
     return submitContact(payload);
   }, []);
 
-  const openWhatsApp = useCallback((url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  }, []);
-
-  return { submit, openWhatsApp };
+  return { submit };
 }

@@ -1,14 +1,39 @@
 import asyncio
 import logging
 from html import escape
+from urllib.parse import quote
 
 from aiogram import Bot
 from aiogram.enums import ParseMode
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from api.models import TelegramAdmin
 from telegram_bot.config import get_bot_token
 
 logger = logging.getLogger(__name__)
+
+
+def normalize_phone_digits(phone: str) -> str:
+    return "".join(c for c in phone if c.isdigit())
+
+
+def build_contact_links_keyboard(phone: str, name: str = "") -> InlineKeyboardMarkup | None:
+    digits = normalize_phone_digits(phone)
+    if len(digits) < 7:
+        return None
+
+    greeting = f"Здравствуйте{', ' + name if name else ''}! Мы получили вашу заявку."
+    whatsapp_url = f"https://wa.me/{digits}?text={quote(greeting)}"
+    telegram_url = f"https://t.me/+{digits}"
+
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="Telegram", url=telegram_url),
+                InlineKeyboardButton(text="WhatsApp", url=whatsapp_url),
+            ]
+        ]
+    )
 
 
 def format_application_message(
@@ -36,7 +61,11 @@ def get_active_admin_chat_ids() -> list[int]:
     return list(TelegramAdmin.objects.filter(is_active=True).values_list("chat_id", flat=True))
 
 
-async def _broadcast(text: str, chat_ids: list[int]) -> int:
+async def _broadcast(
+    text: str,
+    chat_ids: list[int],
+    reply_markup: InlineKeyboardMarkup | None = None,
+) -> int:
     token = get_bot_token()
     if not token:
         logger.warning("TELEGRAM_BOT_TOKEN не задан")
@@ -57,6 +86,7 @@ async def _broadcast(text: str, chat_ids: list[int]) -> int:
                     chat_id=chat_id,
                     text=text,
                     parse_mode=ParseMode.HTML,
+                    reply_markup=reply_markup,
                 )
                 sent += 1
             except Exception as exc:
@@ -75,6 +105,7 @@ def send_application_notification(
     contact_id: int | None = None,
 ) -> bool:
     text = format_application_message(name, phone, country, message, contact_id)
+    reply_markup = build_contact_links_keyboard(phone, name)
     chat_ids = get_active_admin_chat_ids()
-    sent = asyncio.run(_broadcast(text, chat_ids))
+    sent = asyncio.run(_broadcast(text, chat_ids, reply_markup))
     return sent > 0

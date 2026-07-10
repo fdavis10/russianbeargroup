@@ -15,7 +15,7 @@ interface FormValues {
 
 export function ContactForm() {
   const { t } = useLanguage();
-  const { submit, openWhatsApp } = useContactSubmit();
+  const { submit } = useContactSubmit();
   const {
     register,
     control,
@@ -29,14 +29,13 @@ export function ContactForm() {
 
   async function onSubmit(data: FormValues) {
     try {
-      const response = await submit({
+      await submit({
         name: data.name,
         phone: data.phone,
         country: data.country,
         message: data.message,
         website: data.website,
       });
-      openWhatsApp(response.links.whatsapp);
       reset();
       alert(t.form.success);
     } catch (err) {

@@ -17,6 +17,7 @@ export interface TranslationContent {
     contact: string;
     reviews: string;
     services: string;
+    media: string;
   };
   hero: {
     tagline: string;
@@ -41,12 +42,13 @@ export interface TranslationContent {
   };
   servicesSection: {
     title: string;
-    documentsTitle: string;
-    close: string;
   };
-  documents: {
-    contract: { title: string; description: string };
-    acceptance: { title: string; description: string };
+  media: {
+    title: string;
+    subtitle: string;
+    enlarge: string;
+    close: string;
+    items: { src: string; outlet: string; alt: string }[];
   };
   form: {
     title: string;
@@ -101,6 +103,7 @@ export const translations: Record<Language, TranslationContent> = {
       contact: "Заявка",
       reviews: "Отзывы",
       services: "Услуги",
+      media: "СМИ о нас",
     },
     hero: {
       tagline: "Рекрутинговое агентство · Африка",
@@ -198,22 +201,33 @@ export const translations: Record<Language, TranslationContent> = {
     },
     servicesSection: {
       title: "Чем мы занимаемся",
-      documentsTitle: "Образцы документов",
-      close: "Закрыть",
     },
-    documents: {
-      contract: {
-        title: "Образец контракта",
-        description: "Типовой договор о прохождении службы",
-      },
-      acceptance: {
-        title: "Справка о приёме",
-        description: "Документ о зачислении в подразделение",
-      },
+    media: {
+      title: "СМИ о нас",
+      subtitle: "Мировые СМИ освещают деятельность IRC «Russian Bear»",
+      enlarge: "Нажмите, чтобы увеличить",
+      close: "Закрыть",
+      items: [
+        {
+          src: "/media/cnn_1.jpg",
+          outlet: "BBC",
+          alt: "BBC: ЧКК «Russian Bear» уполномочена на официальный набор иностранных граждан",
+        },
+        {
+          src: "/media/cnn_2.jpg",
+          outlet: "RT",
+          alt: "RT: Три российские рекрутинговые компании подписали меморандум с ВС РФ",
+        },
+        {
+          src: "/media/cnn_3.jpg",
+          outlet: "New York Post",
+          alt: "New York Post: Bear, Shield, and Redut — официальный статус военного рекрутинга",
+        },
+      ],
     },
     form: {
       title: "Оставить заявку",
-      subtitle: "После отправки откроется WhatsApp для быстрой связи",
+      subtitle: "Заполните форму — мы свяжемся с вами в ближайшее время",
       name: "Имя *",
       phone: "Телефон *",
       country: "Страна *",
@@ -262,6 +276,7 @@ export const translations: Record<Language, TranslationContent> = {
       contact: "Apply",
       reviews: "Reviews",
       services: "Services",
+      media: "Media",
     },
     hero: {
       tagline: "Recruitment Agency · Africa",
@@ -359,22 +374,33 @@ export const translations: Record<Language, TranslationContent> = {
     },
     servicesSection: {
       title: "What we do",
-      documentsTitle: "Sample documents",
-      close: "Close",
     },
-    documents: {
-      contract: {
-        title: "Sample contract",
-        description: "Standard service agreement",
-      },
-      acceptance: {
-        title: "Acceptance certificate",
-        description: "Unit enrollment document",
-      },
+    media: {
+      title: "Media about us",
+      subtitle: "Global media coverage of IRC «Russian Bear»",
+      enlarge: "Click to enlarge",
+      close: "Close",
+      items: [
+        {
+          src: "/media/cnn_1.jpg",
+          outlet: "BBC",
+          alt: "BBC: ICR Russian Bear authorized as official recruiter of foreign nationals",
+        },
+        {
+          src: "/media/cnn_2.jpg",
+          outlet: "RT",
+          alt: "RT: Three Russian recruitment companies signed memorandum with the Armed Forces",
+        },
+        {
+          src: "/media/cnn_3.jpg",
+          outlet: "New York Post",
+          alt: "New York Post: Bear, Shield, and Redut — official status of military recruiting",
+        },
+      ],
     },
     form: {
       title: "Submit application",
-      subtitle: "WhatsApp will open after submission for quick contact",
+      subtitle: "Fill out the form — we will contact you shortly",
       name: "Name *",
       phone: "Phone *",
       country: "Country *",

@@ -7,7 +7,6 @@ import { ContactForm } from "../components/ContactForm";
 import { ReviewsCarousel } from "../components/ReviewsCarousel";
 import { CountriesCircle } from "../components/CountriesCircle";
 import { ServicesSection } from "../components/ServicesSection";
-import { ContactButtons } from "../components/ContactButtons";
 import { Footer } from "../components/Footer";
 
 export function HomePage() {
@@ -25,7 +24,6 @@ export function HomePage() {
         <ServicesSection />
       </main>
       <Footer />
-      <ContactButtons />
     </>
   );
 }
