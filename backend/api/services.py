@@ -4,7 +4,7 @@ from urllib.parse import quote
 
 import requests
 
-from telegram_bot.notifier import send_application_notification
+from telegram_bot.notifier import send_application_notification, send_consultation_notification
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +21,20 @@ def notify_new_contact(
         phone=phone,
         country=country,
         message=message,
+        contact_id=contact_id,
+    )
+
+
+def notify_new_consultation(
+    name: str,
+    phone: str,
+    question: str,
+    contact_id: int | None = None,
+) -> bool:
+    return send_consultation_notification(
+        name=name,
+        phone=phone,
+        question=question,
         contact_id=contact_id,
     )
 

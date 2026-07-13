@@ -54,10 +54,10 @@ export function HeroSection() {
             {t.hero.cta}
           </a>
           <a
-            href="#about"
+            href="#consultation"
             className="inline-flex items-center rounded-xl border border-white/15 px-8 py-4 font-semibold text-cream hover:border-sand/40"
           >
-            {t.hero.about}
+            {t.hero.consultation}
           </a>
         </motion.div>
       </div>

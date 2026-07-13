@@ -57,6 +57,24 @@ def format_application_message(
     return "\n".join(lines)
 
 
+def format_consultation_message(
+    name: str,
+    phone: str,
+    question: str,
+    contact_id: int | None = None,
+) -> str:
+    lines = [
+        "<b>Запрос на консультацию с сайта</b>",
+        "",
+        f"<b>Имя:</b> {escape(name)}",
+        f"<b>Телефон:</b> {escape(phone)}",
+        f"<b>Вопрос:</b> {escape(question)}",
+    ]
+    if contact_id is not None:
+        lines.append(f"\n<i>ID заявки в БД: #{contact_id}</i>")
+    return "\n".join(lines)
+
+
 def get_active_admin_chat_ids() -> list[int]:
     return list(TelegramAdmin.objects.filter(is_active=True).values_list("chat_id", flat=True))
 
@@ -105,6 +123,19 @@ def send_application_notification(
     contact_id: int | None = None,
 ) -> bool:
     text = format_application_message(name, phone, country, message, contact_id)
+    reply_markup = build_contact_links_keyboard(phone, name)
+    chat_ids = get_active_admin_chat_ids()
+    sent = asyncio.run(_broadcast(text, chat_ids, reply_markup))
+    return sent > 0
+
+
+def send_consultation_notification(
+    name: str,
+    phone: str,
+    question: str,
+    contact_id: int | None = None,
+) -> bool:
+    text = format_consultation_message(name, phone, question, contact_id)
     reply_markup = build_contact_links_keyboard(phone, name)
     chat_ids = get_active_admin_chat_ids()
     sent = asyncio.run(_broadcast(text, chat_ids, reply_markup))

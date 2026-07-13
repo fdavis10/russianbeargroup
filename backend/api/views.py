@@ -8,8 +8,8 @@ from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
 
 from .models import Contact
-from .serializers import ContactSerializer
-from .services import build_whatsapp_url, notify_new_contact, send_whatsapp_via_twilio
+from .serializers import ConsultationSerializer, ContactSerializer
+from .services import build_whatsapp_url, notify_new_consultation, notify_new_contact, send_whatsapp_via_twilio
 
 DOCUMENTS_DIR = Path(settings.BASE_DIR) / "static" / "documents"
 
@@ -161,6 +161,37 @@ class ContactView(APIView):
                 "links": {
                     "whatsapp": whatsapp_url,
                 },
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class ConsultationView(APIView):
+    throttle_classes = [ContactRateThrottle]
+
+    def post(self, request):
+        serializer = ConsultationSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        contact = Contact.objects.create(
+            name=serializer.validated_data["name"],
+            phone=serializer.validated_data["phone"],
+            country="Консультация",
+            message=serializer.validated_data["question"],
+        )
+
+        contact.telegram_sent = notify_new_consultation(
+            name=contact.name,
+            phone=contact.phone,
+            question=contact.message,
+            contact_id=contact.pk,
+        )
+        contact.save()
+
+        return Response(
+            {
+                "status": "success",
+                "message": "Спасибо! Мы с вами свяжемся!",
             },
             status=status.HTTP_201_CREATED,
         )

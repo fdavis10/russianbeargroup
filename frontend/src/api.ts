@@ -2,6 +2,7 @@ import axios from "axios";
 import type {
   ContactPayload,
   ContactResponse,
+  ConsultationPayload,
   DocumentInfo,
   LandingContent,
 } from "./types";
@@ -15,6 +16,7 @@ export type {
   DocumentInfo,
   LandingContent,
   ContactPayload,
+  ConsultationPayload,
   ContactResponse,
 } from "./types";
 
@@ -29,6 +31,11 @@ export async function fetchLandingContent(): Promise<LandingContent> {
 
 export async function submitContact(payload: ContactPayload): Promise<ContactResponse> {
   const { data } = await client.post<ContactResponse>("/contact/", payload);
+  return data;
+}
+
+export async function submitConsultation(payload: ConsultationPayload): Promise<ContactResponse> {
+  const { data } = await client.post<ContactResponse>("/consultation/", payload);
   return data;
 }
 

@@ -6,7 +6,6 @@ export function Header() {
   const { t } = useLanguage();
 
   const links = [
-    { href: "#requirements", label: t.nav.requirements },
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
     { href: "#contact", label: t.nav.contact },

@@ -57,6 +57,13 @@ export interface ContactPayload {
   website?: string;
 }
 
+export interface ConsultationPayload {
+  name: string;
+  phone: string;
+  question: string;
+  website?: string;
+}
+
 export interface ContactResponse {
   status: string;
   message: string;

@@ -4,7 +4,7 @@ import type { Language } from "../i18n/translations";
 
 const options: { lang: Language; code: string; label: string }[] = [
   { lang: "ru", code: "RU", label: "Русский" },
-  { lang: "en", code: "GB", label: "ENGLISH" },
+  { lang: "en", code: "GB", label: "English" },
 ];
 
 export function LanguageSwitcher() {
@@ -19,15 +19,15 @@ export function LanguageSwitcher() {
             key={opt.lang}
             type="button"
             onClick={() => setLanguage(opt.lang)}
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold transition ${
+            aria-label={opt.label}
+            className={`rounded-md p-1 transition ${
               active
-                ? "bg-sand/20 text-sand"
-                : "text-muted hover:bg-white/5 hover:text-cream"
+                ? "bg-sand/20 ring-1 ring-sand/40"
+                : "opacity-60 hover:bg-white/5 hover:opacity-100"
             }`}
             aria-pressed={active}
           >
-            <FlagIcon code={opt.code} size={16} />
-            <span className="hidden sm:inline">{opt.label}</span>
+            <FlagIcon code={opt.code} size={20} />
           </button>
         );
       })}

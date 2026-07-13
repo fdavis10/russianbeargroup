@@ -11,7 +11,6 @@ export interface TranslationContent {
     rights: string;
   };
   nav: {
-    requirements: string;
     conditions: string;
     advantages: string;
     contact: string;
@@ -24,17 +23,35 @@ export interface TranslationContent {
     headline: string;
     subheadline: string;
     cta: string;
-    about: string;
+    consultation: string;
   };
-  requirements: { label: string; value: string }[];
-  conditions: string[];
-  advantages: string[];
+  conditionsSection: {
+    title: string;
+    contractHighlight: string;
+    officialRegistration: string;
+    footnote: string;
+    askQuestion: string;
+    groups: {
+      title: string;
+      items: {
+        label?: string;
+        value?: string;
+        highlight?: string;
+        text?: string;
+      }[];
+    }[];
+  };
+  advantages: {
+    military: { title: string; items: string[] };
+    family: { title: string; items: string[] };
+    additional: { title: string; items: string[] };
+  };
   services: string[];
   countries: { name: string; code: string }[];
   countryOptions: { value: string; label: string; code: string }[];
-  countriesSection: {
+  processSection: {
     title: string;
-    subtitle: string;
+    steps: string[];
   };
   reviews: {
     title: string;
@@ -73,9 +90,32 @@ export interface TranslationContent {
     };
     success: string;
   };
+  consultationForm: {
+    headline: string;
+    description: string;
+    benefits: string[];
+    name: string;
+    phone: string;
+    question: string;
+    submit: string;
+    submitting: string;
+    namePlaceholder: string;
+    phonePlaceholder: string;
+    questionPlaceholder: string;
+    errors: {
+      nameRequired: string;
+      nameMin: string;
+      phoneRequired: string;
+      phoneInvalid: string;
+      questionRequired: string;
+      questionMin: string;
+      submitFailed: string;
+    };
+    successTitle: string;
+    successMessage: string;
+    sendAnother: string;
+  };
   sections: {
-    requirements: string;
-    conditions: string;
     advantages: string;
   };
   errors: {
@@ -97,7 +137,6 @@ export const translations: Record<Language, TranslationContent> = {
       rights: "Все права защищены.",
     },
     nav: {
-      requirements: "Требования",
       conditions: "Условия",
       advantages: "Преимущества",
       contact: "Заявка",
@@ -110,34 +149,88 @@ export const translations: Record<Language, TranslationContent> = {
       headline: "Набор граждан для СВО в Африке – полное сопровождение от начала до конца!",
       subheadline:
         "Мы обеспечиваем юридическое оформление, билеты, документы и сопровождение до прибытия.",
-      cta: "Узнать подробнее",
-      about: "О компании",
+      cta: "Отправить заявку",
+      consultation: "Получить консультацию",
     },
-    requirements: [
-      { label: "Возраст", value: "18–45 лет" },
-      { label: "Гражданство", value: "Любая страна (приоритет — Африка)" },
-      { label: "Здоровье", value: "Отсутствие судимостей, физическая готовность" },
-      { label: "Документы", value: "Паспорт, медицинская справка, военный билет (если есть)" },
-    ],
-    conditions: [
-      "Мужчины до 63 лет включительно",
-      "Граждане РФ и иностранцы",
-      "С опытом военной службы и без него",
-    ],
-    advantages: [
-      "Зарплата в зоне СВО от 210 000 рублей",
-      "Статус ветерана боевых действий и все льготы",
-      "Кредитные и налоговые каникулы",
-      "Бюджетные места для обучения детей в вузах",
-      "Компенсация 50% оплаты ЖКУ",
-      "Бесплатное питание и продлёнка для детей",
-      "Бесплатный отдых детей в летних оздоровительных лагерях",
-      "Ежемесячные выплаты по 10 тыс. руб. беременным и на каждого ребенка в семье",
-      "Возможность получения участка земли БЕСПЛАТНО",
-      "При поступлении на службу выдаем ДОПОЛНИТЕЛЬНУЮ АММУНИЦИЮ",
-      "Полное юридическое сопровождение, гуманитарные конвои, помощь в трудоустройстве после СВО, участие в социальных программах",
-      "Помощь в восстановлении любых документов. Помощь семье, решение проблем личного характера",
-    ],
+    conditionsSection: {
+      title: "Условия",
+      contractHighlight: "Контракт 1 год (с продлением)",
+      officialRegistration: "Официальное оформление",
+      footnote: "* Суммы довольствия и выплат уточняйте у менеджера",
+      askQuestion: "Задать вопрос",
+      groups: [
+        {
+          title: "Требования к кандидатам",
+          items: [
+            { label: "Возраст", value: "21–45 лет" },
+            {
+              label: "Здоровье",
+              value: "Отсутствие тяжёлых заболеваний (ВИЧ, гепатиты B/C)",
+            },
+          ],
+        },
+        {
+          title: "Финансовые условия",
+          items: [
+            { highlight: "$10 000", text: " — единовременный бонус при подписании" },
+            { highlight: "$3 000 / мес.*", text: " — ежемесячное довольствие" },
+          ],
+        },
+        {
+          title: "Гарантии и поддержка",
+          items: [
+            { text: "Гражданство РФ — право получения после 1 месяца службы" },
+            { text: "Визы и трансфер — полное содействие с переездом в Россию" },
+          ],
+        },
+        {
+          title: "Страхование и лечение",
+          items: [
+            {
+              text: "Бесплатная медицина и компенсация при ранении* (от $12 000 до $50 000)",
+            },
+            {
+              text: "Выплата семье или доверенному лицу в случае гибели* ($60 000 через посольство)",
+            },
+          ],
+        },
+      ],
+    },
+    advantages: {
+      military: {
+        title: "Для военных",
+        items: [
+          "Зарплата в зоне СВО от 210 000 рублей",
+          "Статус ветерана боевых действий и все положенные льготы",
+          "Официальный контракт с Минобороны РФ",
+          "Выдача дополнительной амуниции при поступлении на службу",
+          "Помощь в трудоустройстве после завершения контракта",
+          "Полное юридическое сопровождение на всех этапах",
+          "Участие в государственных социальных программах для ветеранов",
+        ],
+      },
+      family: {
+        title: "Для семьи",
+        items: [
+          "Кредитные и налоговые каникулы на период службы",
+          "Бюджетные места для обучения детей в вузах",
+          "Компенсация 50% оплаты жилищно-коммунальных услуг",
+          "Бесплатное питание и продлёнка для детей школьного возраста",
+          "Бесплатный отдых детей в летних оздоровительных лагерях",
+          "Ежемесячные выплаты беременным женам и на каждого ребёнка в семье",
+          "Возможность бесплатного получения земельного участка",
+          "Помощь в восстановлении документов и решении семейных вопросов",
+        ],
+      },
+      additional: {
+        title: "Дополнительные преимущества",
+        items: [
+          "Подготовительный курс перед службой",
+          "Обучение по любой военной специальности",
+          "Обеспечение тактическим снаряжением",
+        ],
+      },
+    },
     services: [
       "Оформление документов (визы, разрешения)",
       "Покупка авиабилетов (эконом / бизнес-класс)",
@@ -166,9 +259,16 @@ export const translations: Record<Language, TranslationContent> = {
       { value: "Tanzania", label: "Танзания", code: "TZ" },
       { value: "Other", label: "Другая страна", code: "OTHER" },
     ],
-    countriesSection: {
-      title: "Страны набора",
-      subtitle: "Приоритет — страны Африки",
+    processSection: {
+      title: "Порядок оформления",
+      steps: [
+        "Заявка",
+        "Консультация",
+        "Подготовка к отправке",
+        "Оформление",
+        "Подписание контракта",
+        "Начало службы",
+      ],
     },
     reviews: {
       title: "Отзывы",
@@ -248,9 +348,39 @@ export const translations: Record<Language, TranslationContent> = {
       },
       success: "Заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.",
     },
+    consultationForm: {
+      headline: "Запишитесь на бесплатную консультацию",
+      description:
+        "Профессиональные кураторы подробно разберут вашу ситуацию, помогут подготовиться к службе и расскажут о каждом этапе оформления.",
+      benefits: [
+        "Объясним актуальные правила, требования и порядок прохождения службы",
+        "Подскажем оптимальные и законные пути решения индивидуальных вопросов",
+        "Поясним юридические тонкости и порядок оформления документов",
+        "Проверим вашу готовность к военной службе и обсудим персональные условия",
+        "Рассчитаем положенные выплаты, компенсации и доступные вам льготы",
+      ],
+      name: "Имя *",
+      phone: "Телефон *",
+      question: "Ваш вопрос *",
+      submit: "Отправить вопрос",
+      submitting: "Отправка...",
+      namePlaceholder: "Ваше имя",
+      phonePlaceholder: "+234 800 000 0000",
+      questionPlaceholder: "Опишите, что вас интересует",
+      errors: {
+        nameRequired: "Укажите имя",
+        nameMin: "Минимум 2 символа",
+        phoneRequired: "Укажите телефон",
+        phoneInvalid: "Некорректный номер",
+        questionRequired: "Напишите ваш вопрос",
+        questionMin: "Минимум 10 символов",
+        submitFailed: "Ошибка отправки. Попробуйте позже.",
+      },
+      successTitle: "Спасибо!",
+      successMessage: "Мы с вами свяжемся!",
+      sendAnother: "Задать ещё один вопрос",
+    },
     sections: {
-      requirements: "Требования к кандидатам",
-      conditions: "Условия",
       advantages: "Преимущества",
     },
     errors: {
@@ -270,7 +400,6 @@ export const translations: Record<Language, TranslationContent> = {
       rights: "All rights reserved.",
     },
     nav: {
-      requirements: "Requirements",
       conditions: "Conditions",
       advantages: "Advantages",
       contact: "Apply",
@@ -283,34 +412,88 @@ export const translations: Record<Language, TranslationContent> = {
       headline: "Recruitment for SVO in Africa – full support from start to finish!",
       subheadline:
         "We provide legal processing, tickets, documents, and escort until arrival.",
-      cta: "Learn more",
-      about: "About us",
+      cta: "Submit application",
+      consultation: "Get a consultation",
     },
-    requirements: [
-      { label: "Age", value: "18–45 years" },
-      { label: "Citizenship", value: "Any country (priority — Africa)" },
-      { label: "Health", value: "No criminal record, physical fitness" },
-      { label: "Documents", value: "Passport, medical certificate, military ID (if available)" },
-    ],
-    conditions: [
-      "Men up to 63 years old inclusive",
-      "Citizens of Russia and foreign nationals",
-      "With or without military service experience",
-    ],
-    advantages: [
-      "Salary in the SVO zone from 210,000 rubles",
-      "Veteran of combat operations status and all benefits",
-      "Credit and tax holidays",
-      "Budget university places for children",
-      "50% compensation for housing and utilities",
-      "Free meals and after-school care for children",
-      "Free summer camp vacations for children",
-      "Monthly payments of 10,000 rubles for pregnant women and each child in the family",
-      "Opportunity to receive a land plot for FREE",
-      "Additional equipment issued upon enlistment",
-      "Full legal support, humanitarian convoys, employment assistance after SVO, social programs",
-      "Help restoring any documents. Family support and personal issue resolution",
-    ],
+    conditionsSection: {
+      title: "Conditions",
+      contractHighlight: "1-year contract (renewable)",
+      officialRegistration: "Official enlistment",
+      footnote: "* Confirm current pay and benefit amounts with your manager",
+      askQuestion: "Ask a question",
+      groups: [
+        {
+          title: "Candidate requirements",
+          items: [
+            { label: "Age", value: "21–45 years" },
+            {
+              label: "Health",
+              value: "No serious illnesses (HIV, hepatitis B/C)",
+            },
+          ],
+        },
+        {
+          title: "Financial terms",
+          items: [
+            { highlight: "$10,000", text: " — one-time signing bonus" },
+            { highlight: "$3,000 / mo.*", text: " — monthly allowance" },
+          ],
+        },
+        {
+          title: "Guarantees and support",
+          items: [
+            { text: "Russian citizenship — eligible after 1 month of service" },
+            { text: "Visas and transfer — full assistance relocating to Russia" },
+          ],
+        },
+        {
+          title: "Insurance and medical care",
+          items: [
+            {
+              text: "Free medical care and injury compensation* ($12,000 to $50,000)",
+            },
+            {
+              text: "Payment to family or trusted person in case of death* ($60,000 via embassy)",
+            },
+          ],
+        },
+      ],
+    },
+    advantages: {
+      military: {
+        title: "For service members",
+        items: [
+          "Salary in the SVO zone from 210,000 rubles",
+          "Combat veteran status and all eligible benefits",
+          "Official contract with the Russian Ministry of Defence",
+          "Additional equipment issued upon enlistment",
+          "Employment assistance after contract completion",
+          "Full legal support at every stage",
+          "Participation in state social programs for veterans",
+        ],
+      },
+      family: {
+        title: "For families",
+        items: [
+          "Credit and tax holidays for the duration of service",
+          "Budget university places for children",
+          "50% compensation for housing and utility payments",
+          "Free meals and after-school care for school-age children",
+          "Free summer camp vacations for children",
+          "Monthly payments for pregnant spouses and each child in the family",
+          "Opportunity to receive a land plot free of charge",
+          "Help restoring documents and resolving family matters",
+        ],
+      },
+      additional: {
+        title: "Additional advantages",
+        items: [
+          "Pre-service preparatory course",
+          "Training in any military specialty",
+          "Provision of tactical equipment",
+        ],
+      },
+    },
     services: [
       "Document processing (visas, permits)",
       "Airline ticket purchase (economy / business class)",
@@ -339,9 +522,16 @@ export const translations: Record<Language, TranslationContent> = {
       { value: "Tanzania", label: "Tanzania", code: "TZ" },
       { value: "Other", label: "Other country", code: "OTHER" },
     ],
-    countriesSection: {
-      title: "Recruitment countries",
-      subtitle: "Priority — African countries",
+    processSection: {
+      title: "Enrollment process",
+      steps: [
+        "Application",
+        "Consultation",
+        "Preparation for departure",
+        "Processing",
+        "Contract signing",
+        "Start of service",
+      ],
     },
     reviews: {
       title: "Reviews",
@@ -421,9 +611,39 @@ export const translations: Record<Language, TranslationContent> = {
       },
       success: "Application submitted successfully. We will contact you shortly.",
     },
+    consultationForm: {
+      headline: "Book a free consultation",
+      description:
+        "Our professional coordinators will review your situation in detail, help you prepare for service, and walk you through every step of the enrollment process.",
+      benefits: [
+        "We explain current rules, requirements, and the service enrollment process",
+        "We advise on the best lawful options for your individual situation",
+        "We clarify legal details and the document processing procedure",
+        "We assess your readiness for military service and discuss personal terms",
+        "We calculate eligible payments, compensation, and benefits available to you",
+      ],
+      name: "Name *",
+      phone: "Phone *",
+      question: "Your question *",
+      submit: "Send question",
+      submitting: "Sending...",
+      namePlaceholder: "Your name",
+      phonePlaceholder: "+234 800 000 0000",
+      questionPlaceholder: "Describe what you would like to know",
+      errors: {
+        nameRequired: "Please enter your name",
+        nameMin: "Minimum 2 characters",
+        phoneRequired: "Please enter your phone",
+        phoneInvalid: "Invalid phone number",
+        questionRequired: "Please enter your question",
+        questionMin: "Minimum 10 characters",
+        submitFailed: "Submission failed. Please try again later.",
+      },
+      successTitle: "Thank you!",
+      successMessage: "We will be in touch with you!",
+      sendAnother: "Ask another question",
+    },
     sections: {
-      requirements: "Candidate requirements",
-      conditions: "Conditions",
       advantages: "Advantages",
     },
     errors: {
