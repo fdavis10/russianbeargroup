@@ -4,7 +4,7 @@ import { ConditionsSection } from "../components/ConditionsSection";
 import { AdvantagesSection } from "../components/AdvantagesSection";
 import { ContactForm } from "../components/ContactForm";
 import { ConsultationForm } from "../components/ConsultationForm";
-import { ReviewsCarousel } from "../components/ReviewsCarousel";
+// import { ReviewsCarousel } from "../components/ReviewsCarousel";
 import { ProcessTimeline } from "../components/ProcessTimeline";
 import { WhatWeDoSection } from "../components/WhatWeDoSection";
 import { ServicesSection } from "../components/ServicesSection";
@@ -22,7 +22,7 @@ export function HomePage() {
         <ProcessTimeline />
         <ConsultationForm />
         <ContactForm />
-        <ReviewsCarousel />
+        {/* <ReviewsCarousel /> */}
         <ServicesSection />
       </main>
       <Footer />

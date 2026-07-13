@@ -24,6 +24,10 @@ export interface TranslationContent {
     subheadline: string;
     cta: string;
     consultation: string;
+    warning: {
+      headline: string;
+      details: string;
+    };
   };
   conditionsSection: {
     title: string;
@@ -129,7 +133,7 @@ export const translations: Record<Language, TranslationContent> = {
   ru: {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
-      tagline: "Рекрутинг для СВО в Африке",
+      tagline: "Международная организация · Партнёр МО РФ",
       email: "recruit@svo-agency.com",
       whatsapp: "https://wa.me/1234567890?text=Заявка%20на%20СВО",
       whatsapp_phone: "+1234567890",
@@ -145,12 +149,19 @@ export const translations: Record<Language, TranslationContent> = {
       media: "СМИ о нас",
     },
     hero: {
-      tagline: "Рекрутинговое агентство · Африка",
-      headline: "Набор граждан для СВО в Африке – полное сопровождение от начала до конца!",
+      tagline:
+        "Интернациональное рекрутинговое агентство · Прямое сотрудничество с Министерством обороны Российской Федерации",
+      headline:
+        "Набор граждан со всего мира на службу по контракту — полное сопровождение от заявки до прибытия",
       subheadline:
-        "Мы обеспечиваем юридическое оформление, билеты, документы и сопровождение до прибытия.",
+        "Работаем напрямую с Минобороны РФ. Юридическое оформление, документы, перелёт и сопровождение на каждом этапе — для граждан любой страны.",
       cta: "Отправить заявку",
       consultation: "Получить консультацию",
+      warning: {
+        headline: "Не имейте дела с мошенниками — мы официальные представители",
+        details:
+          "Работаем только по официальному договору. Никаких предоплат на личные карты и криптокошельки. Проверяйте документы, реквизиты и контакты — связывайтесь с нами только через этот сайт.",
+      },
     },
     conditionsSection: {
       title: "Условия",
@@ -238,25 +249,26 @@ export const translations: Record<Language, TranslationContent> = {
       "Полное сопровождение до прибытия",
     ],
     countries: [
-      { name: "Нигерия", code: "NG" },
-      { name: "Гана", code: "GH" },
-      { name: "Кения", code: "KE" },
-      { name: "Эфиопия", code: "ET" },
-      { name: "ЮАР", code: "ZA" },
-      { name: "Сенегал", code: "SN" },
-      { name: "Камерун", code: "CM" },
-      { name: "Уганда", code: "UG" },
+      { name: "Россия", code: "RU" },
+      { name: "Беларусь", code: "BY" },
+      { name: "Казахстан", code: "KZ" },
+      { name: "Узбекистан", code: "UZ" },
+      { name: "Индия", code: "IN" },
+      { name: "Сербия", code: "RS" },
+      { name: "Куба", code: "CU" },
+      { name: "Армения", code: "AM" },
     ],
     countryOptions: [
-      { value: "Nigeria", label: "Нигерия", code: "NG" },
-      { value: "Ghana", label: "Гана", code: "GH" },
-      { value: "Kenya", label: "Кения", code: "KE" },
-      { value: "Ethiopia", label: "Эфиопия", code: "ET" },
-      { value: "South Africa", label: "ЮАР", code: "ZA" },
-      { value: "Senegal", label: "Сенегал", code: "SN" },
-      { value: "Cameroon", label: "Камерун", code: "CM" },
-      { value: "Uganda", label: "Уганда", code: "UG" },
-      { value: "Tanzania", label: "Танзания", code: "TZ" },
+      { value: "Russia", label: "Россия", code: "RU" },
+      { value: "Belarus", label: "Беларусь", code: "BY" },
+      { value: "Kazakhstan", label: "Казахстан", code: "KZ" },
+      { value: "Uzbekistan", label: "Узбекистан", code: "UZ" },
+      { value: "India", label: "Индия", code: "IN" },
+      { value: "Serbia", label: "Сербия", code: "RS" },
+      { value: "Cuba", label: "Куба", code: "CU" },
+      { value: "Armenia", label: "Армения", code: "AM" },
+      { value: "Vietnam", label: "Вьетнам", code: "VN" },
+      { value: "Kyrgyzstan", label: "Киргизия", code: "KG" },
       { value: "Other", label: "Другая страна", code: "OTHER" },
     ],
     processSection: {
@@ -274,26 +286,26 @@ export const translations: Record<Language, TranslationContent> = {
       title: "Отзывы",
       items: [
         {
-          name: "Kwame A.",
-          country: "Гана",
+          name: "Rajesh K.",
+          country: "Индия",
           text: "Получил гражданство через год службы. Компания сделала всё сама – от документов до билетов. Честно!",
           avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "Emmanuel O.",
-          country: "Нигерия",
-          text: "Рекомендую всем, кто хочет легально уехать. Быстро оформили все бумаги.",
+          name: "Marko P.",
+          country: "Сербия",
+          text: "Рекомендую всем, кто хочет легально оформиться. Быстро подготовили все бумаги.",
           avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "David M.",
-          country: "Кения",
+          name: "Andrei V.",
+          country: "Беларусь",
           text: "Профессиональная команда. Помогли с визой, билетами и встретили в аэропорту.",
           avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "Samuel T.",
-          country: "Эфиопия",
+          name: "Carlos M.",
+          country: "Куба",
           text: "Всё прозрачно и по договору. Юристы объяснили каждый шаг. Спасибо за поддержку!",
           avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=200&h=200&fit=crop&crop=face",
         },
@@ -335,7 +347,7 @@ export const translations: Record<Language, TranslationContent> = {
       submit: "Отправить заявку",
       submitting: "Отправка...",
       namePlaceholder: "Ваше имя",
-      phonePlaceholder: "+234 800 000 0000",
+      phonePlaceholder: "+7 900 000 00 00",
       messagePlaceholder: "Ваш вопрос (необязательно)",
       countryPlaceholder: "Выберите страну",
       errors: {
@@ -365,7 +377,7 @@ export const translations: Record<Language, TranslationContent> = {
       submit: "Отправить вопрос",
       submitting: "Отправка...",
       namePlaceholder: "Ваше имя",
-      phonePlaceholder: "+234 800 000 0000",
+      phonePlaceholder: "+7 900 000 00 00",
       questionPlaceholder: "Опишите, что вас интересует",
       errors: {
         nameRequired: "Укажите имя",
@@ -387,12 +399,12 @@ export const translations: Record<Language, TranslationContent> = {
       loadFailed: "Не удалось загрузить данные. Запустите backend: python manage.py runserver",
       retry: "Повторить",
     },
-    pageTitle: 'IRC "RUSSIAN BEAR" — Набор граждан для СВО в Африке',
+    pageTitle: 'IRC "RUSSIAN BEAR" — Международный набор на службу по контракту',
   },
   en: {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
-      tagline: "Recruitment for SVO in Africa",
+      tagline: "International organization · Partner of the RF Ministry of Defence",
       email: "recruit@svo-agency.com",
       whatsapp: "https://wa.me/1234567890?text=SVO%20Application",
       whatsapp_phone: "+1234567890",
@@ -408,12 +420,19 @@ export const translations: Record<Language, TranslationContent> = {
       media: "Media",
     },
     hero: {
-      tagline: "Recruitment Agency · Africa",
-      headline: "Recruitment for SVO in Africa – full support from start to finish!",
+      tagline:
+        "International recruitment agency · Direct cooperation with the Russian Ministry of Defence",
+      headline:
+        "Global contract service recruitment — full support from application to arrival",
       subheadline:
-        "We provide legal processing, tickets, documents, and escort until arrival.",
+        "We work directly with the Russian Ministry of Defence. Legal processing, documents, travel, and step-by-step support for citizens of any country.",
       cta: "Submit application",
       consultation: "Get a consultation",
+      warning: {
+        headline: "Do not deal with scammers — we are official representatives",
+        details:
+          "We work only under an official contract. No upfront payments to personal cards or crypto wallets. Verify documents, bank details, and contacts — reach us only through this website.",
+      },
     },
     conditionsSection: {
       title: "Conditions",
@@ -501,25 +520,26 @@ export const translations: Record<Language, TranslationContent> = {
       "Full escort until arrival",
     ],
     countries: [
-      { name: "Nigeria", code: "NG" },
-      { name: "Ghana", code: "GH" },
-      { name: "Kenya", code: "KE" },
-      { name: "Ethiopia", code: "ET" },
-      { name: "South Africa", code: "ZA" },
-      { name: "Senegal", code: "SN" },
-      { name: "Cameroon", code: "CM" },
-      { name: "Uganda", code: "UG" },
+      { name: "Russia", code: "RU" },
+      { name: "Belarus", code: "BY" },
+      { name: "Kazakhstan", code: "KZ" },
+      { name: "Uzbekistan", code: "UZ" },
+      { name: "India", code: "IN" },
+      { name: "Serbia", code: "RS" },
+      { name: "Cuba", code: "CU" },
+      { name: "Armenia", code: "AM" },
     ],
     countryOptions: [
-      { value: "Nigeria", label: "Nigeria", code: "NG" },
-      { value: "Ghana", label: "Ghana", code: "GH" },
-      { value: "Kenya", label: "Kenya", code: "KE" },
-      { value: "Ethiopia", label: "Ethiopia", code: "ET" },
-      { value: "South Africa", label: "South Africa", code: "ZA" },
-      { value: "Senegal", label: "Senegal", code: "SN" },
-      { value: "Cameroon", label: "Cameroon", code: "CM" },
-      { value: "Uganda", label: "Uganda", code: "UG" },
-      { value: "Tanzania", label: "Tanzania", code: "TZ" },
+      { value: "Russia", label: "Russia", code: "RU" },
+      { value: "Belarus", label: "Belarus", code: "BY" },
+      { value: "Kazakhstan", label: "Kazakhstan", code: "KZ" },
+      { value: "Uzbekistan", label: "Uzbekistan", code: "UZ" },
+      { value: "India", label: "India", code: "IN" },
+      { value: "Serbia", label: "Serbia", code: "RS" },
+      { value: "Cuba", label: "Cuba", code: "CU" },
+      { value: "Armenia", label: "Armenia", code: "AM" },
+      { value: "Vietnam", label: "Vietnam", code: "VN" },
+      { value: "Kyrgyzstan", label: "Kyrgyzstan", code: "KG" },
       { value: "Other", label: "Other country", code: "OTHER" },
     ],
     processSection: {
@@ -537,26 +557,26 @@ export const translations: Record<Language, TranslationContent> = {
       title: "Reviews",
       items: [
         {
-          name: "Kwame A.",
-          country: "Ghana",
+          name: "Rajesh K.",
+          country: "India",
           text: "Received citizenship after one year of service. The company handled everything – from documents to tickets. Honestly!",
           avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "Emmanuel O.",
-          country: "Nigeria",
-          text: "I recommend it to everyone who wants to leave legally. All paperwork was processed quickly.",
+          name: "Marko P.",
+          country: "Serbia",
+          text: "I recommend it to everyone who wants to enlist legally. All paperwork was processed quickly.",
           avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "David M.",
-          country: "Kenya",
+          name: "Andrei V.",
+          country: "Belarus",
           text: "Professional team. They helped with the visa, tickets, and met me at the airport.",
           avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face",
         },
         {
-          name: "Samuel T.",
-          country: "Ethiopia",
+          name: "Carlos M.",
+          country: "Cuba",
           text: "Everything is transparent and by contract. Lawyers explained every step. Thank you for the support!",
           avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=200&h=200&fit=crop&crop=face",
         },
@@ -598,7 +618,7 @@ export const translations: Record<Language, TranslationContent> = {
       submit: "Submit application",
       submitting: "Sending...",
       namePlaceholder: "Your name",
-      phonePlaceholder: "+234 800 000 0000",
+      phonePlaceholder: "+7 900 000 00 00",
       messagePlaceholder: "Your question (optional)",
       countryPlaceholder: "Select country",
       errors: {
@@ -628,7 +648,7 @@ export const translations: Record<Language, TranslationContent> = {
       submit: "Send question",
       submitting: "Sending...",
       namePlaceholder: "Your name",
-      phonePlaceholder: "+234 800 000 0000",
+      phonePlaceholder: "+7 900 000 00 00",
       questionPlaceholder: "Describe what you would like to know",
       errors: {
         nameRequired: "Please enter your name",
@@ -650,6 +670,6 @@ export const translations: Record<Language, TranslationContent> = {
       loadFailed: "Failed to load data. Start the backend: python manage.py runserver",
       retry: "Retry",
     },
-    pageTitle: 'IRC "RUSSIAN BEAR" — Recruitment for SVO in Africa',
+    pageTitle: 'IRC "RUSSIAN BEAR" — International Contract Service Recruitment',
   },
 };

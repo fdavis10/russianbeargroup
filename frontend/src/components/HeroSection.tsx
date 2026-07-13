@@ -1,6 +1,36 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 
+function PulsingExclamations() {
+  return (
+    <span className="inline-flex shrink-0 select-none" aria-hidden="true">
+      {Array.from({ length: 3 }).map((_, i) => (
+        <motion.span
+          key={i}
+          className="inline-block px-px text-xl font-black leading-none text-amber-400 sm:text-2xl"
+          animate={{
+            opacity: [0.35, 1, 0.35],
+            scale: [0.8, 1.25, 0.8],
+            textShadow: [
+              "0 0 0px rgba(251,191,36,0)",
+              "0 0 12px rgba(251,191,36,0.85)",
+              "0 0 0px rgba(251,191,36,0)",
+            ],
+          }}
+          transition={{
+            duration: 1.4,
+            repeat: Infinity,
+            delay: i * 0.22,
+            ease: "easeInOut",
+          }}
+        >
+          !
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
 export function HeroSection() {
   const { t } = useLanguage();
 
@@ -21,7 +51,7 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="-mt-1 mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-sand sm:-mt-2"
+          className="-mt-1 mx-auto mb-4 max-w-3xl text-xs font-semibold uppercase leading-relaxed tracking-[0.12em] text-sand sm:-mt-2 sm:text-sm sm:tracking-[0.18em]"
         >
           {t.hero.tagline}
         </motion.p>
@@ -39,7 +69,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mx-auto mt-6 max-w-2xl text-base text-cream/85 sm:text-lg"
+          className="mx-auto mt-6 max-w-3xl text-base text-cream/85 sm:text-lg"
         >
           {t.hero.subheadline}
         </motion.p>
@@ -59,6 +89,40 @@ export function HeroSection() {
           >
             {t.hero.consultation}
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mx-auto mt-8 max-w-2xl"
+        >
+          <motion.div
+            animate={{
+              boxShadow: [
+                "0 0 0 1px rgba(251,191,36,0.25), 0 4px 24px rgba(251,191,36,0.08)",
+                "0 0 0 1px rgba(251,191,36,0.5), 0 4px 32px rgba(251,191,36,0.18)",
+                "0 0 0 1px rgba(251,191,36,0.25), 0 4px 24px rgba(251,191,36,0.08)",
+              ],
+            }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+            className="rounded-2xl border border-amber-500/35 bg-gradient-to-br from-amber-950/50 via-red-950/25 to-amber-950/50 px-4 py-4 backdrop-blur-sm sm:px-6 sm:py-5"
+          >
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
+              <PulsingExclamations />
+
+              <div className="min-w-0 flex-1 text-center">
+                <p className="text-sm font-bold leading-snug text-amber-100 sm:text-base">
+                  {t.hero.warning.headline}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-cream/75 sm:text-sm">
+                  {t.hero.warning.details}
+                </p>
+              </div>
+
+              <PulsingExclamations />
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

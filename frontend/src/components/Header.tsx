@@ -9,7 +9,7 @@ export function Header() {
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
     { href: "#contact", label: t.nav.contact },
-    { href: "#reviews", label: t.nav.reviews },
+    // { href: "#reviews", label: t.nav.reviews },
     { href: "#services", label: t.nav.services },
     { href: "#media", label: t.nav.media },
   ];
@@ -20,12 +20,12 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <a href="#" className="shrink-0 font-black tracking-tight text-sand">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center px-4 py-3 sm:px-6">
+        <a href="#" className="relative z-10 shrink-0 font-black tracking-tight text-sand">
           {t.site.title}
         </a>
 
-        <nav className="hidden gap-5 lg:flex">
+        <nav className="absolute inset-x-0 hidden items-center justify-center gap-5 px-4 sm:px-6 lg:flex">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm text-muted hover:text-sand">
               {l.label}
@@ -33,7 +33,9 @@ export function Header() {
           ))}
         </nav>
 
-        <LanguageSwitcher />
+        <div className="relative z-10 ml-auto shrink-0">
+          <LanguageSwitcher />
+        </div>
       </div>
     </motion.header>
   );
