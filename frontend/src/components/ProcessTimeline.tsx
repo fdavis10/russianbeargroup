@@ -129,6 +129,9 @@ export function ProcessTimeline() {
                         type: "spring",
                         stiffness: 260,
                         damping: 18,
+                        borderColor: { duration: 0.3 },
+                        boxShadow: { duration: 0.3 },
+                        scale: { duration: 0.3 },
                       }}
                       animate={{
                         borderColor: isActive
@@ -141,7 +144,6 @@ export function ProcessTimeline() {
                             : "0 0 20px rgba(196, 163, 90, 0.15)",
                         scale: isHovered ? 1.06 : 1,
                       }}
-                      transition={{ duration: 0.3 }}
                       className="flex h-12 w-12 items-center justify-center rounded-full border-2 bg-bg-card"
                     >
                       <Icon size={20} className="text-sand" strokeWidth={2} />
