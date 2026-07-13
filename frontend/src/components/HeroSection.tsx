@@ -15,7 +15,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto mb-0 h-72 w-72 object-contain drop-shadow-[0_0_36px_rgba(196,163,90,0.32)] sm:h-[21rem] sm:w-[21rem] lg:h-96 lg:w-96"
+          className="mx-auto mb-0 h-auto w-full max-w-xs object-contain drop-shadow-[0_0_36px_rgba(196,163,90,0.32)] sm:max-w-sm lg:max-w-md"
         />
 
         <motion.p
