@@ -18,10 +18,12 @@ export interface TranslationContent {
     contact: string;
     reviews: string;
     services: string;
+    faq: string;
     media: string;
   };
   hero: {
     tagline: string;
+    taglineSecondary: string;
     headline: string;
     subheadline: string;
     cta: string;
@@ -38,25 +40,9 @@ export interface TranslationContent {
   };
   conditionsSection: {
     title: string;
-    contractHighlight: string;
-    officialRegistration: string;
-    footnote: string;
-    askQuestion: string;
-    groups: {
-      title: string;
-      items: {
-        label?: string;
-        value?: string;
-        highlight?: string;
-        text?: string;
-      }[];
-    }[];
+    items: { label: string; value: string }[];
   };
-  advantages: {
-    military: { title: string; items: string[] };
-    family: { title: string; items: string[] };
-    additional: { title: string; items: string[] };
-  };
+  advantages: string[];
   services: string[];
   countries: { name: string; code: string }[];
   countryOptions: { value: string; label: string; code: string }[];
@@ -70,6 +56,11 @@ export interface TranslationContent {
   };
   servicesSection: {
     title: string;
+    quote: string;
+  };
+  faq: {
+    title: string;
+    items: { question: string; answer: string }[];
   };
   media: {
     title: string;
@@ -140,7 +131,7 @@ export const translations: Record<Language, TranslationContent> = {
   ru: {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
-      tagline: "Международная организация · Партнёр МО РФ",
+      tagline: "Официальный представитель Министерства обороны РФ",
       email: "support@irc-russianbear.army",
       whatsapp: "https://wa.me/79882672632?text=Заявка%20на%20СВО",
       whatsapp_phone: "+7 988 267-26-32",
@@ -150,26 +141,28 @@ export const translations: Record<Language, TranslationContent> = {
       rights: "Все права защищены.",
     },
     nav: {
-      conditions: "Условия",
+      conditions: "Требования",
       advantages: "Преимущества",
       contact: "Заявка",
       reviews: "Отзывы",
       services: "Услуги",
+      faq: "FAQ",
       media: "СМИ о нас",
     },
     hero: {
-      tagline:
-        "Интернациональное рекрутинговое агентство · Прямое сотрудничество с Министерством обороны Российской Федерации",
+      tagline: "Международное рекрутинговое агентство «Русский медведь»",
+      taglineSecondary:
+        "Официальный представитель Министерства обороны Российской Федерации",
       headline:
-        "Набор граждан со всего мира на службу по контракту — полное сопровождение от заявки до прибытия",
+        "Набор граждан Африки, Востока, Азии, Латинской Америки на военную службу по контракту — полное сопровождение от заявки до прибытия.",
       subheadline:
-        "Работаем напрямую с Минобороны РФ. Юридическое оформление, документы, перелёт и сопровождение на каждом этапе — для граждан любой страны.",
+        "Помощь в оформлении документов, визовое сопровождение, размещение, питание, трансфер — оказываем полную поддержку на территории России. Срок от начала оформления документов до прибытия в РФ занимает около 7 дней.",
       cta: "Отправить заявку",
       consultation: "Получить консультацию",
       warning: {
-        headline: "Не имейте дела с мошенниками — мы официальные представители",
+        headline: "Не имейте дела с посредниками — они в основном все мошенники, из-за которых вы рискуете",
         details:
-          "Работаем только по официальному договору. Никаких предоплат на личные карты и криптокошельки. Проверяйте документы, реквизиты и контакты — связывайтесь с нами только через этот сайт.",
+          "Связывайтесь с нами только через официальные каналы, указанные на этом сайте.",
       },
       contactLinks: {
         telegramAdmin: "Telegram — администратор",
@@ -178,89 +171,37 @@ export const translations: Record<Language, TranslationContent> = {
       },
     },
     conditionsSection: {
-      title: "Условия",
-      contractHighlight: "Контракт 1 год (с продлением)",
-      officialRegistration: "Официальное оформление",
-      footnote: "* Суммы довольствия и выплат уточняйте у менеджера",
-      askQuestion: "Задать вопрос",
-      groups: [
+      title: "Требования к кандидатам",
+      items: [
+        { label: "Возраст", value: "21–45 лет" },
         {
-          title: "Требования к кандидатам",
-          items: [
-            { label: "Возраст", value: "21–45 лет" },
-            {
-              label: "Здоровье",
-              value: "Отсутствие тяжёлых заболеваний (ВИЧ, гепатиты B/C)",
-            },
-          ],
+          label: "Здоровье",
+          value:
+            "отсутствие тяжёлых заболеваний (ВИЧ, гепатиты В/С), отсутствие тяжёлых психических заболеваний, стрессоустойчивость",
         },
         {
-          title: "Финансовые условия",
-          items: [
-            { highlight: "$10 000", text: " — единовременный бонус при подписании" },
-            { highlight: "$3 000 / мес.*", text: " — ежемесячное довольствие" },
-          ],
-        },
-        {
-          title: "Гарантии и поддержка",
-          items: [
-            { text: "Гражданство РФ — право получения после 1 месяца службы" },
-            { text: "Визы и трансфер — полное содействие с переездом в Россию" },
-          ],
-        },
-        {
-          title: "Страхование и лечение",
-          items: [
-            {
-              text: "Бесплатная медицина и компенсация при ранении* (от $12 000 до $50 000)",
-            },
-            {
-              text: "Выплата семье или доверенному лицу в случае гибели* ($60 000 через посольство)",
-            },
-          ],
+          label: "Физическая подготовка",
+          value: "возможность отжаться 10 раз, присесть 20 раз",
         },
       ],
     },
-    advantages: {
-      military: {
-        title: "Для военных",
-        items: [
-          "Зарплата в зоне СВО от 210 000 рублей",
-          "Статус ветерана боевых действий и все положенные льготы",
-          "Официальный контракт с Минобороны РФ",
-          "Выдача дополнительной амуниции при поступлении на службу",
-          "Помощь в трудоустройстве после завершения контракта",
-          "Полное юридическое сопровождение на всех этапах",
-          "Участие в государственных социальных программах для ветеранов",
-        ],
-      },
-      family: {
-        title: "Для семьи",
-        items: [
-          "Кредитные и налоговые каникулы на период службы",
-          "Бюджетные места для обучения детей в вузах",
-          "Компенсация 50% оплаты жилищно-коммунальных услуг",
-          "Бесплатное питание и продлёнка для детей школьного возраста",
-          "Бесплатный отдых детей в летних оздоровительных лагерях",
-          "Ежемесячные выплаты беременным женам и на каждого ребёнка в семье",
-          "Возможность бесплатного получения земельного участка",
-          "Помощь в восстановлении документов и решении семейных вопросов",
-        ],
-      },
-      additional: {
-        title: "Дополнительные преимущества",
-        items: [
-          "Подготовительный курс перед службой",
-          "Обучение по любой военной специальности",
-          "Обеспечение тактическим снаряжением",
-        ],
-      },
-    },
+    advantages: [
+      "Зарплата от 210 000 рублей",
+      "Полное обеспечение современным тактическим снаряжением",
+      "Бонус при подписании 1 050 000 рублей",
+      "Получение гражданства РФ (при желании)",
+      "Помощь в трансграничных денежных переводах (перевод денежных средств семье)",
+      "Помощь в трудоустройстве после завершения контракта (при желании)",
+      "Полное юридическое сопровождение на всех этапах",
+      "Участие в государственных социальных программах для ветеранов",
+      "Помощь в получении бесплатного медицинского лечения и страховых выплат в случае ранения ($10 000)",
+      "Помощь в получении страховых выплат в случае гибели ($60 000 — родственникам через посольство РФ)",
+      "Прохождение специализированного курса боевой подготовки (14–60 дней), в зависимости от назначения в ВЧ",
+    ],
     services: [
-      "Оформление документов (визы, разрешения)",
-      "Покупка авиабилетов (эконом / бизнес-класс)",
-      "Юридическое сопровождение (контракты, гражданство)",
-      "Полное сопровождение до прибытия",
+      "Оформление документов под ключ (визы, миграционные карты, страховки, приглашения)",
+      "Покупка билетов (авиа, ЖД, морской)",
+      "Полное юридическое и социальное сопровождение на весь срок прохождения службы в РФ",
     ],
     countries: [
       { name: "Россия", code: "RU" },
@@ -290,9 +231,10 @@ export const translations: Record<Language, TranslationContent> = {
       steps: [
         "Заявка",
         "Консультация",
-        "Подготовка к отправке",
-        "Оформление",
+        "Оформление документов для въезда в РФ",
+        "Трансфер",
         "Подписание контракта",
+        "Курс боевой подготовки",
         "Начало службы",
       ],
     },
@@ -326,7 +268,43 @@ export const translations: Record<Language, TranslationContent> = {
       ],
     },
     servicesSection: {
-      title: "Чем мы занимаемся",
+      title: "Чем мы помогаем",
+      quote:
+        "«Никаких обещаний на словах — ТОЛЬКО ОФИЦИАЛЬНЫЕ ДОГОВОРА И ПОДПИСАНИЕ»",
+    },
+    faq: {
+      title: "FAQ",
+      items: [
+        {
+          question:
+            "Что будет со мной в случае ранения, и кто получит выплаты, если я погибну?",
+          answer:
+            "Компания заключает с вами договор о юридическом и социальном сопровождении на весь период службы. Мы гарантируем, что выплаты получит только то доверенное лицо, которое вы сами укажете в документах. В случае ранения, задержек с переводами или потери связи, наши юристы напрямую решают вопросы с госпиталями и командованием. В случае гибели мы через посольства помогаем родным оперативно оформить и получить все государственные компенсации (к самим деньгам компания доступа не имеет).",
+        },
+        {
+          question:
+            "Почему в желании выиграть время опасно ехать по туристической визе и рассылать свои документы разным посредникам агентам?",
+          answer:
+            "Въезд в Россию по туристической визе без прямой поддержки в 90% случаев заканчивается депортацией из аэропорта и запретом на въезд на 20 лет. Недобросовестным посредникам важна только быстрая комиссия за оформление документов, а пропустят вас через границу или нет — их не волнует. Мы работаем только официально: оформляем целевые визы, гарантируем успешное прохождение пограничного контроля и встречу в аэропорту.\n\nВажный нюанс: если вы договорились работать с нашим представителем, но параллельно разослали свои документы другим агентам, происходит задвоение ваших данных в официальных базах. Из-за этого дублирования вас автоматически вычеркивают из списков на получение приглашения. В таком случае вероятность вашей депортации по прилёту составит 100%.",
+        },
+        {
+          question:
+            "Правда ли, что при подписании контракта агенты сразу выплачивают 40–50 тысяч долларов?",
+          answer:
+            "Нет, для каждой страны условия бонусной выплаты индивидуальны. Обещания посредников в 99% случаев — это обман для заманивания людей и получения ими комиссии. Обычно неофициальные посредники называют сумму вашей будущей зарплаты за весь год службы или умалчивают об огромных скрытых комиссиях, из-за которых на руки выдают лишь малую часть. Мы обеспечиваем полную прозрачность: реальная сумма единовременной выплаты и все возможные расходы фиксируются в договоре, который вы подписываете ещё до выезда в Россию.",
+        },
+        {
+          question: "Кто поможет мне оформить гражданство РФ?",
+          answer:
+            "Обычные посредники агенты только обещают паспорт на словах, а у Министерства обороны другие задачи — они не занимаются миграционными вопросами. Наша компания берёт на себя полный цикл юридического сопровождения. Мы сами готовим, подаем и контролируем все документы, чтобы примерно через 6 месяцев после подписания контракта вы официально стали гражданином Российской Федерации.",
+        },
+        {
+          question:
+            "Есть информация, что меня сразу отправят в окоп без тренировок. Это так?",
+          answer:
+            "Нет, это исключено. Компания располагает тренировочным центром, главная задача которого — обучить вас необходимым боевым навыкам для выживания. Перед началом службы вы в обязательном порядке пройдёте курс подготовки. Его длительность зависит от воинской части, в которую вас направят, и составляет от 21 до 60 дней.",
+        },
+      ],
     },
     media: {
       title: "СМИ о нас",
@@ -375,15 +353,13 @@ export const translations: Record<Language, TranslationContent> = {
       success: "Заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.",
     },
     consultationForm: {
-      headline: "Запишитесь на бесплатную консультацию",
+      headline: "Запишитесь на консультацию",
       description:
-        "Профессиональные кураторы подробно разберут вашу ситуацию, помогут подготовиться к службе и расскажут о каждом этапе оформления.",
+        "Официальные региональные представители МРЦ «Русский медведь» внимательно отнесутся к вашей ситуации и предложат наиболее подходящую дорожную карту, чтобы вы как можно быстрее приступили к службе.",
       benefits: [
         "Объясним актуальные правила, требования и порядок прохождения службы",
-        "Подскажем оптимальные и законные пути решения индивидуальных вопросов",
         "Поясним юридические тонкости и порядок оформления документов",
-        "Проверим вашу готовность к военной службе и обсудим персональные условия",
-        "Рассчитаем положенные выплаты, компенсации и доступные вам льготы",
+        "Закреплённый агент с вами на связи 24/7",
       ],
       name: "Имя *",
       phone: "Телефон *",
@@ -418,7 +394,7 @@ export const translations: Record<Language, TranslationContent> = {
   en: {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
-      tagline: "International organization · Partner of the RF Ministry of Defence",
+      tagline: "Official representative of the Ministry of Defence of the Russian Federation",
       email: "support@irc-russianbear.army",
       whatsapp: "https://wa.me/79882672632?text=SVO%20Application",
       whatsapp_phone: "+7 988 267-26-32",
@@ -428,26 +404,29 @@ export const translations: Record<Language, TranslationContent> = {
       rights: "All rights reserved.",
     },
     nav: {
-      conditions: "Conditions",
+      conditions: "Requirements",
       advantages: "Advantages",
       contact: "Apply",
       reviews: "Reviews",
       services: "Services",
+      faq: "FAQ",
       media: "Media",
     },
     hero: {
-      tagline:
-        "International recruitment agency · Direct cooperation with the Russian Ministry of Defence",
+      tagline: 'International recruitment agency "Russian Bear"',
+      taglineSecondary:
+        "Official representative of the Ministry of Defence of the Russian Federation",
       headline:
-        "Global contract service recruitment — full support from application to arrival",
+        "Recruitment of citizens from Africa, the East, Asia, and Latin America for military contract service — full support from application to arrival.",
       subheadline:
-        "We work directly with the Russian Ministry of Defence. Legal processing, documents, travel, and step-by-step support for citizens of any country.",
+        "Assistance with document processing, visa support, accommodation, meals, and transfer — full support within Russia. From the start of paperwork to arrival in the Russian Federation takes about 7 days.",
       cta: "Submit application",
       consultation: "Get a consultation",
       warning: {
-        headline: "Do not deal with scammers — we are official representatives",
+        headline:
+          "Do not deal with middlemen — most of them are scammers who put you at risk",
         details:
-          "We work only under an official contract. No upfront payments to personal cards or crypto wallets. Verify documents, bank details, and contacts — reach us only through this website.",
+          "Contact us only through the official channels listed on this website.",
       },
       contactLinks: {
         telegramAdmin: "Telegram — admin",
@@ -456,89 +435,37 @@ export const translations: Record<Language, TranslationContent> = {
       },
     },
     conditionsSection: {
-      title: "Conditions",
-      contractHighlight: "1-year contract (renewable)",
-      officialRegistration: "Official enlistment",
-      footnote: "* Confirm current pay and benefit amounts with your manager",
-      askQuestion: "Ask a question",
-      groups: [
+      title: "Candidate requirements",
+      items: [
+        { label: "Age", value: "21–45 years" },
         {
-          title: "Candidate requirements",
-          items: [
-            { label: "Age", value: "21–45 years" },
-            {
-              label: "Health",
-              value: "No serious illnesses (HIV, hepatitis B/C)",
-            },
-          ],
+          label: "Health",
+          value:
+            "no serious illnesses (HIV, hepatitis B/C), no severe mental disorders, stress resilience",
         },
         {
-          title: "Financial terms",
-          items: [
-            { highlight: "$10,000", text: " — one-time signing bonus" },
-            { highlight: "$3,000 / mo.*", text: " — monthly allowance" },
-          ],
-        },
-        {
-          title: "Guarantees and support",
-          items: [
-            { text: "Russian citizenship — eligible after 1 month of service" },
-            { text: "Visas and transfer — full assistance relocating to Russia" },
-          ],
-        },
-        {
-          title: "Insurance and medical care",
-          items: [
-            {
-              text: "Free medical care and injury compensation* ($12,000 to $50,000)",
-            },
-            {
-              text: "Payment to family or trusted person in case of death* ($60,000 via embassy)",
-            },
-          ],
+          label: "Physical fitness",
+          value: "able to do 10 push-ups and 20 squats",
         },
       ],
     },
-    advantages: {
-      military: {
-        title: "For service members",
-        items: [
-          "Salary in the SVO zone from 210,000 rubles",
-          "Combat veteran status and all eligible benefits",
-          "Official contract with the Russian Ministry of Defence",
-          "Additional equipment issued upon enlistment",
-          "Employment assistance after contract completion",
-          "Full legal support at every stage",
-          "Participation in state social programs for veterans",
-        ],
-      },
-      family: {
-        title: "For families",
-        items: [
-          "Credit and tax holidays for the duration of service",
-          "Budget university places for children",
-          "50% compensation for housing and utility payments",
-          "Free meals and after-school care for school-age children",
-          "Free summer camp vacations for children",
-          "Monthly payments for pregnant spouses and each child in the family",
-          "Opportunity to receive a land plot free of charge",
-          "Help restoring documents and resolving family matters",
-        ],
-      },
-      additional: {
-        title: "Additional advantages",
-        items: [
-          "Pre-service preparatory course",
-          "Training in any military specialty",
-          "Provision of tactical equipment",
-        ],
-      },
-    },
+    advantages: [
+      "Salary from $3,000",
+      "Full provision of modern tactical equipment",
+      "Signing bonus of $15,000",
+      "Russian citizenship (optional)",
+      "Assistance with cross-border money transfers (sending funds to family)",
+      "Employment assistance after contract completion (optional)",
+      "Full legal support at every stage",
+      "Participation in state social programs for veterans",
+      "Assistance with free medical treatment and insurance payments in case of injury ($10,000)",
+      "Assistance with insurance payments in case of death ($60,000 — to relatives via the RF embassy)",
+      "Specialized combat training course (14–60 days), depending on unit assignment",
+    ],
     services: [
-      "Document processing (visas, permits)",
-      "Airline ticket purchase (economy / business class)",
-      "Legal support (contracts, citizenship)",
-      "Full escort until arrival",
+      "Turnkey document processing (visas, migration cards, insurance, invitations)",
+      "Ticket purchase (air, rail, sea)",
+      "Full legal and social support for the entire period of service in the Russian Federation",
     ],
     countries: [
       { name: "Russia", code: "RU" },
@@ -568,9 +495,10 @@ export const translations: Record<Language, TranslationContent> = {
       steps: [
         "Application",
         "Consultation",
-        "Preparation for departure",
-        "Processing",
+        "Document processing for entry into the RF",
+        "Transfer",
         "Contract signing",
+        "Combat training course",
         "Start of service",
       ],
     },
@@ -604,7 +532,43 @@ export const translations: Record<Language, TranslationContent> = {
       ],
     },
     servicesSection: {
-      title: "What we do",
+      title: "How we help",
+      quote:
+        "«No verbal promises — ONLY OFFICIAL CONTRACTS AND SIGNING»",
+    },
+    faq: {
+      title: "FAQ",
+      items: [
+        {
+          question:
+            "What happens if I am wounded, and who receives the payments if I die?",
+          answer:
+            "The company signs an agreement with you for legal and social support for the entire period of service. We guarantee that payments go only to the trusted person you designate in your documents. In case of injury, delayed transfers, or loss of contact, our lawyers deal directly with hospitals and command. In case of death, we help relatives promptly process and receive all state compensations through embassies (the company has no access to the funds themselves).",
+        },
+        {
+          question:
+            "Why is it dangerous to try to save time by traveling on a tourist visa and sending your documents to different middleman agents?",
+          answer:
+            "Entering Russia on a tourist visa without direct support ends in airport deportation and a 20-year entry ban in 90% of cases. Unscrupulous middlemen only care about a quick fee for paperwork — whether you clear the border or not is not their concern. We work only officially: we arrange purpose visas, guarantee successful border control, and meet you at the airport.\n\nImportant: if you agree to work with our representative but also send your documents to other agents, your data is duplicated in official databases. Because of this duplication you are automatically removed from invitation lists. In that case, the chance of deportation on arrival is 100%.",
+        },
+        {
+          question:
+            "Is it true that agents pay $40,000–50,000 right when the contract is signed?",
+          answer:
+            "No. Bonus payment terms are individual for each country. Middlemen's promises are deception in 99% of cases, used to lure people and collect fees. Unofficial middlemen often quote your future salary for an entire year of service or hide huge commissions, so you receive only a small part. We ensure full transparency: the real one-time payment amount and all possible expenses are fixed in the contract you sign before leaving for Russia.",
+        },
+        {
+          question: "Who will help me get Russian citizenship?",
+          answer:
+            "Ordinary middleman agents only promise a passport verbally, while the Ministry of Defence has other priorities and does not handle migration issues. Our company takes on the full cycle of legal support. We prepare, submit, and track all documents so that roughly 6 months after contract signing you officially become a citizen of the Russian Federation.",
+        },
+        {
+          question:
+            "There is information that I will be sent straight to the trenches without training. Is that true?",
+          answer:
+            "No, that is excluded. The company has a training center whose main task is to teach you the combat skills needed to survive. Before starting service you must complete a preparation course. Its length depends on the military unit you are assigned to and lasts from 21 to 60 days.",
+        },
+      ],
     },
     media: {
       title: "Media about us",
@@ -653,15 +617,13 @@ export const translations: Record<Language, TranslationContent> = {
       success: "Application submitted successfully. We will contact you shortly.",
     },
     consultationForm: {
-      headline: "Book a free consultation",
+      headline: "Book a consultation",
       description:
-        "Our professional coordinators will review your situation in detail, help you prepare for service, and walk you through every step of the enrollment process.",
+        'Official regional representatives of IRC "Russian Bear" will carefully consider your situation and offer the most suitable roadmap so you can start service as soon as possible.',
       benefits: [
         "We explain current rules, requirements, and the service enrollment process",
-        "We advise on the best lawful options for your individual situation",
         "We clarify legal details and the document processing procedure",
-        "We assess your readiness for military service and discuss personal terms",
-        "We calculate eligible payments, compensation, and benefits available to you",
+        "A dedicated agent stays in touch with you 24/7",
       ],
       name: "Name *",
       phone: "Phone *",

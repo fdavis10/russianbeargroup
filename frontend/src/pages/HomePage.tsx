@@ -2,12 +2,13 @@ import { Header } from "../components/Header";
 import { HeroSection } from "../components/HeroSection";
 import { ConditionsSection } from "../components/ConditionsSection";
 import { AdvantagesSection } from "../components/AdvantagesSection";
-import { ContactForm } from "../components/ContactForm";
+// import { ContactForm } from "../components/ContactForm";
 import { ConsultationForm } from "../components/ConsultationForm";
 // import { ReviewsCarousel } from "../components/ReviewsCarousel";
 import { ProcessTimeline } from "../components/ProcessTimeline";
 import { WhatWeDoSection } from "../components/WhatWeDoSection";
 import { ServicesSection } from "../components/ServicesSection";
+import { FaqSection } from "../components/FaqSection";
 import { Footer } from "../components/Footer";
 
 export function HomePage() {
@@ -21,8 +22,9 @@ export function HomePage() {
         <ConditionsSection />
         <ProcessTimeline />
         <ConsultationForm />
-        <ContactForm />
+        {/* <ContactForm /> */}
         {/* <ReviewsCarousel /> */}
+        <FaqSection />
         <ServicesSection />
       </main>
       <Footer />

@@ -50,13 +50,18 @@ export function HeroSection() {
           className="mx-auto mb-0 h-auto w-full max-w-xs object-contain drop-shadow-[0_0_36px_rgba(196,163,90,0.32)] sm:max-w-sm lg:max-w-md"
         />
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="-mt-1 mx-auto mb-4 max-w-3xl text-xs font-semibold uppercase leading-relaxed tracking-[0.12em] text-sand sm:-mt-2 sm:text-sm sm:tracking-[0.18em]"
+          className="-mt-1 mx-auto mb-4 max-w-3xl space-y-1.5 sm:-mt-2"
         >
-          {t.hero.tagline}
-        </motion.p>
+          <p className="text-sm font-semibold uppercase leading-snug tracking-[0.14em] text-sand sm:text-base sm:tracking-[0.16em]">
+            {t.hero.tagline}
+          </p>
+          <p className="text-xs font-medium uppercase leading-relaxed tracking-[0.1em] text-sand/80 sm:text-sm sm:tracking-[0.12em]">
+            {t.hero.taglineSecondary}
+          </p>
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -82,11 +87,11 @@ export function HeroSection() {
           transition={{ delay: 0.35 }}
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
-          <a href="#contact" className="btn-primary">
+          <a href="#consultation-form" className="btn-primary">
             {t.hero.cta}
           </a>
           <a
-            href="#consultation"
+            href="#consultation-form"
             className="inline-flex items-center rounded-xl border border-white/15 px-8 py-4 font-semibold text-cream hover:border-sand/40"
           >
             {t.hero.consultation}

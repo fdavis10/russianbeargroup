@@ -120,8 +120,9 @@ export function ConsultationForm() {
               </div>
 
               <motion.form
+                id="consultation-form"
                 onSubmit={handleSubmit(onSubmit)}
-                className="glass-card space-y-4 p-6 sm:p-8"
+                className="glass-card scroll-mt-28 space-y-4 p-6 sm:p-8"
               >
                 <input type="hidden" {...register("website")} tabIndex={-1} autoComplete="off" />
 

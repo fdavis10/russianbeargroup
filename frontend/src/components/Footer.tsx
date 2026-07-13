@@ -1,5 +1,5 @@
-import { Mail } from "lucide-react";
-import { VkIcon, WhatsAppIcon } from "./icons/BrandIcons";
+import { Mail, Megaphone } from "lucide-react";
+import { TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export function Footer() {
@@ -39,23 +39,35 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#25D366] hover:border-sand/40"
-            aria-label="WhatsApp"
+            aria-label={t.hero.contactLinks.whatsappAdmin}
+            title={t.hero.contactLinks.whatsappAdmin}
           >
             <WhatsAppIcon size={18} />
           </a>
           <a
-            href={t.site.vk}
+            href={t.site.telegram_admin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#4C75A3] hover:border-sand/40"
-            aria-label="VK"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#2AABEE] hover:border-sand/40"
+            aria-label={t.hero.contactLinks.telegramAdmin}
+            title={t.hero.contactLinks.telegramAdmin}
           >
-            <VkIcon size={18} />
+            <TelegramIcon size={18} />
+          </a>
+          <a
+            href={t.site.telegram_channel}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-sand hover:border-sand/40"
+            aria-label={t.hero.contactLinks.telegramChannel}
+            title={t.hero.contactLinks.telegramChannel}
+          >
+            <Megaphone size={18} strokeWidth={2.25} />
           </a>
         </div>
 
         <p className="mt-8 text-center text-xs text-muted/70">
-          © {new Date().getFullYear()} {t.site.title}. {t.site.rights}
+          © 2024–2026 {t.site.title}. {t.site.rights}
         </p>
       </div>
     </footer>

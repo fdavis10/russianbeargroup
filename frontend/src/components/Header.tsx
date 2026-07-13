@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export function Header() {
@@ -8,9 +9,10 @@ export function Header() {
   const links = [
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
-    { href: "#contact", label: t.nav.contact },
+    // { href: "#contact", label: t.nav.contact },
     // { href: "#reviews", label: t.nav.reviews },
     { href: "#services", label: t.nav.services },
+    { href: "#faq", label: t.nav.faq },
     { href: "#media", label: t.nav.media },
   ];
 
@@ -20,7 +22,7 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
-      <div className="relative mx-auto flex w-full max-w-6xl items-center px-4 py-3 sm:px-6">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
         <a href="#" className="relative z-10 shrink-0 font-black tracking-tight text-sand">
           {t.site.title}
         </a>
@@ -33,7 +35,31 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="relative z-10 ml-auto shrink-0">
+        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <a
+            href={t.site.telegram_admin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.hero.contactLinks.telegramAdmin}
+            title={t.hero.contactLinks.telegramAdmin}
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/10 px-2.5 text-[#2AABEE] transition hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20 sm:px-3"
+          >
+            <TelegramIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">TG</span>
+          </a>
+
+          <a
+            href={t.site.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.hero.contactLinks.whatsappAdmin}
+            title={t.hero.contactLinks.whatsappAdmin}
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#25D366]/30 bg-[#25D366]/10 px-2.5 text-[#25D366] transition hover:border-[#25D366]/55 hover:bg-[#25D366]/20 sm:px-3"
+          >
+            <WhatsAppIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">WA</span>
+          </a>
+
           <LanguageSwitcher />
         </div>
       </div>

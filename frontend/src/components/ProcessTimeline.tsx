@@ -1,5 +1,6 @@
 import {
   ClipboardCheck,
+  Crosshair,
   FileText,
   MessageCircle,
   PenLine,
@@ -14,9 +15,10 @@ import { useLanguage } from "../i18n/LanguageContext";
 const stepIcons: LucideIcon[] = [
   FileText,
   MessageCircle,
-  Plane,
   ClipboardCheck,
+  Plane,
   PenLine,
+  Crosshair,
   Shield,
 ];
 
