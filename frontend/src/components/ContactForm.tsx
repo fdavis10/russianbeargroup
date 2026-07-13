@@ -1,8 +1,8 @@
 import { useForm, Controller } from "react-hook-form";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { useContactSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
+import { getApiErrorMessage } from "../utils/apiError";
 import { CountrySelect } from "./icons/CountrySelect";
 
 interface FormValues {
@@ -39,11 +39,7 @@ export function ContactForm() {
       reset();
       alert(t.form.success);
     } catch (err) {
-      const msg =
-        axios.isAxiosError(err) && err.response?.data
-          ? Object.values(err.response.data as Record<string, string[]>).flat()[0]
-          : t.form.errors.submitFailed;
-      alert(msg);
+      alert(getApiErrorMessage(err, t.form.errors.submitFailed));
     }
   }
 

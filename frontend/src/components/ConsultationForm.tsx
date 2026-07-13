@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
-import axios from "axios";
 import { Check, CheckCircle2, MessageCircle } from "lucide-react";
 import { useConsultationSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
+import { getApiErrorMessage } from "../utils/apiError";
 
 interface FormValues {
   name: string;
@@ -39,11 +39,7 @@ export function ConsultationForm() {
       reset();
       setSubmitted(true);
     } catch (err) {
-      const msg =
-        axios.isAxiosError(err) && err.response?.data
-          ? Object.values(err.response.data as Record<string, string[]>).flat()[0]
-          : f.errors.submitFailed;
-      alert(msg);
+      alert(getApiErrorMessage(err, f.errors.submitFailed));
     }
   }
 
