@@ -7,6 +7,8 @@ export interface TranslationContent {
     email: string;
     whatsapp: string;
     whatsapp_phone: string;
+    telegram_admin: string;
+    telegram_channel: string;
     vk: string;
     rights: string;
   };
@@ -27,6 +29,11 @@ export interface TranslationContent {
     warning: {
       headline: string;
       details: string;
+    };
+    contactLinks: {
+      telegramAdmin: string;
+      whatsappAdmin: string;
+      telegramChannel: string;
     };
   };
   conditionsSection: {
@@ -134,9 +141,11 @@ export const translations: Record<Language, TranslationContent> = {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "Международная организация · Партнёр МО РФ",
-      email: "recruit@svo-agency.com",
-      whatsapp: "https://wa.me/1234567890?text=Заявка%20на%20СВО",
-      whatsapp_phone: "+1234567890",
+      email: "support@irc-russianbear.army",
+      whatsapp: "https://wa.me/79882672632?text=Заявка%20на%20СВО",
+      whatsapp_phone: "+7 988 267-26-32",
+      telegram_admin: "https://t.me/ircrussianbear",
+      telegram_channel: "https://t.me/icr_russianbear",
       vk: "https://vk.com/svo_recruit",
       rights: "Все права защищены.",
     },
@@ -161,6 +170,11 @@ export const translations: Record<Language, TranslationContent> = {
         headline: "Не имейте дела с мошенниками — мы официальные представители",
         details:
           "Работаем только по официальному договору. Никаких предоплат на личные карты и криптокошельки. Проверяйте документы, реквизиты и контакты — связывайтесь с нами только через этот сайт.",
+      },
+      contactLinks: {
+        telegramAdmin: "Telegram — администратор",
+        whatsappAdmin: "WhatsApp — администратор",
+        telegramChannel: "Telegram-канал",
       },
     },
     conditionsSection: {
@@ -405,9 +419,11 @@ export const translations: Record<Language, TranslationContent> = {
     site: {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "International organization · Partner of the RF Ministry of Defence",
-      email: "recruit@svo-agency.com",
-      whatsapp: "https://wa.me/1234567890?text=SVO%20Application",
-      whatsapp_phone: "+1234567890",
+      email: "support@irc-russianbear.army",
+      whatsapp: "https://wa.me/79882672632?text=SVO%20Application",
+      whatsapp_phone: "+7 988 267-26-32",
+      telegram_admin: "https://t.me/ircrussianbear",
+      telegram_channel: "https://t.me/icr_russianbear",
       vk: "https://vk.com/svo_recruit",
       rights: "All rights reserved.",
     },
@@ -432,6 +448,11 @@ export const translations: Record<Language, TranslationContent> = {
         headline: "Do not deal with scammers — we are official representatives",
         details:
           "We work only under an official contract. No upfront payments to personal cards or crypto wallets. Verify documents, bank details, and contacts — reach us only through this website.",
+      },
+      contactLinks: {
+        telegramAdmin: "Telegram — admin",
+        whatsappAdmin: "WhatsApp — admin",
+        telegramChannel: "Telegram channel",
       },
     },
     conditionsSection: {

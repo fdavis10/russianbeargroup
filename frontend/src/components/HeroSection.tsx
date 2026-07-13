@@ -1,5 +1,7 @@
+import { Megaphone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 
 function PulsingExclamations() {
   return (
@@ -95,7 +97,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="mx-auto mt-8 max-w-2xl"
+          className="mx-auto mt-8 max-w-3xl"
         >
           <motion.div
             animate={{
@@ -122,6 +124,49 @@ export function HeroSection() {
 
               <PulsingExclamations />
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.45 }}
+            className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+          >
+            <a
+              href={t.site.telegram_admin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#2AABEE]/25 bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition hover:border-[#2AABEE]/50 hover:shadow-[0_4px_24px_rgba(42,171,238,0.15)] sm:w-auto sm:min-w-[14rem]"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#2AABEE]/15 text-[#2AABEE] transition group-hover:bg-[#2AABEE]/25">
+                <TelegramIcon size={18} />
+              </span>
+              {t.hero.contactLinks.telegramAdmin}
+            </a>
+
+            <a
+              href={t.site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#25D366]/25 bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition hover:border-[#25D366]/50 hover:shadow-[0_4px_24px_rgba(37,211,102,0.15)] sm:w-auto sm:min-w-[14rem]"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#25D366]/15 text-[#25D366] transition group-hover:bg-[#25D366]/25">
+                <WhatsAppIcon size={18} />
+              </span>
+              {t.hero.contactLinks.whatsappAdmin}
+            </a>
+
+            <a
+              href={t.site.telegram_channel}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-xl border border-sand/25 bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition hover:border-sand/50 hover:shadow-[0_4px_24px_rgba(196,163,90,0.15)] sm:w-auto sm:min-w-[14rem]"
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sand/15 text-sand transition group-hover:bg-sand/25">
+                <Megaphone size={18} strokeWidth={2.25} />
+              </span>
+              {t.hero.contactLinks.telegramChannel}
+            </a>
           </motion.div>
         </motion.div>
       </div>
