@@ -5,6 +5,7 @@ import { Check, CheckCircle2, MessageCircle } from "lucide-react";
 import { useConsultationSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getApiErrorMessage } from "../utils/apiError";
+import { trackLead } from "../utils/metaPixel";
 
 interface FormValues {
   name: string;
@@ -36,6 +37,7 @@ export function ConsultationForm() {
         question: data.question,
         website: data.website,
       });
+      trackLead("consultation");
       reset();
       setSubmitted(true);
     } catch (err) {

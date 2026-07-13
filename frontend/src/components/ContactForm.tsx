@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useContactSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getApiErrorMessage } from "../utils/apiError";
+import { trackLead } from "../utils/metaPixel";
 import { CountrySelect } from "./icons/CountrySelect";
 
 interface FormValues {
@@ -36,6 +37,7 @@ export function ContactForm() {
         message: data.message,
         website: data.website,
       });
+      trackLead("application");
       reset();
       alert(t.form.success);
     } catch (err) {
