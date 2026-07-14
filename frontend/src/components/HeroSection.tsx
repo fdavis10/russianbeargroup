@@ -42,7 +42,7 @@ export function HeroSection() {
 
       <div className="relative mx-auto max-w-4xl text-center">
         <motion.img
-          src="/logo.png"
+          src="/new_logo.jpg"
           alt={t.site.title}
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}

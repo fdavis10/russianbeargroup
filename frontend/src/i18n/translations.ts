@@ -135,8 +135,8 @@ export const translations: Record<Language, TranslationContent> = {
       email: "support@irc-russianbear.army",
       whatsapp: "https://wa.me/79882672632?text=Заявка%20на%20СВО",
       whatsapp_phone: "+7 988 267-26-32",
-      telegram_admin: "https://t.me/ircrussianbear",
-      telegram_channel: "https://t.me/icr_russianbear",
+      telegram_admin: "https://telegram.me/ircrussianbear",
+      telegram_channel: "https://telegram.me/icr_russianbear",
       vk: "https://vk.com/svo_recruit",
       rights: "Все права защищены.",
     },
@@ -269,8 +269,7 @@ export const translations: Record<Language, TranslationContent> = {
     },
     servicesSection: {
       title: "Чем мы помогаем",
-      quote:
-        "«Никаких обещаний на словах — ТОЛЬКО ОФИЦИАЛЬНЫЕ ДОГОВОРА И ПОДПИСАНИЕ»",
+      quote: "«Никаких обещаний на словах — фиксация обязательств договорами»",
     },
     faq: {
       title: "FAQ",
@@ -398,8 +397,8 @@ export const translations: Record<Language, TranslationContent> = {
       email: "support@irc-russianbear.army",
       whatsapp: "https://wa.me/79882672632?text=SVO%20Application",
       whatsapp_phone: "+7 988 267-26-32",
-      telegram_admin: "https://t.me/ircrussianbear",
-      telegram_channel: "https://t.me/icr_russianbear",
+      telegram_admin: "https://telegram.me/ircrussianbear",
+      telegram_channel: "https://telegram.me/icr_russianbear",
       vk: "https://vk.com/svo_recruit",
       rights: "All rights reserved.",
     },
@@ -533,8 +532,7 @@ export const translations: Record<Language, TranslationContent> = {
     },
     servicesSection: {
       title: "How we help",
-      quote:
-        "«No verbal promises — ONLY OFFICIAL CONTRACTS AND SIGNING»",
+      quote: "«No verbal promises — obligations fixed by contracts»",
     },
     faq: {
       title: "FAQ",
