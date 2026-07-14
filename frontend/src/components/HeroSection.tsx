@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
+import { ContactLinks } from "./ContactLinks";
 
 function PulsingExclamations() {
   return (
@@ -127,6 +128,15 @@ export function HeroSection() {
 
               <PulsingExclamations />
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.45 }}
+            className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+          >
+            <ContactLinks />
           </motion.div>
         </motion.div>
       </div>
