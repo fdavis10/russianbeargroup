@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
+import { FacebookIcon, TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export function Header() {
@@ -58,6 +58,18 @@ export function Header() {
           >
             <WhatsAppIcon size={16} />
             <span className="hidden text-xs font-semibold sm:inline">WA</span>
+          </a>
+
+          <a
+            href={t.site.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.contactsSection.links.facebook}
+            title={t.contactsSection.links.facebook}
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#1877F2]/30 bg-[#1877F2]/10 px-2.5 text-[#1877F2] transition hover:border-[#1877F2]/55 hover:bg-[#1877F2]/20 sm:px-3"
+          >
+            <FacebookIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">FB</span>
           </a>
 
           <LanguageSwitcher />
