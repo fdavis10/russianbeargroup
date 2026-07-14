@@ -110,20 +110,76 @@ docker compose exec backend python manage.py createsuperuser
 
 ---
 
-## 4. Обновление после `git push`
+## 4. CI/CD (GitHub Actions) — автодеплой
 
-На сервере:
+После настройки каждый `git push` в `main` сам выкатывает сайт на VPS.
+Вручную SSH для обычных обновлений больше не нужен.
+
+### 4.1. SSH-ключ для GitHub (один раз на сервере)
+
+На **своём компьютере** (или на сервере):
+
+```bash
+ssh-keygen -t ed25519 -C "github-actions-deploy" -f ./github_actions_deploy -N ""
+```
+
+Публичный ключ добавьте на сервер:
+
+```bash
+# на сервере
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+echo "СОДЕРЖИМОЕ_github_actions_deploy.pub" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Приватный ключ (`github_actions_deploy` **без** `.pub`) понадобится для GitHub Secrets — никуда его не коммитьте.
+
+### 4.2. GitHub Secrets
+
+Репозиторий → **Settings → Secrets and variables → Actions → New repository secret**:
+
+| Secret | Пример | Описание |
+|--------|--------|----------|
+| `DEPLOY_HOST` | `185.125.201.202` | IP или домен VPS |
+| `DEPLOY_USER` | `root` | SSH-пользователь |
+| `DEPLOY_SSH_KEY` | *(весь приватный ключ)* | Содержимое `github_actions_deploy` |
+| `DEPLOY_PORT` | `22` | Опционально |
+| `DEPLOY_PATH` | `/opt/russianbeargroup` | Опционально, путь к проекту |
+
+### 4.3. Доступ репозитория на сервере
+
+Клон на сервере должен уметь `git fetch` без пароля.
+
+- **Публичный** репозиторий: достаточно clone по HTTPS
+- **Приватный**: добавьте [Deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys) (read-only) и:
+  ```bash
+  git remote set-url origin git@github.com:OWNER/russianbeargroup.git
+  ```
+
+### 4.4. Как пользоваться
+
+1. Коммитьте и пушьте в `main`
+2. Откройте **Actions** на GitHub — workflow **Deploy** должен стать зелёным
+3. Можно запустить вручную: Actions → Deploy → **Run workflow**
+
+Скрипт на сервере: `scripts/deploy.sh`  
+(`git fetch` + `reset --hard` + `docker compose build` + `up -d`; если есть HTTPS-сертификаты — подключит `docker-compose.prod.yml`)
+
+### 4.5. Ручное обновление (если CI недоступен)
 
 ```bash
 cd /opt/russianbeargroup
-git pull
-docker compose build
-docker compose up -d
+bash scripts/deploy.sh
 ```
 
-Только перезапуск без пересборки:
+Или по шагам:
 
 ```bash
+cd /opt/russianbeargroup
+git fetch origin main
+git reset --hard origin/main
+docker compose build
 docker compose up -d
 ```
 
