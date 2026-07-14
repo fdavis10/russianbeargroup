@@ -12,7 +12,7 @@ export function Header() {
     // { href: "#reviews", label: t.nav.reviews },
     { href: "#services", label: t.nav.services },
     { href: "#faq", label: t.nav.faq },
-    { href: "#contacts", label: t.nav.contact },
+    // { href: "#contacts", label: t.nav.contact },
     { href: "#media", label: t.nav.media },
   ];
 

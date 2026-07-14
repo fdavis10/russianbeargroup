@@ -9,7 +9,7 @@ import { ProcessTimeline } from "../components/ProcessTimeline";
 import { WhatWeDoSection } from "../components/WhatWeDoSection";
 import { ServicesSection } from "../components/ServicesSection";
 import { FaqSection } from "../components/FaqSection";
-import { ContactsSection } from "../components/ContactsSection";
+// import { ContactsSection } from "../components/ContactsSection";
 import { Footer } from "../components/Footer";
 
 export function HomePage() {
@@ -26,7 +26,7 @@ export function HomePage() {
         {/* <ContactForm /> */}
         {/* <ReviewsCarousel /> */}
         <FaqSection />
-        <ContactsSection />
+        {/* <ContactsSection /> */}
         <ServicesSection />
       </main>
       <Footer />
