@@ -9,10 +9,10 @@ export function Header() {
   const links = [
     { href: "#conditions", label: t.nav.conditions },
     { href: "#advantages", label: t.nav.advantages },
-    // { href: "#contact", label: t.nav.contact },
     // { href: "#reviews", label: t.nav.reviews },
     { href: "#services", label: t.nav.services },
     { href: "#faq", label: t.nav.faq },
+    { href: "#contacts", label: t.nav.contact },
     { href: "#media", label: t.nav.media },
   ];
 
@@ -40,8 +40,8 @@ export function Header() {
             href={t.site.telegram_admin}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t.hero.contactLinks.telegramAdmin}
-            title={t.hero.contactLinks.telegramAdmin}
+            aria-label={t.contactsSection.links.telegramAdmin}
+            title={t.contactsSection.links.telegramAdmin}
             className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/10 px-2.5 text-[#2AABEE] transition hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20 sm:px-3"
           >
             <TelegramIcon size={16} />
@@ -52,8 +52,8 @@ export function Header() {
             href={t.site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t.hero.contactLinks.whatsappAdmin}
-            title={t.hero.contactLinks.whatsappAdmin}
+            aria-label={t.contactsSection.links.whatsappAdmin}
+            title={t.contactsSection.links.whatsappAdmin}
             className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#25D366]/30 bg-[#25D366]/10 px-2.5 text-[#25D366] transition hover:border-[#25D366]/55 hover:bg-[#25D366]/20 sm:px-3"
           >
             <WhatsAppIcon size={16} />

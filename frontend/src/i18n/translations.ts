@@ -9,6 +9,7 @@ export interface TranslationContent {
     whatsapp_phone: string;
     telegram_admin: string;
     telegram_channel: string;
+    facebook: string;
     vk: string;
     rights: string;
   };
@@ -32,10 +33,14 @@ export interface TranslationContent {
       headline: string;
       details: string;
     };
-    contactLinks: {
+  };
+  contactsSection: {
+    title: string;
+    links: {
       telegramAdmin: string;
       whatsappAdmin: string;
       telegramChannel: string;
+      facebook: string;
     };
   };
   conditionsSection: {
@@ -133,17 +138,18 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "Официальный представитель Министерства обороны РФ",
       email: "support@irc-russianbear.army",
-      whatsapp: "https://wa.me/79882672632?text=Заявка%20на%20СВО",
-      whatsapp_phone: "+7 988 267-26-32",
+      whatsapp: "https://wa.me/79167787177?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D1%8F%20%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BD",
+      whatsapp_phone: "+7 916 778-71-77",
       telegram_admin: "https://telegram.me/ircrussianbear",
       telegram_channel: "https://telegram.me/icr_russianbear",
+      facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",
       vk: "https://vk.com/svo_recruit",
       rights: "Все права защищены.",
     },
     nav: {
       conditions: "Требования",
       advantages: "Преимущества",
-      contact: "Заявка",
+      contact: "Контакты",
       reviews: "Отзывы",
       services: "Услуги",
       faq: "FAQ",
@@ -164,10 +170,14 @@ export const translations: Record<Language, TranslationContent> = {
         details:
           "Связывайтесь с нами только через официальные каналы, указанные на этом сайте.",
       },
-      contactLinks: {
+    },
+    contactsSection: {
+      title: "Контакты",
+      links: {
         telegramAdmin: "Telegram",
         whatsappAdmin: "WhatsApp",
         telegramChannel: "Telegram-канал",
+        facebook: "Facebook",
       },
     },
     conditionsSection: {
@@ -303,6 +313,18 @@ export const translations: Record<Language, TranslationContent> = {
           answer:
             "Нет, это исключено. Компания располагает тренировочным центром, главная задача которого — обучить вас необходимым боевым навыкам для выживания. Перед началом службы вы в обязательном порядке пройдёте курс подготовки. Его длительность зависит от воинской части, в которую вас направят, и составляет от 21 до 60 дней.",
         },
+        {
+          question:
+            "Если у меня есть узкая специализация (например, врач или инженер), могу ли я служить по своей профессии?",
+          answer:
+            "Да, это возможно, но одного наличия диплома при въезде в страну недостаточно. Всё зависит от вашего желания приложить усилия: потребуется выучить русский язык (включая профессиональную терминологию), подтвердить квалификацию и пройти курсы переподготовки. Во время службы вам будет предоставлен шанс пройти профильное армейское обучение, а после получения гражданства РФ вы сможете официально устроиться на работу по своей специальности уже в гражданском секторе.",
+        },
+        {
+          question:
+            "Хочу поехать в Россию и подписать контракт, но нет загранпаспорта, а чтобы его сделать, нужны деньги. Поможете?",
+          answer:
+            "Программа авансирования для людей, желающих в ускоренном порядке выехать в Россию и подписать контракт с армией, есть. Чтобы наша компания смогла выделить вам средства, которые, с ваших слов, планируется потратить на срочное изготовление заграничного паспорта, нам нужна страховка в формате видеообращения, в котором вы подтверждаете, что берёте у агентства деньги, которые планируете потратить на изготовление документа, по которому собираетесь заехать в Россию и подписать военный контракт. За деталями обратитесь к нашему консультанту.",
+        },
       ],
     },
     media: {
@@ -395,17 +417,18 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "Official representative of the Ministry of Defence of the Russian Federation",
       email: "support@irc-russianbear.army",
-      whatsapp: "https://wa.me/79882672632?text=SVO%20Application",
-      whatsapp_phone: "+7 988 267-26-32",
+      whatsapp: "https://wa.me/79167787177?text=Hello%2C%20I%20am%20interested",
+      whatsapp_phone: "+7 916 778-71-77",
       telegram_admin: "https://telegram.me/ircrussianbear",
       telegram_channel: "https://telegram.me/icr_russianbear",
+      facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",
       vk: "https://vk.com/svo_recruit",
       rights: "All rights reserved.",
     },
     nav: {
       conditions: "Requirements",
       advantages: "Advantages",
-      contact: "Apply",
+      contact: "Contacts",
       reviews: "Reviews",
       services: "Services",
       faq: "FAQ",
@@ -427,10 +450,14 @@ export const translations: Record<Language, TranslationContent> = {
         details:
           "Contact us only through the official channels listed on this website.",
       },
-      contactLinks: {
+    },
+    contactsSection: {
+      title: "Contacts",
+      links: {
         telegramAdmin: "Telegram",
         whatsappAdmin: "WhatsApp",
         telegramChannel: "Telegram channel",
+        facebook: "Facebook",
       },
     },
     conditionsSection: {
@@ -565,6 +592,18 @@ export const translations: Record<Language, TranslationContent> = {
             "There is information that I will be sent straight to the trenches without training. Is that true?",
           answer:
             "No, that is excluded. The company has a training center whose main task is to teach you the combat skills needed to survive. Before starting service you must complete a preparation course. Its length depends on the military unit you are assigned to and lasts from 21 to 60 days.",
+        },
+        {
+          question:
+            "If I have a narrow specialization (for example, a doctor or an engineer), can I serve in my profession?",
+          answer:
+            "Yes, it is possible, but simply having a diploma when you enter the country is not enough. Everything depends on your willingness to put in the effort: you will need to learn Russian (including professional terminology), confirm your qualifications, and complete retraining courses. During service you will get a chance to take specialized military training, and after obtaining Russian citizenship you will be able to officially work in your field in the civilian sector.",
+        },
+        {
+          question:
+            "I want to go to Russia and sign a contract, but I do not have a passport, and getting one costs money. Will you help?",
+          answer:
+            "There is an advance-funding program for people who want to travel to Russia quickly and sign a contract with the army. For our company to allocate funds that, according to you, will be spent on urgent passport issuance, we need insurance in the form of a video statement in which you confirm that you are taking money from the agency to produce the document you intend to use to enter Russia and sign a military contract. For details, contact our consultant.",
         },
       ],
     },

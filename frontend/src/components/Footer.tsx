@@ -39,8 +39,8 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#25D366] hover:border-sand/40"
-            aria-label={t.hero.contactLinks.whatsappAdmin}
-            title={t.hero.contactLinks.whatsappAdmin}
+            aria-label={t.contactsSection.links.whatsappAdmin}
+            title={t.contactsSection.links.whatsappAdmin}
           >
             <WhatsAppIcon size={18} />
           </a>
@@ -49,8 +49,8 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-[#2AABEE] hover:border-sand/40"
-            aria-label={t.hero.contactLinks.telegramAdmin}
-            title={t.hero.contactLinks.telegramAdmin}
+            aria-label={t.contactsSection.links.telegramAdmin}
+            title={t.contactsSection.links.telegramAdmin}
           >
             <TelegramIcon size={18} />
           </a>
@@ -59,8 +59,8 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-sand hover:border-sand/40"
-            aria-label={t.hero.contactLinks.telegramChannel}
-            title={t.hero.contactLinks.telegramChannel}
+            aria-label={t.contactsSection.links.telegramChannel}
+            title={t.contactsSection.links.telegramChannel}
           >
             <Megaphone size={18} strokeWidth={2.25} />
           </a>
