@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Globe } from "lucide-react";
+import { Languages } from "lucide-react";
 import { FlagIcon } from "./icons/FlagIcon";
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/translations";
@@ -45,7 +45,7 @@ export function LanguageSwitcher() {
         aria-expanded={open}
         className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-sand transition hover:border-sand/40 hover:bg-white/[0.06]"
       >
-        <Globe size={18} strokeWidth={2} />
+        <Languages size={18} strokeWidth={2} />
       </button>
 
       {open && (
