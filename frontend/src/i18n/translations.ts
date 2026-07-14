@@ -165,8 +165,8 @@ export const translations: Record<Language, TranslationContent> = {
           "Связывайтесь с нами только через официальные каналы, указанные на этом сайте.",
       },
       contactLinks: {
-        telegramAdmin: "Telegram — администратор",
-        whatsappAdmin: "WhatsApp — администратор",
+        telegramAdmin: "Telegram",
+        whatsappAdmin: "WhatsApp",
         telegramChannel: "Telegram-канал",
       },
     },
@@ -428,8 +428,8 @@ export const translations: Record<Language, TranslationContent> = {
           "Contact us only through the official channels listed on this website.",
       },
       contactLinks: {
-        telegramAdmin: "Telegram — admin",
-        whatsappAdmin: "WhatsApp — admin",
+        telegramAdmin: "Telegram",
+        whatsappAdmin: "WhatsApp",
         telegramChannel: "Telegram channel",
       },
     },
