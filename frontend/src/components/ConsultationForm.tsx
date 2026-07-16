@@ -177,6 +177,7 @@ export function ConsultationForm() {
 
                 <div>
                   <label className="mb-1.5 block text-sm text-muted">{f.phone}</label>
+                  <p className="mb-2 text-xs leading-relaxed text-muted/80">{f.phoneHint}</p>
                   <Controller
                     name="phoneNational"
                     control={control}

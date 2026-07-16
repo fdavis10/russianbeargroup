@@ -107,6 +107,7 @@ export interface TranslationContent {
     benefits: string[];
     name: string;
     phone: string;
+    phoneHint: string;
     question: string;
     submit: string;
     submitting: string;
