@@ -195,10 +195,10 @@ docker compose up -d
 | Путь | `/opt/russianbeargroup` | `/opt/russianbeargroup-dev` |
 | Ветка | `main` | `develop` |
 | Compose | `docker-compose.yml` + `prod` | `docker-compose.yml` + `dev` |
-| Порты | 80 / 443 | `127.0.0.1:8081` / `:8001` |
+| Порты | 80 / 443 | через nginx прода (`frontend-dev`) |
 | Бот / backup | да | нет |
 
-Трафик preview идёт через **nginx прода** на `127.0.0.1:8081` (frontend) и `:8001` (backend).
+Трафик preview идёт через **nginx прода** по Docker-сети `russianbear-edge` и уникальным именам `frontend-prod` / `frontend-dev` (не `frontend` — иначе прод и preview смешиваются).
 
 ### Один раз на сервере
 
@@ -224,9 +224,11 @@ CSRF_TRUSTED_ORIGINS=https://development.irc-russianbear.army
 TELEGRAM_BOT_TOKEN=
 ```
 
-3. Расширить SSL (тот же сертификат + SAN):
+3. Сеть + расширить SSL (тот же сертификат + SAN):
 
 ```bash
+docker network create russianbear-edge
+
 certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
   -d irc-russianbear.army \
   -d www.irc-russianbear.army \
@@ -234,7 +236,7 @@ certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
   --expand --non-interactive --agree-tos -m support@irc-russianbear.army
 ```
 
-4. Обновить **прод** (nginx с блоком `development.…` должен быть в ветке `main`):
+4. Обновить **прод** (nginx с `frontend-prod` / блоком `development.…` должен быть в `main`):
 
 ```bash
 cd /opt/russianbeargroup
