@@ -167,29 +167,38 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="overflow-hidden border-t border-white/10 lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-gradient-to-b from-sand/[0.07] to-transparent lg:hidden"
           >
-            <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
-              {mobileLinks.map((item) =>
-                item.type === "hash" ? (
-                  <SectionLink
-                    key={item.hash}
-                    hash={item.hash}
-                    label={item.label}
-                    onNavigate={() => setMenuOpen(false)}
-                    className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
-                  />
-                ) : (
-                  <Link
+            <nav className="mx-auto flex max-w-6xl flex-col gap-2.5 px-4 py-4 sm:px-6">
+              {mobileLinks.map((item, index) => {
+                if (item.type !== "route") return null;
+
+                return (
+                  <motion.div
                     key={item.to}
-                    to={item.to}
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 + index * 0.06, duration: 0.3, ease: "easeOut" }}
                   >
-                    {item.label}
-                  </Link>
-                ),
-              )}
+                    <Link
+                      to={item.to}
+                      onClick={() => setMenuOpen(false)}
+                      className="group relative flex items-center justify-between overflow-hidden rounded-xl border border-white/10 bg-bg-card/90 px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition hover:border-sand/50 hover:bg-bg-elevated"
+                    >
+                      <span className="pointer-events-none absolute inset-y-3 start-0 w-0.5 rounded-full bg-sand transition group-hover:inset-y-2 group-hover:w-1" />
+                      <span className="ps-3 text-lg font-black uppercase tracking-[0.16em] text-cream transition group-hover:text-sand">
+                        {item.label}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="text-base text-sand/45 transition duration-300 group-hover:translate-x-1 group-hover:text-sand rtl:rotate-180 rtl:group-hover:-translate-x-1"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </nav>
           </motion.div>
         )}
