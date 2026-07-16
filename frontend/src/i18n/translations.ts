@@ -1,136 +1,7 @@
-export type Language = "ru" | "en";
+import { fr } from "./locales/fr";
+import type { Language, TranslationContent } from "./types";
 
-export interface TranslationContent {
-  site: {
-    title: string;
-    tagline: string;
-    email: string;
-    whatsapp: string;
-    whatsapp_phone: string;
-    telegram_admin: string;
-    telegram_channel: string;
-    facebook: string;
-    vk: string;
-    rights: string;
-  };
-  nav: {
-    conditions: string;
-    advantages: string;
-    contact: string;
-    reviews: string;
-    services: string;
-    faq: string;
-    media: string;
-  };
-  hero: {
-    tagline: string;
-    taglineSecondary: string;
-    headline: string;
-    subheadline: string;
-    cta: string;
-    consultation: string;
-    warning: {
-      headline: string;
-      details: string;
-    };
-  };
-  contactsSection: {
-    title: string;
-    links: {
-      telegramAdmin: string;
-      whatsappAdmin: string;
-      telegramChannel: string;
-      facebook: string;
-    };
-  };
-  conditionsSection: {
-    title: string;
-    items: { label: string; value: string }[];
-  };
-  advantages: string[];
-  services: string[];
-  countries: { name: string; code: string }[];
-  countryOptions: { value: string; label: string; code: string }[];
-  processSection: {
-    title: string;
-    steps: string[];
-  };
-  reviews: {
-    title: string;
-    items: { name: string; country: string; text: string; avatar: string }[];
-  };
-  servicesSection: {
-    title: string;
-    quote: string;
-  };
-  faq: {
-    title: string;
-    items: { question: string; answer: string }[];
-  };
-  media: {
-    title: string;
-    subtitle: string;
-    enlarge: string;
-    close: string;
-    items: { src: string; outlet: string; alt: string }[];
-  };
-  form: {
-    title: string;
-    subtitle: string;
-    name: string;
-    phone: string;
-    country: string;
-    message: string;
-    submit: string;
-    submitting: string;
-    namePlaceholder: string;
-    phonePlaceholder: string;
-    messagePlaceholder: string;
-    countryPlaceholder: string;
-    errors: {
-      nameRequired: string;
-      nameMin: string;
-      phoneRequired: string;
-      phoneInvalid: string;
-      countryRequired: string;
-      submitFailed: string;
-    };
-    success: string;
-  };
-  consultationForm: {
-    headline: string;
-    description: string;
-    benefits: string[];
-    name: string;
-    phone: string;
-    question: string;
-    submit: string;
-    submitting: string;
-    namePlaceholder: string;
-    phonePlaceholder: string;
-    questionPlaceholder: string;
-    errors: {
-      nameRequired: string;
-      nameMin: string;
-      phoneRequired: string;
-      phoneInvalid: string;
-      questionRequired: string;
-      questionMin: string;
-      submitFailed: string;
-    };
-    successTitle: string;
-    successMessage: string;
-    sendAnother: string;
-  };
-  sections: {
-    advantages: string;
-  };
-  errors: {
-    loadFailed: string;
-    retry: string;
-  };
-  pageTitle: string;
-}
+export type { Language, TranslationContent } from "./types";
 
 export const translations: Record<Language, TranslationContent> = {
   ru: {
@@ -138,8 +9,8 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "Официальный представитель Министерства обороны РФ",
       email: "support@irc-russianbear.army",
-      whatsapp: "https://wa.me/79882672632?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D1%8F%20%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BD",
-      whatsapp_phone: "+7 988 267-26-32",
+      whatsapp: "https://wa.me/79167787177?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D1%8F%20%D0%B7%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BE%D0%B2%D0%B0%D0%BD",
+      whatsapp_phone: "+7 916 778-71-77",
       telegram_admin: "https://telegram.me/ircrussianbear",
       telegram_channel: "https://telegram.me/icr_russianbear",
       facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",
@@ -417,8 +288,8 @@ export const translations: Record<Language, TranslationContent> = {
       title: 'IRC "RUSSIAN BEAR"',
       tagline: "Official representative of the Ministry of Defence of the Russian Federation",
       email: "support@irc-russianbear.army",
-      whatsapp: "https://wa.me/79882672632?text=Hello%2C%20I%20am%20interested",
-      whatsapp_phone: "+7 988 267-26-32",
+      whatsapp: "https://wa.me/79167787177?text=Hello%2C%20I%20am%20interested",
+      whatsapp_phone: "+7 916 778-71-77",
       telegram_admin: "https://telegram.me/ircrussianbear",
       telegram_channel: "https://telegram.me/icr_russianbear",
       facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",
@@ -692,4 +563,5 @@ export const translations: Record<Language, TranslationContent> = {
     },
     pageTitle: 'IRC "RUSSIAN BEAR" — International Contract Service Recruitment',
   },
+  fr,
 };
