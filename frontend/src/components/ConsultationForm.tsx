@@ -1,39 +1,73 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, CheckCircle2, MessageCircle } from "lucide-react";
 import { useConsultationSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getApiErrorMessage } from "../utils/apiError";
 import { trackLead } from "../utils/metaPixel";
+import { composeE164, findDialEntry, isValidE164 } from "../data/dialCodes";
+import { PhoneInput } from "./PhoneInput";
 
 interface FormValues {
   name: string;
-  phone: string;
+  countryIso: string;
+  dialCode: string;
+  phoneNational: string;
   question: string;
   website: string;
 }
 
 export function ConsultationForm() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const f = t.consultationForm;
   const { submit } = useConsultationSubmit();
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
+    control,
     handleSubmit,
     reset,
+    setValue,
+    watch,
+    setError,
+    clearErrors,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>({ defaultValues: { website: "" } });
+  } = useForm<FormValues>({
+    defaultValues: {
+      website: "",
+      countryIso: "",
+      dialCode: "",
+      phoneNational: "",
+    },
+  });
+
+  const countryIso = watch("countryIso");
+  const dialCode = watch("dialCode");
 
   const inputClass =
     "w-full rounded-xl border border-white/10 bg-bg px-4 py-3 text-cream outline-none transition focus:border-sand/50 focus:ring-1 focus:ring-sand/30";
 
   async function onSubmit(data: FormValues) {
+    if (!data.dialCode || !data.countryIso) {
+      setError("dialCode", { message: f.errors.dialRequired });
+      return;
+    }
+
+    const phone = composeE164(data.dialCode, data.phoneNational);
+    if (!isValidE164(phone)) {
+      setError("phoneNational", { message: f.errors.phoneInvalid });
+      return;
+    }
+
+    const entry = findDialEntry(data.countryIso, data.dialCode);
+    const country = entry?.name ?? data.countryIso;
+
     try {
       await submit({
         name: data.name,
-        phone: data.phone,
+        phone,
+        country,
         question: data.question,
         website: data.website,
       });
@@ -125,6 +159,8 @@ export function ConsultationForm() {
                 className="glass-card scroll-mt-28 space-y-4 p-6 sm:p-8"
               >
                 <input type="hidden" {...register("website")} tabIndex={-1} autoComplete="off" />
+                <input type="hidden" {...register("countryIso")} />
+                <input type="hidden" {...register("dialCode")} />
 
                 <div>
                   <label className="mb-1.5 block text-sm text-muted">{f.name}</label>
@@ -141,19 +177,32 @@ export function ConsultationForm() {
 
                 <div>
                   <label className="mb-1.5 block text-sm text-muted">{f.phone}</label>
-                  <input
-                    {...register("phone", {
-                      required: f.errors.phoneRequired,
-                      pattern: {
-                        value: /^\+?[\d\s\-()]{10,20}$/,
-                        message: f.errors.phoneInvalid,
-                      },
-                    })}
-                    type="tel"
-                    className={inputClass}
-                    placeholder={f.phonePlaceholder}
+                  <Controller
+                    name="phoneNational"
+                    control={control}
+                    rules={{ required: f.errors.phoneRequired }}
+                    render={({ field }) => (
+                      <PhoneInput
+                        countryIso={countryIso}
+                        dialCode={dialCode}
+                        nationalNumber={field.value}
+                        locale={language}
+                        dialPlaceholder={f.dialCodePlaceholder}
+                        nationalPlaceholder={f.phoneNationalPlaceholder}
+                        searchPlaceholder={f.dialSearchPlaceholder}
+                        error={errors.dialCode?.message || errors.phoneNational?.message}
+                        onCountryChange={(iso, dial) => {
+                          clearErrors(["dialCode", "phoneNational"]);
+                          setValue("countryIso", iso, { shouldDirty: true });
+                          setValue("dialCode", dial, { shouldDirty: true });
+                        }}
+                        onNationalChange={(value) => {
+                          clearErrors("phoneNational");
+                          field.onChange(value);
+                        }}
+                      />
+                    )}
                   />
-                  {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
                 </div>
 
                 <div>
