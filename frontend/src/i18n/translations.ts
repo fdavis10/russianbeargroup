@@ -260,7 +260,7 @@ export const translations: Record<Language, TranslationContent> = {
       name: "Имя *",
       phone: "Телефон *",
       phoneHint:
-        "Укажите номер, который активен в Telegram и WhatsApp — по нему с вами свяжутся администраторы.",
+        "Укажите номер, который активен в Telegram или WhatsApp — по нему с вами свяжутся администраторы.",
       question: "Ваш вопрос *",
       submit: "Отправить вопрос",
       submitting: "Отправка...",
@@ -550,7 +550,7 @@ export const translations: Record<Language, TranslationContent> = {
       name: "Name *",
       phone: "Phone *",
       phoneHint:
-        "Enter a number that is active on both Telegram and WhatsApp — administrators will contact you there.",
+        "Enter a number that is active on Telegram or WhatsApp — administrators will contact you there.",
       question: "Your question *",
       submit: "Send question",
       submitting: "Sending...",
