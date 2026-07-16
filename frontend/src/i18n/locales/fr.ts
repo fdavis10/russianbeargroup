@@ -263,6 +263,8 @@ export const fr: TranslationContent = {
     ],
     name: "Nom *",
     phone: "Téléphone *",
+    phoneHint:
+      "Indiquez un numéro actif sur Telegram et WhatsApp — les administrateurs vous contacteront via ces applications.",
     question: "Votre question *",
     submit: "Envoyer la question",
     submitting: "Envoi...",
