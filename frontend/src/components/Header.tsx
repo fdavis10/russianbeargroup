@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { FacebookIcon, TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -31,6 +30,23 @@ function SectionLink({
   );
 }
 
+function BurgerIcon({ open }: { open: boolean }) {
+  const line = "absolute left-0 h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out";
+  return (
+    <span className="relative block h-4 w-5" aria-hidden>
+      <span
+        className={`${line} ${open ? "top-[7px] rotate-45" : "top-0 rotate-0"}`}
+      />
+      <span
+        className={`${line} top-[7px] ${open ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"}`}
+      />
+      <span
+        className={`${line} ${open ? "top-[7px] -rotate-45" : "top-[14px] rotate-0"}`}
+      />
+    </span>
+  );
+}
+
 export function Header() {
   const { t } = useLanguage();
   const location = useLocation();
@@ -55,15 +71,6 @@ export function Header() {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [menuOpen]);
-
-  useEffect(() => {
-    if (!menuOpen) return;
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setMenuOpen(false);
     }
@@ -72,143 +79,121 @@ export function Header() {
   }, [menuOpen]);
 
   const linkClass = "text-sm text-muted transition hover:text-sand";
+  const socialBtn =
+    "inline-flex h-9 items-center gap-1.5 rounded-lg border px-2.5 transition sm:px-3";
 
   return (
-    <>
-      <motion.header
-        initial={{ y: -16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
-      >
-        <div className="relative mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
-          <Link to="/" className="relative z-10 shrink-0 font-black tracking-tight text-sand">
-            {t.site.title}
-          </Link>
+    <motion.header
+      initial={{ y: -16, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
+    >
+      <div className="relative mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
+        <Link to="/" className="relative z-10 shrink-0 font-black tracking-tight text-sand">
+          {t.site.title}
+        </Link>
 
-          <nav className="absolute inset-x-0 hidden items-center justify-center gap-5 px-4 sm:px-6 lg:flex">
-            {sectionLinks.map((item) =>
-              item.type === "hash" ? (
-                <SectionLink key={item.hash} hash={item.hash} label={item.label} className={linkClass} />
-              ) : null,
-            )}
-            {pageLinks.map((item) =>
-              item.type === "route" ? (
-                <Link key={item.to} to={item.to} className={linkClass}>
-                  {item.label}
-                </Link>
-              ) : null,
-            )}
-          </nav>
+        <nav className="absolute inset-x-0 hidden items-center justify-center gap-5 px-4 sm:px-6 lg:flex">
+          {sectionLinks.map((item) =>
+            item.type === "hash" ? (
+              <SectionLink key={item.hash} hash={item.hash} label={item.label} className={linkClass} />
+            ) : null,
+          )}
+          {pageLinks.map((item) =>
+            item.type === "route" ? (
+              <Link key={item.to} to={item.to} className={linkClass}>
+                {item.label}
+              </Link>
+            ) : null,
+          )}
+        </nav>
 
-          <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
-            <a
-              href={t.site.telegram_admin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.contactsSection.links.telegramAdmin}
-              title={t.contactsSection.links.telegramAdmin}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/10 px-2.5 text-[#2AABEE] transition hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20 sm:px-3"
-            >
-              <TelegramIcon size={16} />
-              <span className="hidden text-xs font-semibold sm:inline">TG</span>
-            </a>
+        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <a
+            href={t.site.telegram_admin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.contactsSection.links.telegramAdmin}
+            title={t.contactsSection.links.telegramAdmin}
+            className={`${socialBtn} border-[#2AABEE]/30 bg-[#2AABEE]/10 text-[#2AABEE] hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20`}
+          >
+            <TelegramIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">TG</span>
+          </a>
 
-            <a
-              href={t.site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.contactsSection.links.whatsappAdmin}
-              title={t.contactsSection.links.whatsappAdmin}
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-[#25D366]/30 bg-[#25D366]/10 px-2.5 text-[#25D366] transition hover:border-[#25D366]/55 hover:bg-[#25D366]/20 sm:px-3"
-            >
-              <WhatsAppIcon size={16} />
-              <span className="hidden text-xs font-semibold sm:inline">WA</span>
-            </a>
+          <a
+            href={t.site.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.contactsSection.links.whatsappAdmin}
+            title={t.contactsSection.links.whatsappAdmin}
+            className={`${socialBtn} border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] hover:border-[#25D366]/55 hover:bg-[#25D366]/20`}
+          >
+            <WhatsAppIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">WA</span>
+          </a>
 
-            <a
-              href={t.site.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.contactsSection.links.facebook}
-              title={t.contactsSection.links.facebook}
-              className="hidden h-9 items-center gap-1.5 rounded-lg border border-[#1877F2]/30 bg-[#1877F2]/10 px-2.5 text-[#1877F2] transition hover:border-[#1877F2]/55 hover:bg-[#1877F2]/20 sm:inline-flex sm:px-3"
-            >
-              <FacebookIcon size={16} />
-              <span className="hidden text-xs font-semibold sm:inline">FB</span>
-            </a>
+          <a
+            href={t.site.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.contactsSection.links.facebook}
+            title={t.contactsSection.links.facebook}
+            className={`${socialBtn} border-[#1877F2]/30 bg-[#1877F2]/10 text-[#1877F2] hover:border-[#1877F2]/55 hover:bg-[#1877F2]/20`}
+          >
+            <FacebookIcon size={16} />
+            <span className="hidden text-xs font-semibold sm:inline">FB</span>
+          </a>
 
-            <LanguageSwitcher />
+          <LanguageSwitcher />
 
-            <button
-              type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-cream transition hover:border-sand/40 hover:text-sand lg:hidden"
-              aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((open) => !open)}
-            >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+          <button
+            type="button"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-cream transition hover:border-sand/40 hover:text-sand lg:hidden"
+            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <BurgerIcon open={menuOpen} />
+          </button>
         </div>
-      </motion.header>
+      </div>
 
-      {/* Outside motion.header — otherwise transform traps position:fixed */}
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {menuOpen && (
-          <>
-            <motion.button
-              type="button"
-              aria-label={t.nav.closeMenu}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
-              onClick={() => setMenuOpen(false)}
-            />
-            <motion.aside
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.28 }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-[min(100vw-3rem,20rem)] flex-col border-l border-white/10 bg-bg-elevated shadow-2xl lg:hidden"
-            >
-              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-                <span className="text-sm font-semibold text-sand">{t.nav.menu}</span>
-                <button
-                  type="button"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-cream hover:border-sand/40 hover:text-sand"
-                  aria-label={t.nav.closeMenu}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <X size={18} />
-                </button>
-              </div>
-              <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
-                {mobileLinks.map((item) =>
-                  item.type === "hash" ? (
-                    <SectionLink
-                      key={item.hash}
-                      hash={item.hash}
-                      label={item.label}
-                      onNavigate={() => setMenuOpen(false)}
-                      className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
-                    />
-                  ) : (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      onClick={() => setMenuOpen(false)}
-                      className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
-                    >
-                      {item.label}
-                    </Link>
-                  ),
-                )}
-              </nav>
-            </motion.aside>
-          </>
+          <motion.div
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="overflow-hidden border-t border-white/10 lg:hidden"
+          >
+            <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
+              {mobileLinks.map((item) =>
+                item.type === "hash" ? (
+                  <SectionLink
+                    key={item.hash}
+                    hash={item.hash}
+                    label={item.label}
+                    onNavigate={() => setMenuOpen(false)}
+                    className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
+                  />
+                ) : (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-xl px-3 py-3 text-base text-cream/90 transition hover:bg-white/5 hover:text-sand"
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </motion.header>
   );
 }
