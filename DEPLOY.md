@@ -110,10 +110,23 @@ docker compose exec backend python manage.py createsuperuser
 
 ---
 
-## 4. CI/CD (GitHub Actions) — автодеплой
+## 4. CI/CD (GitHub Actions) — preview, потом прод
 
-После настройки каждый `git push` в `main` сам выкатывает сайт на VPS.
-Вручную SSH для обычных обновлений больше не нужен.
+| Ветка | Workflow | Сайт |
+|-------|----------|------|
+| `develop` | **Deploy Development** | `https://development.irc-russianbear.army` |
+| `main` | **Deploy** | `https://irc-russianbear.army` |
+
+### Рабочий процесс
+
+1. Коммиты в **`develop`** → автоматически обновляется preview.
+2. Проверили с заказчиком на `development.irc-russianbear.army`.
+3. На GitHub: **Pull requests → New** → base **`main`**, compare **`develop`** → Create → **Merge**.
+4. Merge в `main` = «ок» → автоматически обновляется основной сайт.
+
+Ручной запуск: Actions → **Deploy Development** или **Deploy** → **Run workflow**.
+
+Прямой push в `main` лучше запретить (см. защиту ветки ниже), чтобы прод обновлялся только через PR.
 
 ### 4.1. SSH-ключ для GitHub (один раз на сервере)
 
@@ -145,7 +158,8 @@ chmod 600 ~/.ssh/authorized_keys
 | `DEPLOY_USER` | `root` | SSH-пользователь |
 | `DEPLOY_SSH_KEY` | *(весь приватный ключ)* | Содержимое `github_actions_deploy` |
 | `DEPLOY_PORT` | `22` | Опционально |
-| `DEPLOY_PATH` | `/opt/russianbeargroup` | Опционально, путь к проекту |
+| `DEPLOY_PATH` | `/opt/russianbeargroup` | Опционально, путь прода |
+| `DEPLOY_PATH_DEV` | `/opt/russianbeargroup-dev` | Опционально, путь preview |
 
 ### 4.3. Доступ репозитория на сервере
 
@@ -159,14 +173,27 @@ chmod 600 ~/.ssh/authorized_keys
 
 ### 4.4. Как пользоваться
 
-1. Коммитьте и пушьте в `main`
-2. Откройте **Actions** на GitHub — workflow **Deploy** должен стать зелёным
-3. Можно запустить вручную: Actions → Deploy → **Run workflow**
+1. Пушьте в **`develop`** → Actions → **Deploy Development** (preview).
+2. Когда готово — PR **`develop` → `main`** → **Merge**.
+3. Actions → **Deploy** выкатывает прод.
+4. При необходимости: Actions → нужный workflow → **Run workflow**.
 
-Скрипт на сервере: `scripts/deploy.sh`  
-(`git fetch` + `reset --hard` + `docker compose build` + `up -d`; если есть HTTPS-сертификаты — подключит `docker-compose.prod.yml`)
+Скрипты на сервере: `scripts/deploy-dev.sh` (preview), `scripts/deploy.sh` (прод).
 
-### 4.5. Ручное обновление (если CI недоступен)
+### 4.5. Защита ветки `main` (один раз в GitHub)
+
+Чтобы на прод нельзя было попасть случайным push:
+
+1. Репозиторий → **Settings → Branches → Add branch protection rule**
+2. Branch name pattern: `main`
+3. Включите:
+   - **Require a pull request before merging**
+   - (по желанию) **Require approvals**
+4. Save changes
+
+После этого изменения на основной сайт идут только через Merge PR (после проверки на preview).
+
+### 4.6. Ручное обновление (если CI недоступен)
 
 ```bash
 cd /opt/russianbeargroup
@@ -185,7 +212,7 @@ docker compose up -d
 
 ---
 
-## 4.1. Preview: `development.irc-russianbear.army`
+## 4.7. Preview: `development.irc-russianbear.army`
 
 Отдельная копия сайта для заказчиков. Прод не трогает.
 
