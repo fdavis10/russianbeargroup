@@ -9,7 +9,14 @@ from rest_framework.views import APIView
 
 from .models import Contact
 from .serializers import ConsultationSerializer, ContactSerializer
-from .services import build_whatsapp_url, notify_new_consultation, notify_new_contact, send_whatsapp_via_twilio
+from .services import (
+    build_whatsapp_url,
+    format_ru_phone,
+    get_site_whatsapp_phone_digits,
+    notify_new_consultation,
+    notify_new_contact,
+    send_whatsapp_via_twilio,
+)
 
 DOCUMENTS_DIR = Path(settings.BASE_DIR) / "static" / "documents"
 
@@ -20,13 +27,14 @@ class ContactRateThrottle(AnonRateThrottle):
 
 class LandingContentView(APIView):
     def get(self, request):
+        whatsapp_digits = get_site_whatsapp_phone_digits()
         return Response(
             {
                 "site": {
                     "title": 'IRC "RUSSIAN BEAR"',
                     "email": "support@irc-russianbear.army",
-                    "whatsapp": "https://wa.me/79154083855?text=Заявка%20на%20СВО",
-                    "whatsapp_phone": "+7 915 408-38-55",
+                    "whatsapp": f"https://wa.me/{whatsapp_digits}?text=Заявка%20на%20СВО",
+                    "whatsapp_phone": format_ru_phone(whatsapp_digits),
                     "vk": "https://vk.com/svo_recruit",
                 },
                 "hero": {

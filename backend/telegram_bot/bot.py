@@ -26,6 +26,7 @@ from telegram_bot.messages import (  # noqa: E402
     guest_welcome,
     subscription_success_welcome,
 )
+from telegram_bot.site_settings_store import get_whatsapp_phone, update_whatsapp_phone  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
@@ -100,6 +101,52 @@ def create_dispatcher() -> Dispatcher:
         total = await count_admins()
         await message.answer(
             f"Статус: подписка активна\nАктивных админов: {total}",
+            parse_mode="HTML",
+        )
+
+    @dp.message(Command("wa"))
+    async def cmd_wa(message: Message) -> None:
+        if not await is_admin(message.chat.id):
+            first_name = message.from_user.first_name if message.from_user else ""
+            await message.answer(guest_welcome(first_name), parse_mode="HTML")
+            return
+
+        digits, pretty = await get_whatsapp_phone()
+        await message.answer(
+            "Текущий WhatsApp номер сайта:\n"
+            f"<b>{pretty}</b>\n"
+            f"wa.me/{digits}\n\n"
+            "Изменить номер:\n"
+            "<code>/setwa +79154083855</code>",
+            parse_mode="HTML",
+        )
+
+    @dp.message(Command("setwa"))
+    async def cmd_setwa(message: Message) -> None:
+        if not await is_admin(message.chat.id):
+            first_name = message.from_user.first_name if message.from_user else ""
+            await message.answer(guest_welcome(first_name), parse_mode="HTML")
+            return
+
+        args = (message.text or "").split(maxsplit=1)
+        if len(args) < 2:
+            await message.answer(
+                "Укажите номер после команды.\n"
+                "Пример: <code>/setwa +79154083855</code>",
+                parse_mode="HTML",
+            )
+            return
+
+        try:
+            digits, pretty = await update_whatsapp_phone(args[1].strip())
+        except ValueError as exc:
+            await message.answer(str(exc))
+            return
+
+        await message.answer(
+            "Номер WhatsApp обновлён.\n"
+            f"Новый номер: <b>{pretty}</b>\n"
+            f"Новая ссылка: https://wa.me/{digits}",
             parse_mode="HTML",
         )
 
