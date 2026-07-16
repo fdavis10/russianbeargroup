@@ -87,11 +87,15 @@ export interface TranslationContent {
     phonePlaceholder: string;
     messagePlaceholder: string;
     countryPlaceholder: string;
+    dialCodePlaceholder: string;
+    phoneNationalPlaceholder: string;
+    dialSearchPlaceholder: string;
     errors: {
       nameRequired: string;
       nameMin: string;
       phoneRequired: string;
       phoneInvalid: string;
+      dialRequired: string;
       countryRequired: string;
       submitFailed: string;
     };
@@ -108,12 +112,16 @@ export interface TranslationContent {
     submitting: string;
     namePlaceholder: string;
     phonePlaceholder: string;
+    phoneNationalPlaceholder: string;
+    dialCodePlaceholder: string;
+    dialSearchPlaceholder: string;
     questionPlaceholder: string;
     errors: {
       nameRequired: string;
       nameMin: string;
       phoneRequired: string;
       phoneInvalid: string;
+      dialRequired: string;
       questionRequired: string;
       questionMin: string;
       submitFailed: string;

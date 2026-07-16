@@ -61,6 +61,7 @@ def format_consultation_message(
     name: str,
     phone: str,
     question: str,
+    country: str = "",
     contact_id: int | None = None,
 ) -> str:
     lines = [
@@ -68,8 +69,10 @@ def format_consultation_message(
         "",
         f"<b>Имя:</b> {escape(name)}",
         f"<b>Телефон:</b> {escape(phone)}",
-        f"<b>Вопрос:</b> {escape(question)}",
     ]
+    if country:
+        lines.append(f"<b>Страна:</b> {escape(country)}")
+    lines.append(f"<b>Вопрос:</b> {escape(question)}")
     if contact_id is not None:
         lines.append(f"\n<i>ID заявки в БД: #{contact_id}</i>")
     return "\n".join(lines)
@@ -133,9 +136,10 @@ def send_consultation_notification(
     name: str,
     phone: str,
     question: str,
+    country: str = "",
     contact_id: int | None = None,
 ) -> bool:
-    text = format_consultation_message(name, phone, question, contact_id)
+    text = format_consultation_message(name, phone, question, country, contact_id)
     reply_markup = build_contact_links_keyboard(phone, name)
     chat_ids = get_active_admin_chat_ids()
     sent = asyncio.run(_broadcast(text, chat_ids, reply_markup))
