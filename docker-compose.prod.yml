@@ -8,6 +8,9 @@ services:
       - ./certbot/www:/var/www/certbot
       # Сертификаты с хоста (certbot --standalone на VPS)
       - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - default
+      - edge
 
   certbot:
     image: certbot/certbot:latest
@@ -15,3 +18,8 @@ services:
     volumes:
       - ./certbot/www:/var/www/certbot
       - ./certbot/conf:/etc/letsencrypt
+
+networks:
+  edge:
+    external: true
+    name: russianbear-edge

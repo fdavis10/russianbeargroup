@@ -185,6 +185,81 @@ docker compose up -d
 
 ---
 
+## 4.1. Preview: `development.irc-russianbear.army`
+
+Отдельная копия сайта для заказчиков. Прод не трогает.
+
+| | Production | Preview |
+|--|------------|---------|
+| Домен | `irc-russianbear.army` | `development.irc-russianbear.army` |
+| Путь | `/opt/russianbeargroup` | `/opt/russianbeargroup-dev` |
+| Ветка | `main` | `develop` |
+| Compose | `docker-compose.yml` + `prod` | `docker-compose.yml` + `dev` |
+| Бот / backup | да | нет |
+
+Трафик preview идёт через **nginx прода** (Docker-сеть `russianbear-edge` → `backend-dev` / `frontend-dev`).
+
+### Один раз на сервере
+
+1. DNS: A-запись `development` → IP VPS (Timeweb).
+2. Клон и `.env`:
+
+```bash
+mkdir -p /opt/russianbeargroup-dev
+cd /opt/russianbeargroup-dev
+git clone https://github.com/YOUR_USER/russianbeargroup.git .
+git checkout develop
+cp /opt/russianbeargroup/.env .env
+nano .env
+```
+
+В preview `.env` обязательно:
+
+```env
+DJANGO_SECRET_KEY=<другой секрет, не как на проде>
+DJANGO_ALLOWED_HOSTS=development.irc-russianbear.army,localhost,127.0.0.1,backend
+CORS_ALLOWED_ORIGINS=https://development.irc-russianbear.army
+CSRF_TRUSTED_ORIGINS=https://development.irc-russianbear.army
+TELEGRAM_BOT_TOKEN=
+```
+
+3. Сеть + расширить SSL (тот же сертификат + SAN):
+
+```bash
+docker network create russianbear-edge
+
+# webroot должен совпадать с volume nginx прода
+certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
+  -d irc-russianbear.army \
+  -d www.irc-russianbear.army \
+  -d development.irc-russianbear.army \
+  --expand --non-interactive --agree-tos -m support@irc-russianbear.army
+```
+
+4. Обновить **прод** (nginx + `docker-compose.prod.yml` с сетью edge) — через merge `develop` → `main` и обычный Deploy, либо вручную:
+
+```bash
+cd /opt/russianbeargroup
+bash scripts/deploy.sh
+```
+
+5. Запустить preview:
+
+```bash
+cd /opt/russianbeargroup-dev
+chmod +x scripts/deploy-dev.sh
+bash scripts/deploy-dev.sh
+```
+
+Проверка: `https://development.irc-russianbear.army`
+
+### Автодеплой preview
+
+Push в `develop` → workflow **Deploy Development** → `/opt/russianbeargroup-dev`.  
+Те же secrets, что у прода; опционально `DEPLOY_PATH_DEV` (по умолчанию `/opt/russianbeargroup-dev`).
+
+---
+
 ## 5. HTTPS (Let's Encrypt, вручную)
 
 Установите certbot на хост (не в контейнере) и получите сертификат для домена.

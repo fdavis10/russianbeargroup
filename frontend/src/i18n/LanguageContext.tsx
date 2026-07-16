@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import { translations, type Language, type TranslationContent } from "./translations";
 
 const STORAGE_KEY = "site-language";
+const SUPPORTED: Language[] = ["ru", "en", "fr", "ar"];
 
 interface LanguageContextValue {
   language: Language;
@@ -13,7 +14,7 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function getInitialLanguage(): Language {
   const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved === "ru" || saved === "en") return saved;
+  if (saved && SUPPORTED.includes(saved as Language)) return saved as Language;
   return "en";
 }
 
@@ -29,6 +30,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
     document.title = t.pageTitle;
   }, [language, t.pageTitle]);
 

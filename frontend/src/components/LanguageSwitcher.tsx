@@ -7,6 +7,8 @@ import type { Language } from "../i18n/translations";
 const options: { lang: Language; code: string; label: string }[] = [
   { lang: "ru", code: "RU", label: "Русский" },
   { lang: "en", code: "GB", label: "English" },
+  { lang: "fr", code: "FR", label: "Français" },
+  { lang: "ar", code: "SA", label: "العربية" },
 ];
 
 export function LanguageSwitcher() {
@@ -51,7 +53,7 @@ export function LanguageSwitcher() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.4rem)] z-50 min-w-[10.5rem] overflow-hidden rounded-xl border border-white/10 bg-bg-card/95 p-1 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+          className="absolute end-0 top-[calc(100%+0.4rem)] z-50 min-w-[10.5rem] overflow-hidden rounded-xl border border-white/10 bg-bg-card/95 p-1 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
         >
           {options.map((opt) => {
             const active = language === opt.lang;
@@ -65,7 +67,7 @@ export function LanguageSwitcher() {
                   setLanguage(opt.lang);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm transition ${
+                className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-start text-sm transition ${
                   active
                     ? "bg-sand/15 font-semibold text-sand"
                     : "text-cream/85 hover:bg-white/[0.06] hover:text-cream"
