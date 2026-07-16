@@ -22,7 +22,19 @@ echo "==> Building images"
 echo "==> Restarting services"
 "${COMPOSE[@]}" up -d --remove-orphans
 
+# nginx мог стартовать раньше frontend/backend — перезапуск подхватывает DNS
+echo "==> Reloading nginx"
+"${COMPOSE[@]}" up -d --force-recreate nginx
+
 echo "==> Status"
 "${COMPOSE[@]}" ps
+
+echo "==> Health check"
+if curl -sf -o /dev/null --max-time 15 "https://irc-russianbear.army/" \
+  || curl -sf -o /dev/null --max-time 15 "http://127.0.0.1/"; then
+  echo "==> Site OK"
+else
+  echo "==> WARNING: health check failed — check: docker compose logs nginx frontend"
+fi
 
 echo "==> Deploy finished"
