@@ -1,0 +1,133 @@
+export type Language = "ru" | "en" | "fr";
+
+export interface TranslationContent {
+  site: {
+    title: string;
+    tagline: string;
+    email: string;
+    whatsapp: string;
+    whatsapp_phone: string;
+    telegram_admin: string;
+    telegram_channel: string;
+    facebook: string;
+    vk: string;
+    rights: string;
+  };
+  nav: {
+    conditions: string;
+    advantages: string;
+    contact: string;
+    reviews: string;
+    services: string;
+    faq: string;
+    media: string;
+  };
+  hero: {
+    tagline: string;
+    taglineSecondary: string;
+    headline: string;
+    subheadline: string;
+    cta: string;
+    consultation: string;
+    warning: {
+      headline: string;
+      details: string;
+    };
+  };
+  contactsSection: {
+    title: string;
+    links: {
+      telegramAdmin: string;
+      whatsappAdmin: string;
+      telegramChannel: string;
+      facebook: string;
+    };
+  };
+  conditionsSection: {
+    title: string;
+    items: { label: string; value: string }[];
+  };
+  advantages: string[];
+  services: string[];
+  countries: { name: string; code: string }[];
+  countryOptions: { value: string; label: string; code: string }[];
+  processSection: {
+    title: string;
+    steps: string[];
+  };
+  reviews: {
+    title: string;
+    items: { name: string; country: string; text: string; avatar: string }[];
+  };
+  servicesSection: {
+    title: string;
+    quote: string;
+  };
+  faq: {
+    title: string;
+    items: { question: string; answer: string }[];
+  };
+  media: {
+    title: string;
+    subtitle: string;
+    enlarge: string;
+    close: string;
+    items: { src: string; outlet: string; alt: string }[];
+  };
+  form: {
+    title: string;
+    subtitle: string;
+    name: string;
+    phone: string;
+    country: string;
+    message: string;
+    submit: string;
+    submitting: string;
+    namePlaceholder: string;
+    phonePlaceholder: string;
+    messagePlaceholder: string;
+    countryPlaceholder: string;
+    errors: {
+      nameRequired: string;
+      nameMin: string;
+      phoneRequired: string;
+      phoneInvalid: string;
+      countryRequired: string;
+      submitFailed: string;
+    };
+    success: string;
+  };
+  consultationForm: {
+    headline: string;
+    description: string;
+    benefits: string[];
+    name: string;
+    phone: string;
+    question: string;
+    submit: string;
+    submitting: string;
+    namePlaceholder: string;
+    phonePlaceholder: string;
+    questionPlaceholder: string;
+    errors: {
+      nameRequired: string;
+      nameMin: string;
+      phoneRequired: string;
+      phoneInvalid: string;
+      questionRequired: string;
+      questionMin: string;
+      submitFailed: string;
+    };
+    successTitle: string;
+    successMessage: string;
+    sendAnother: string;
+  };
+  sections: {
+    advantages: string;
+  };
+  errors: {
+    loadFailed: string;
+    retry: string;
+  };
+  pageTitle: string;
+}
