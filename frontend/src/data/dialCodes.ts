@@ -146,7 +146,6 @@ export const DIAL_CODES: DialCodeEntry[] = [
   { iso: "TR", dial: "90", name: "Turkey" },
   { iso: "TM", dial: "993", name: "Turkmenistan" },
   { iso: "UG", dial: "256", name: "Uganda" },
-  { iso: "UA", dial: "380", name: "Ukraine" },
   { iso: "AE", dial: "971", name: "United Arab Emirates" },
   { iso: "GB", dial: "44", name: "United Kingdom" },
   { iso: "US", dial: "1", name: "United States" },
