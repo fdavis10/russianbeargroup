@@ -11,7 +11,7 @@ git fetch origin main
 git reset --hard origin/main
 
 COMPOSE=(docker compose -f docker-compose.yml)
-if [ -d "certbot/conf/live" ]; then
+if [ -d "certbot/conf/live" ] || [ -d "/etc/letsencrypt/live" ]; then
   echo "==> HTTPS certs found — using prod compose overlay"
   COMPOSE+=(-f docker-compose.prod.yml)
 fi
