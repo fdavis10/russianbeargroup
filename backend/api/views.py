@@ -177,13 +177,14 @@ class ConsultationView(APIView):
         contact = Contact.objects.create(
             name=serializer.validated_data["name"],
             phone=serializer.validated_data["phone"],
-            country="Консультация",
+            country=serializer.validated_data.get("country") or "Консультация",
             message=serializer.validated_data["question"],
         )
 
         contact.telegram_sent = notify_new_consultation(
             name=contact.name,
             phone=contact.phone,
+            country=contact.country,
             question=contact.message,
             contact_id=contact.pk,
         )

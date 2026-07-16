@@ -60,6 +60,7 @@ export interface ContactPayload {
 export interface ConsultationPayload {
   name: string;
   phone: string;
+  country?: string;
   question: string;
   website?: string;
 }

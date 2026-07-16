@@ -29,12 +29,14 @@ def notify_new_consultation(
     name: str,
     phone: str,
     question: str,
+    country: str = "",
     contact_id: int | None = None,
 ) -> bool:
     return send_consultation_notification(
         name=name,
         phone=phone,
         question=question,
+        country=country,
         contact_id=contact_id,
     )
 
