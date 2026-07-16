@@ -1,35 +1,38 @@
-import { Header } from "../components/Header";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { HeroSection } from "../components/HeroSection";
 import { ConditionsSection } from "../components/ConditionsSection";
 import { AdvantagesSection } from "../components/AdvantagesSection";
-// import { ContactForm } from "../components/ContactForm";
 import { ConsultationForm } from "../components/ConsultationForm";
-// import { ReviewsCarousel } from "../components/ReviewsCarousel";
 import { ProcessTimeline } from "../components/ProcessTimeline";
 import { WhatWeDoSection } from "../components/WhatWeDoSection";
 import { ServicesSection } from "../components/ServicesSection";
 import { FaqSection } from "../components/FaqSection";
-// import { ContactsSection } from "../components/ContactsSection";
-import { Footer } from "../components/Footer";
 
 export function HomePage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const id = location.hash.replace("#", "");
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, [location.pathname, location.hash]);
+
   return (
-    <>
-      <Header />
-      <main>
-        <HeroSection />
-        <WhatWeDoSection />
-        <AdvantagesSection />
-        <ConditionsSection />
-        <ProcessTimeline />
-        <ConsultationForm />
-        {/* <ContactForm /> */}
-        {/* <ReviewsCarousel /> */}
-        <FaqSection />
-        {/* <ContactsSection /> */}
-        <ServicesSection />
-      </main>
-      <Footer />
-    </>
+    <main>
+      <HeroSection />
+      <WhatWeDoSection />
+      <AdvantagesSection />
+      <ConditionsSection />
+      <ProcessTimeline />
+      <ConsultationForm />
+      <FaqSection />
+      <ServicesSection />
+    </main>
   );
 }

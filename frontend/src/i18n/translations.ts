@@ -22,10 +22,14 @@ export const translations: Record<Language, TranslationContent> = {
       conditions: "Требования",
       advantages: "Преимущества",
       contact: "Контакты",
+      about: "О нас",
       reviews: "Отзывы",
       services: "Услуги",
       faq: "FAQ",
       media: "СМИ о нас",
+      menu: "Меню",
+      openMenu: "Открыть меню",
+      closeMenu: "Закрыть меню",
     },
     hero: {
       tagline: "Международное рекрутинговое агентство «Русский медведь»",
@@ -290,6 +294,41 @@ export const translations: Record<Language, TranslationContent> = {
       loadFailed: "Не удалось загрузить данные. Запустите backend: python manage.py runserver",
       retry: "Повторить",
     },
+    pages: {
+      contacts: {
+        title: "Контакты",
+        intro:
+          "Свяжитесь с нами только через официальные каналы. Здесь собраны все способы связи с IRC «Русский медведь».",
+        directTitle: "Прямая связь",
+        directHint: "Email и телефон для быстрого контакта",
+        emailLabel: "Email",
+        phoneLabel: "Телефон / WhatsApp",
+        channelsTitle: "Мессенджеры и соцсети",
+        channelsHint: "Официальные аккаунты и канал",
+        vkLabel: "ВКонтакте",
+        ctaText: "Нужна консультация? Оставьте вопрос на главной — мы ответим.",
+        ctaButton: "Записаться на консультацию",
+      },
+      about: {
+        title: "О нас",
+        intro: "Кратко о международном рекрутинговом центре «Русский медведь».",
+        sections: [
+          {
+            heading: "Кто мы",
+            body: "Раздел в подготовке. Здесь появится описание организации, миссии и статуса представителя.",
+          },
+          {
+            heading: "Чем занимаемся",
+            body: "Раздел в подготовке. Здесь расскажем о сопровождении кандидатов — от заявки до прибытия и далее.",
+          },
+          {
+            heading: "Почему нам можно доверять",
+            body: "Раздел в подготовке. Здесь будут официальные каналы, принципы работы и важные предупреждения о посредниках.",
+          },
+        ],
+        placeholderNote: "Текст страницы можно будет дополнить и отредактировать позже.",
+      },
+    },
     pageTitle: 'IRC "RUSSIAN BEAR" — Международный набор на службу по контракту',
   },
   en: {
@@ -309,10 +348,14 @@ export const translations: Record<Language, TranslationContent> = {
       conditions: "Requirements",
       advantages: "Advantages",
       contact: "Contacts",
+      about: "About",
       reviews: "Reviews",
       services: "Services",
       faq: "FAQ",
       media: "Media",
+      menu: "Menu",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       tagline: 'International recruitment agency "Russian Bear"',
@@ -577,6 +620,41 @@ export const translations: Record<Language, TranslationContent> = {
     errors: {
       loadFailed: "Failed to load data. Start the backend: python manage.py runserver",
       retry: "Retry",
+    },
+    pages: {
+      contacts: {
+        title: "Contacts",
+        intro:
+          "Contact us only through official channels. All ways to reach IRC «Russian Bear» are listed here.",
+        directTitle: "Direct contact",
+        directHint: "Email and phone for a quick reply",
+        emailLabel: "Email",
+        phoneLabel: "Phone / WhatsApp",
+        channelsTitle: "Messengers & social",
+        channelsHint: "Official accounts and channel",
+        vkLabel: "VKontakte",
+        ctaText: "Need a consultation? Leave a question on the home page — we will reply.",
+        ctaButton: "Book a consultation",
+      },
+      about: {
+        title: "About us",
+        intro: "A short overview of the IRC «Russian Bear» international recruitment center.",
+        sections: [
+          {
+            heading: "Who we are",
+            body: "Content coming soon. This section will describe the organization, mission, and representative status.",
+          },
+          {
+            heading: "What we do",
+            body: "Content coming soon. This section will cover candidate support — from application to arrival and beyond.",
+          },
+          {
+            heading: "Why trust us",
+            body: "Content coming soon. Official channels, working principles, and warnings about middlemen will appear here.",
+          },
+        ],
+        placeholderNote: "This page copy can be expanded and edited later.",
+      },
     },
     pageTitle: 'IRC "RUSSIAN BEAR" — International Contract Service Recruitment',
   },

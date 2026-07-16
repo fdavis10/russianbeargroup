@@ -17,10 +17,14 @@ export interface TranslationContent {
     conditions: string;
     advantages: string;
     contact: string;
+    about: string;
     reviews: string;
     services: string;
     faq: string;
     media: string;
+    menu: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     tagline: string;
@@ -136,6 +140,27 @@ export interface TranslationContent {
   errors: {
     loadFailed: string;
     retry: string;
+  };
+  pages: {
+    contacts: {
+      title: string;
+      intro: string;
+      directTitle: string;
+      directHint: string;
+      emailLabel: string;
+      phoneLabel: string;
+      channelsTitle: string;
+      channelsHint: string;
+      vkLabel: string;
+      ctaText: string;
+      ctaButton: string;
+    };
+    about: {
+      title: string;
+      intro: string;
+      sections: { heading: string; body: string }[];
+      placeholderNote: string;
+    };
   };
   pageTitle: string;
 }

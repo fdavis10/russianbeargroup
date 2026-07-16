@@ -19,10 +19,14 @@ export const fr: TranslationContent = {
     conditions: "Conditions",
     advantages: "Avantages",
     contact: "Contacts",
+    about: "À propos",
     reviews: "Avis",
     services: "Services",
     faq: "FAQ",
     media: "Médias",
+    menu: "Menu",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
   },
   hero: {
     tagline: 'Agence internationale de recrutement « Russian Bear »',
@@ -293,6 +297,41 @@ export const fr: TranslationContent = {
     loadFailed:
       "Échec du chargement des données. Démarrez le backend : python manage.py runserver",
     retry: "Réessayer",
+  },
+  pages: {
+    contacts: {
+      title: "Contacts",
+      intro:
+        "Contactez-nous uniquement via les canaux officiels. Tous les moyens de joindre IRC « Russian Bear » sont listés ici.",
+      directTitle: "Contact direct",
+      directHint: "E-mail et téléphone pour une réponse rapide",
+      emailLabel: "E-mail",
+      phoneLabel: "Téléphone / WhatsApp",
+      channelsTitle: "Messageries et réseaux",
+      channelsHint: "Comptes officiels et chaîne",
+      vkLabel: "VKontakte",
+      ctaText: "Besoin d'une consultation ? Laissez une question sur la page d'accueil — nous répondrons.",
+      ctaButton: "Réserver une consultation",
+    },
+    about: {
+      title: "À propos",
+      intro: "Présentation du centre de recrutement international IRC « Russian Bear ».",
+      sections: [
+        {
+          heading: "Qui nous sommes",
+          body: "Contenu à venir. Cette section décrira l'organisation, la mission et le statut de représentant.",
+        },
+        {
+          heading: "Ce que nous faisons",
+          body: "Contenu à venir. Accompagnement des candidats — de la candidature à l'arrivée et au-delà.",
+        },
+        {
+          heading: "Pourquoi nous faire confiance",
+          body: "Contenu à venir. Canaux officiels, principes de travail et mises en garde contre les intermédiaires.",
+        },
+      ],
+      placeholderNote: "Le texte de cette page pourra être complété et modifié plus tard.",
+    },
   },
   pageTitle:
     'IRC "RUSSIAN BEAR" — Recrutement international pour le service sous contrat',

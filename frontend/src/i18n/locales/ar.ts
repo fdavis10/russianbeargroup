@@ -19,10 +19,14 @@ export const ar: TranslationContent = {
     conditions: "المتطلبات",
     advantages: "المزايا",
     contact: "جهات الاتصال",
+    about: "من نحن",
     reviews: "الآراء",
     services: "الخدمات",
     faq: "الأسئلة الشائعة",
     media: "الإعلام",
+    menu: "القائمة",
+    openMenu: "فتح القائمة",
+    closeMenu: "إغلاق القائمة",
   },
   hero: {
     tagline: 'وكالة التوظيف الدولية «الدب الروسي»',
@@ -290,6 +294,41 @@ export const ar: TranslationContent = {
     loadFailed:
       "فشل تحميل البيانات. شغّل الخلفية: python manage.py runserver",
     retry: "إعادة المحاولة",
+  },
+  pages: {
+    contacts: {
+      title: "جهات الاتصال",
+      intro:
+        "تواصل معنا فقط عبر القنوات الرسمية. هنا جميع طرق التواصل مع IRC «Russian Bear».",
+      directTitle: "تواصل مباشر",
+      directHint: "البريد والهاتف للرد السريع",
+      emailLabel: "البريد الإلكتروني",
+      phoneLabel: "الهاتف / WhatsApp",
+      channelsTitle: "المراسلات ووسائل التواصل",
+      channelsHint: "الحسابات الرسمية والقناة",
+      vkLabel: "VK",
+      ctaText: "تحتاج استشارة؟ اترك سؤالاً في الصفحة الرئيسية — وسنرد عليك.",
+      ctaButton: "احجز استشارة",
+    },
+    about: {
+      title: "من نحن",
+      intro: "نبذة عن مركز التوظيف الدولي IRC «Russian Bear».",
+      sections: [
+        {
+          heading: "من نحن",
+          body: "المحتوى قريباً. سيصف هذا القسم المنظمة والمهمة وصفة الممثل الرسمي.",
+        },
+        {
+          heading: "ماذا نفعل",
+          body: "المحتوى قريباً. دعم المرشحين — من الطلب حتى الوصول وما بعده.",
+        },
+        {
+          heading: "لماذا تثق بنا",
+          body: "المحتوى قريباً. القنوات الرسمية ومبادئ العمل والتحذير من الوسطاء.",
+        },
+      ],
+      placeholderNote: "يمكن توسيع نص هذه الصفحة وتعديله لاحقاً.",
+    },
   },
   pageTitle: 'IRC "RUSSIAN BEAR" — التوظيف الدولي للخدمة بموجب عقد',
 };
