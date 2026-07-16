@@ -7,8 +7,8 @@ export const fr: TranslationContent = {
     tagline: "Représentant officiel du Ministère de la Défense de la Fédération de Russie",
     email: "support@irc-russianbear.army",
     whatsapp:
-      "https://wa.me/79167787177?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9",
-    whatsapp_phone: "+7 916 778-71-77",
+      "https://wa.me/79154083855?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9",
+    whatsapp_phone: "+7 915 408-38-55",
     telegram_admin: "https://telegram.me/ircrussianbear",
     telegram_channel: "https://telegram.me/icr_russianbear",
     facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",

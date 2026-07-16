@@ -25,8 +25,8 @@ class LandingContentView(APIView):
                 "site": {
                     "title": 'IRC "RUSSIAN BEAR"',
                     "email": "support@irc-russianbear.army",
-                    "whatsapp": "https://wa.me/79167787177?text=Заявка%20на%20СВО",
-                    "whatsapp_phone": "+7 916 778-71-77",
+                    "whatsapp": "https://wa.me/79154083855?text=Заявка%20на%20СВО",
+                    "whatsapp_phone": "+7 915 408-38-55",
                     "vk": "https://vk.com/svo_recruit",
                 },
                 "hero": {
