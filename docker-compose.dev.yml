@@ -1,0 +1,35 @@
+# Preview-стек: без своего nginx/bot/backup.
+# Трафик идёт через nginx прода по уникальным DNS-именам на сети russianbear-edge.
+#
+# Запуск:
+#   docker network create russianbear-edge   # один раз
+#   docker compose -p russianbear-dev -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+
+services:
+  backend:
+    networks:
+      default:
+      edge:
+        aliases:
+          - backend-dev
+
+  frontend:
+    networks:
+      default:
+      edge:
+        aliases:
+          - frontend-dev
+
+  nginx:
+    profiles: ["disabled"]
+
+  bot:
+    profiles: ["disabled"]
+
+  backup:
+    profiles: ["disabled"]
+
+networks:
+  edge:
+    external: true
+    name: russianbear-edge

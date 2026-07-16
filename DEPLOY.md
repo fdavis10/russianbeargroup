@@ -110,10 +110,23 @@ docker compose exec backend python manage.py createsuperuser
 
 ---
 
-## 4. CI/CD (GitHub Actions) — автодеплой
+## 4. CI/CD (GitHub Actions) — preview, потом прод
 
-После настройки каждый `git push` в `main` сам выкатывает сайт на VPS.
-Вручную SSH для обычных обновлений больше не нужен.
+| Ветка | Workflow | Сайт |
+|-------|----------|------|
+| `develop` | **Deploy Development** | `https://development.irc-russianbear.army` |
+| `main` | **Deploy** | `https://irc-russianbear.army` |
+
+### Рабочий процесс
+
+1. Коммиты в **`develop`** → автоматически обновляется preview.
+2. Проверили с заказчиком на `development.irc-russianbear.army`.
+3. На GitHub: **Pull requests → New** → base **`main`**, compare **`develop`** → Create → **Merge**.
+4. Merge в `main` = «ок» → автоматически обновляется основной сайт.
+
+Ручной запуск: Actions → **Deploy Development** или **Deploy** → **Run workflow**.
+
+Прямой push в `main` лучше запретить (см. защиту ветки ниже), чтобы прод обновлялся только через PR.
 
 ### 4.1. SSH-ключ для GitHub (один раз на сервере)
 
@@ -145,7 +158,8 @@ chmod 600 ~/.ssh/authorized_keys
 | `DEPLOY_USER` | `root` | SSH-пользователь |
 | `DEPLOY_SSH_KEY` | *(весь приватный ключ)* | Содержимое `github_actions_deploy` |
 | `DEPLOY_PORT` | `22` | Опционально |
-| `DEPLOY_PATH` | `/opt/russianbeargroup` | Опционально, путь к проекту |
+| `DEPLOY_PATH` | `/opt/russianbeargroup` | Опционально, путь прода |
+| `DEPLOY_PATH_DEV` | `/opt/russianbeargroup-dev` | Опционально, путь preview |
 
 ### 4.3. Доступ репозитория на сервере
 
@@ -159,14 +173,27 @@ chmod 600 ~/.ssh/authorized_keys
 
 ### 4.4. Как пользоваться
 
-1. Коммитьте и пушьте в `main`
-2. Откройте **Actions** на GitHub — workflow **Deploy** должен стать зелёным
-3. Можно запустить вручную: Actions → Deploy → **Run workflow**
+1. Пушьте в **`develop`** → Actions → **Deploy Development** (preview).
+2. Когда готово — PR **`develop` → `main`** → **Merge**.
+3. Actions → **Deploy** выкатывает прод.
+4. При необходимости: Actions → нужный workflow → **Run workflow**.
 
-Скрипт на сервере: `scripts/deploy.sh`  
-(`git fetch` + `reset --hard` + `docker compose build` + `up -d`; если есть HTTPS-сертификаты — подключит `docker-compose.prod.yml`)
+Скрипты на сервере: `scripts/deploy-dev.sh` (preview), `scripts/deploy.sh` (прод).
 
-### 4.5. Ручное обновление (если CI недоступен)
+### 4.5. Защита ветки `main` (один раз в GitHub)
+
+Чтобы на прод нельзя было попасть случайным push:
+
+1. Репозиторий → **Settings → Branches → Add branch protection rule**
+2. Branch name pattern: `main`
+3. Включите:
+   - **Require a pull request before merging**
+   - (по желанию) **Require approvals**
+4. Save changes
+
+После этого изменения на основной сайт идут только через Merge PR (после проверки на preview).
+
+### 4.6. Ручное обновление (если CI недоступен)
 
 ```bash
 cd /opt/russianbeargroup
@@ -182,6 +209,81 @@ git reset --hard origin/main
 docker compose build
 docker compose up -d
 ```
+
+---
+
+## 4.7. Preview: `development.irc-russianbear.army`
+
+Отдельная копия сайта для заказчиков. Прод не трогает.
+
+| | Production | Preview |
+|--|------------|---------|
+| Домен | `irc-russianbear.army` | `development.irc-russianbear.army` |
+| Путь | `/opt/russianbeargroup` | `/opt/russianbeargroup-dev` |
+| Ветка | `main` | `develop` |
+| Compose | `docker-compose.yml` + `prod` | `docker-compose.yml` + `dev` |
+| Порты | 80 / 443 | через nginx прода (`frontend-dev`) |
+| Бот / backup | да | нет |
+
+Трафик preview идёт через **nginx прода** по Docker-сети `russianbear-edge` и уникальным именам `frontend-prod` / `frontend-dev` (не `frontend` — иначе прод и preview смешиваются).
+
+### Один раз на сервере
+
+1. DNS: A-запись `development` → IP VPS (Timeweb).
+2. Клон и `.env`:
+
+```bash
+mkdir -p /opt/russianbeargroup-dev
+cd /opt/russianbeargroup-dev
+git clone https://github.com/YOUR_USER/russianbeargroup.git .
+git checkout develop
+cp /opt/russianbeargroup/.env .env
+nano .env
+```
+
+В preview `.env` обязательно:
+
+```env
+DJANGO_SECRET_KEY=<другой секрет, не как на проде>
+DJANGO_ALLOWED_HOSTS=development.irc-russianbear.army,localhost,127.0.0.1,backend
+CORS_ALLOWED_ORIGINS=https://development.irc-russianbear.army
+CSRF_TRUSTED_ORIGINS=https://development.irc-russianbear.army
+TELEGRAM_BOT_TOKEN=
+```
+
+3. Сеть + расширить SSL (тот же сертификат + SAN):
+
+```bash
+docker network create russianbear-edge
+
+certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
+  -d irc-russianbear.army \
+  -d www.irc-russianbear.army \
+  -d development.irc-russianbear.army \
+  --expand --non-interactive --agree-tos -m support@irc-russianbear.army
+```
+
+4. Обновить **прод** (nginx с `frontend-prod` / блоком `development.…` должен быть в `main`):
+
+```bash
+cd /opt/russianbeargroup
+bash scripts/deploy.sh
+```
+
+5. Запустить preview:
+
+```bash
+cd /opt/russianbeargroup-dev
+chmod +x scripts/deploy-dev.sh
+bash scripts/deploy-dev.sh
+```
+
+Проверка: `https://development.irc-russianbear.army`
+
+### Автодеплой preview
+
+Push в `develop` → workflow **Deploy Development** → `/opt/russianbeargroup-dev`.  
+Те же secrets, что у прода; опционально `DEPLOY_PATH_DEV` (по умолчанию `/opt/russianbeargroup-dev`).
 
 ---
 
