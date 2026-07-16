@@ -10,11 +10,6 @@ echo "==> Path: $APP_DIR"
 git fetch origin main
 git reset --hard origin/main
 
-if ! docker network inspect russianbear-edge >/dev/null 2>&1; then
-  echo "==> Creating docker network russianbear-edge"
-  docker network create russianbear-edge
-fi
-
 COMPOSE=(docker compose -f docker-compose.yml)
 if [ -d "certbot/conf/live" ] || [ -d "/etc/letsencrypt/live" ]; then
   echo "==> HTTPS certs found — using prod compose overlay"

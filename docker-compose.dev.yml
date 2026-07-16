@@ -1,26 +1,19 @@
 # Preview-стек: без своего nginx/bot/backup.
-# Трафик идёт через nginx прода (сеть russianbear-edge).
+# Порты только на localhost — edge nginx прода проксирует на них.
 #
 # Запуск:
-#   docker network create russianbear-edge   # один раз
 #   docker compose -p russianbear-dev -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 
 services:
   backend:
-    networks:
-      default:
-      edge:
-        aliases:
-          - backend-dev
+    ports:
+      - "127.0.0.1:8001:8000"
 
   frontend:
-    networks:
-      default:
-      edge:
-        aliases:
-          - frontend-dev
+    ports:
+      - "127.0.0.1:8081:80"
 
-  # Порты 80/443 заняты продом — edge nginx не поднимаем
+  # Порты 80/443 заняты продом
   nginx:
     profiles: ["disabled"]
 
@@ -30,8 +23,3 @@ services:
 
   backup:
     profiles: ["disabled"]
-
-networks:
-  edge:
-    external: true
-    name: russianbear-edge

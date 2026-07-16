@@ -195,9 +195,10 @@ docker compose up -d
 | Путь | `/opt/russianbeargroup` | `/opt/russianbeargroup-dev` |
 | Ветка | `main` | `develop` |
 | Compose | `docker-compose.yml` + `prod` | `docker-compose.yml` + `dev` |
+| Порты | 80 / 443 | `127.0.0.1:8081` / `:8001` |
 | Бот / backup | да | нет |
 
-Трафик preview идёт через **nginx прода** (Docker-сеть `russianbear-edge` → `backend-dev` / `frontend-dev`).
+Трафик preview идёт через **nginx прода** на `127.0.0.1:8081` (frontend) и `:8001` (backend).
 
 ### Один раз на сервере
 
@@ -223,12 +224,9 @@ CSRF_TRUSTED_ORIGINS=https://development.irc-russianbear.army
 TELEGRAM_BOT_TOKEN=
 ```
 
-3. Сеть + расширить SSL (тот же сертификат + SAN):
+3. Расширить SSL (тот же сертификат + SAN):
 
 ```bash
-docker network create russianbear-edge
-
-# webroot должен совпадать с volume nginx прода
 certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
   -d irc-russianbear.army \
   -d www.irc-russianbear.army \
@@ -236,7 +234,7 @@ certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
   --expand --non-interactive --agree-tos -m support@irc-russianbear.army
 ```
 
-4. Обновить **прод** (nginx + `docker-compose.prod.yml` с сетью edge) — через merge `develop` → `main` и обычный Deploy, либо вручную:
+4. Обновить **прод** (nginx с блоком `development.…` должен быть в ветке `main`):
 
 ```bash
 cd /opt/russianbeargroup
