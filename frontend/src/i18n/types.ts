@@ -1,4 +1,4 @@
-export type Language = "ru" | "en" | "fr" | "pt" | "ar";
+export type Language = "ru" | "en" | "fr" | "pt" | "es" | "ar";
 
 export interface TranslationContent {
   site: {
@@ -152,6 +152,8 @@ export interface TranslationContent {
       channelsTitle: string;
       channelsHint: string;
       vkLabel: string;
+      representativesTitle: string;
+      representatives: { region: string; role: string; photo: string }[];
       ctaText: string;
       ctaButton: string;
     };

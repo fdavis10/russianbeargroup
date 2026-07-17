@@ -19,7 +19,7 @@ export const pt: TranslationContent = {
     conditions: "Requisitos",
     advantages: "Vantagens",
     contact: "Contactos",
-    about: "Sobre nós",
+    about: "Nossa mensagem",
     reviews: "Avaliações",
     services: "Serviços",
     faq: "FAQ",
@@ -309,28 +309,61 @@ export const pt: TranslationContent = {
       channelsTitle: "Mensageiros e redes",
       channelsHint: "Contas oficiais e canal",
       vkLabel: "VKontakte",
+      representativesTitle: "Diretores regionais",
+      representatives: [
+        {
+          region: "África",
+          role: "Chefe da Direção Regional África",
+          photo: "/africa_curator.jpg",
+        },
+        {
+          region: "Ásia",
+          role: "Chefe da Direção Regional Ásia",
+          photo: "/asian_curator.jpg",
+        },
+        {
+          region: "Oriente",
+          role: "Chefe da Direção Regional Oriente",
+          photo: "/west_curator.jpg",
+        },
+        {
+          region: "América Latina",
+          role: "Chefe da Direção Regional América Latina",
+          photo: "/latina_curator.jpg",
+        },
+      ],
       ctaText:
         "Precisa de uma consulta? Deixe uma pergunta na página inicial — responderemos.",
       ctaButton: "Marcar consulta",
     },
     about: {
-      title: "Sobre nós",
-      intro: "Apresentação do centro internacional de recrutamento IRC « Russian Bear ».",
+      title: "Nossa mensagem",
+      intro:
+        "Manifesto: o seu caminho direto para a Rússia. Sem engano, sem intermediários, com honra e respeito.",
       sections: [
         {
-          heading: "Quem somos",
-          body: "Conteúdo em breve. Esta secção descreverá a organização, a missão e o estatuto de representante.",
+          heading: "Sabemos por que você faz esta escolha",
+          body: "Sabemos o que leva as pessoas a deixar o seu lar. Não é por uma vida fácil que um homem decide pegar em armas e partir para o outro lado do mundo. Por trás de cada decisão dessas há uma história pessoal forte, o desejo de sustentar a família e a esperança de um futuro novo e digno.\n\nVocê está pronto para arriscar o que tem de mais valioso — a sua vida. E tratamos essa escolha com o mais profundo respeito. É uma grande honra para nós estar ombro a ombro com essas pessoas.",
         },
         {
-          heading: "O que fazemos",
-          body: "Conteúdo em breve. Acompanhamento dos candidatos — da candidatura à chegada e além.",
+          heading: "A amarga verdade sobre os intermediários",
+          body: "Durante muito tempo, o caminho para a Rússia foi bloqueado por um muro de agentes gananciosos, intermediários e golpistas. Vimos pessoas entregarem o seu último dinheiro por promessas vazias, esperarem meses por vistos, viverem na miséria em países estrangeiros e depois serem recusadas na fronteira. O centro internacional de recrutamento «Russian Bear» perdeu dezenas de milhares de dólares tentando trabalhar com esses «ajudantes» desonestos.\n\nEntão dissemos: Basta.",
         },
         {
-          heading: "Porque confiar em nós",
-          body: "Conteúdo em breve. Canais oficiais, princípios de trabalho e avisos sobre intermediários.",
+          heading: "Trabalhamos diretamente",
+          body: "Renunciámos por princípio e para sempre a qualquer intermediário. Fomos diretamente até as pessoas. Hoje, o «Russian Bear» não é apenas uma agência. Somos um representante oficial que atua no interesse do Ministério da Defesa da Federação Russa. Temos os nossos próprios gestores de confiança nos países da América Latina, África, Ásia e Médio Oriente.\n\nNão vendemos vistos. Oferecemos irmandade, parceria honesta e acompanhamento completo. Pegamos na sua mão no seu país natal e não a largamos até que você construa a sua nova vida na Federação Russa.",
+        },
+        {
+          heading: "Connosco você nunca ficará desamparado. Garantimos:",
+          body: "• Logística perfeita e 100% de passagem na fronteira. Todas as questões de documentação são resolvidas de forma rápida, segura e oficial. Você sempre terá onde morar e o que comer em cada etapa do caminho. Não ficará sozinho.\n\n• Treinamento de combate real. Não jogamos as pessoas no desconhecido. Você será treinado pelos melhores instrutores para estar pronto para tudo.\n\n• Uma retaguarda segura para a sua família. Cuidamos da transferência do dinheiro que você ganha para os seus entes queridos. Com honestidade, rapidez e até o último centavo.\n\n• Comunicação contínua. Se você estiver em missão e não puder responder, mantemos contato com a sua família. Os seus entes queridos nunca ficarão sem notícias.\n\n• Proteção jurídica e social completa 24/7. Estamos ao seu lado em qualquer situação. Garantimos os melhores cuidados médicos em caso de ferimento e controlamos rigorosamente para que todas as indenizações do seguro — por ferimento ou em caso de morte — cheguem aos seus familiares através da embaixada, sem atrasos.",
+        },
+        {
+          heading: "Mais do que um contrato",
+          body: "O contrato militar é um passo importante, mas apenas o primeiro. O nosso principal objetivo é ajudá-lo a encontrar um novo lar. Acompanhamos o processo de obtenção da cidadania russa já um mês após o início do serviço e, após o término do contrato, ajudamos com educação, moradia e um bom emprego na vida civil.\n\nVocê vem defender a Rússia, e a Rússia, através de nós, toma você e a sua família sob a sua proteção.",
         },
       ],
-      placeholderNote: "O texto desta página poderá ser expandido e editado mais tarde.",
+      placeholderNote:
+        "Escolha o caminho direto, honesto e seguro. Bem-vindo à família «Russian Bear»!",
     },
   },
   pageTitle:

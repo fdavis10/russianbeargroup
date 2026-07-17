@@ -66,7 +66,7 @@ export function AboutPage() {
             transition={{ delay: 0.3 }}
             className="pt-2 text-center"
           >
-            <p className="text-sm text-muted">{p.placeholderNote}</p>
+            <p className="text-base font-semibold text-sand sm:text-lg">{p.placeholderNote}</p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <Link to="/contacts" className="btn-primary inline-flex">
                 {t.nav.contact}

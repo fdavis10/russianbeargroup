@@ -19,7 +19,7 @@ export const fr: TranslationContent = {
     conditions: "Conditions",
     advantages: "Avantages",
     contact: "Contacts",
-    about: "À propos",
+    about: "Notre message",
     reviews: "Avis",
     services: "Services",
     faq: "FAQ",
@@ -310,27 +310,60 @@ export const fr: TranslationContent = {
       channelsTitle: "Messageries et réseaux",
       channelsHint: "Comptes officiels et chaîne",
       vkLabel: "VKontakte",
+      representativesTitle: "Directeurs régionaux",
+      representatives: [
+        {
+          region: "Afrique",
+          role: "Responsable de la direction régionale Afrique",
+          photo: "/africa_curator.jpg",
+        },
+        {
+          region: "Asie",
+          role: "Responsable de la direction régionale Asie",
+          photo: "/asian_curator.jpg",
+        },
+        {
+          region: "Orient",
+          role: "Responsable de la direction régionale Orient",
+          photo: "/west_curator.jpg",
+        },
+        {
+          region: "Amérique latine",
+          role: "Responsable de la direction régionale Amérique latine",
+          photo: "/latina_curator.jpg",
+        },
+      ],
       ctaText: "Besoin d'une consultation ? Laissez une question sur la page d'accueil — nous répondrons.",
       ctaButton: "Réserver une consultation",
     },
     about: {
-      title: "À propos",
-      intro: "Présentation du centre de recrutement international IRC « Russian Bear ».",
+      title: "Notre message",
+      intro:
+        "Manifeste : votre chemin direct vers la Russie. Sans tromperie, sans intermédiaires, avec honneur et respect.",
       sections: [
         {
-          heading: "Qui nous sommes",
-          body: "Contenu à venir. Cette section décrira l'organisation, la mission et le statut de représentant.",
+          heading: "Nous savons pourquoi vous faites ce choix",
+          body: "Nous savons ce qui pousse les gens à quitter leur foyer. Ce n'est pas une vie facile qui amène un homme à prendre les armes et à partir à l'autre bout du monde. Derrière chaque décision de ce genre se cache une histoire personnelle forte, le désir de subvenir aux besoins de sa famille et l'espoir d'un avenir nouveau et digne.\n\nVous êtes prêts à risquer ce que vous avez de plus précieux : votre vie. Et nous traitons ce choix avec le plus profond respect. C'est un grand honneur pour nous d'être aux côtés de tels hommes.",
         },
         {
-          heading: "Ce que nous faisons",
-          body: "Contenu à venir. Accompagnement des candidats — de la candidature à l'arrivée et au-delà.",
+          heading: "L'amère vérité sur les intermédiaires",
+          body: "Pendant longtemps, le chemin vers la Russie a été barré par un mur d'agents cupides, d'intermédiaires et d'escrocs. Nous avons vu des gens donner leurs derniers sous pour des promesses vides, attendre des visas pendant des mois, vivre dans la misère dans des pays étrangers, puis se voir refuser l'entrée à la frontière. Le centre international de recrutement « Russian Bear » a perdu des dizaines de milliers de dollars en essayant de travailler avec ces « assistants » malhonnêtes.\n\nAlors nous avons dit : ça suffit.",
         },
         {
-          heading: "Pourquoi nous faire confiance",
-          body: "Contenu à venir. Canaux officiels, principes de travail et mises en garde contre les intermédiaires.",
+          heading: "Nous travaillons en direct",
+          body: "Nous avons renoncé par principe et pour toujours à tout intermédiaire. Nous sommes allés directement vers les gens. Aujourd'hui, « Russian Bear » n'est pas une simple agence. Nous sommes un représentant officiel agissant dans l'intérêt du ministère de la Défense de la Fédération de Russie. Nous disposons de nos propres managers de confiance dans les pays d'Amérique latine, d'Afrique, d'Asie et du Moyen-Orient.\n\nNous ne vendons pas de visas. Nous offrons la fraternité, un partenariat honnête et un accompagnement complet. Nous vous prenons par la main dans votre pays natal et ne vous lâchons pas tant que vous n'avez pas construit votre nouvelle vie en Fédération de Russie.",
+        },
+        {
+          heading: "Avec nous, vous ne serez jamais livré à vous-même. Nous garantissons :",
+          body: "• Une logistique parfaite et un passage de frontière garanti à 100 %. Toutes les questions de formalités sont réglées rapidement, sûrement et officiellement. Vous aurez toujours un toit et de quoi manger à chaque étape du parcours. Vous ne serez pas seul.\n\n• Une véritable préparation au combat. Nous ne jetons personne dans l'inconnu. Vous serez formé par les meilleurs instructeurs pour être prêt à tout.\n\n• Des arrières solides pour votre famille. Nous prenons en charge le transfert de l'argent que vous gagnez à vos proches. Honnêtement, rapidement et jusqu'au dernier centime.\n\n• Une liaison permanente. Si vous êtes en mission et ne pouvez pas répondre, nous restons en contact avec votre famille. Vos proches ne resteront jamais dans l'ignorance.\n\n• Une protection juridique et sociale complète 24h/24 et 7j/7. Nous sommes à vos côtés en toute situation. Nous assurons les meilleurs soins médicaux en cas de blessure et veillons strictement à ce que toutes les indemnités d'assurance — en cas de blessure ou de décès — parviennent à vos proches via l'ambassade sans retard.",
+        },
+        {
+          heading: "Plus qu'un contrat",
+          body: "Le contrat militaire est une étape importante, mais ce n'est que la première. Notre objectif principal est de vous aider à trouver un nouveau foyer. Nous accompagnons le processus d'obtention de la citoyenneté russe dès un mois après le début du service, et après la fin du contrat, nous aidons pour les études, le logement et l'obtention d'un bon emploi dans la vie civile.\n\nVous venez défendre la Russie, et la Russie, à travers nous, vous prend sous sa protection, vous et votre famille.",
         },
       ],
-      placeholderNote: "Le texte de cette page pourra être complété et modifié plus tard.",
+      placeholderNote:
+        "Choisissez le chemin direct, honnête et sûr. Bienvenue dans la famille « Russian Bear » !",
     },
   },
   pageTitle:

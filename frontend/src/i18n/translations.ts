@@ -1,4 +1,5 @@
 import { ar } from "./locales/ar";
+import { es } from "./locales/es";
 import { fr } from "./locales/fr";
 import { pt } from "./locales/pt";
 import type { Language, TranslationContent } from "./types";
@@ -23,7 +24,7 @@ export const translations: Record<Language, TranslationContent> = {
       conditions: "Требования",
       advantages: "Преимущества",
       contact: "Контакты",
-      about: "О нас",
+      about: "Обращение",
       reviews: "Отзывы",
       services: "Услуги",
       faq: "FAQ",
@@ -307,27 +308,60 @@ export const translations: Record<Language, TranslationContent> = {
         channelsTitle: "Мессенджеры и соцсети",
         channelsHint: "Официальные аккаунты и канал",
         vkLabel: "ВКонтакте",
+        representativesTitle: "Региональные руководители",
+        representatives: [
+          {
+            region: "Африка",
+            role: "Руководитель Регионального направления Африка",
+            photo: "/africa_curator.jpg",
+          },
+          {
+            region: "Азия",
+            role: "Руководитель Регионального направления Азия",
+            photo: "/asian_curator.jpg",
+          },
+          {
+            region: "Восток",
+            role: "Руководитель Регионального направления Восток",
+            photo: "/west_curator.jpg",
+          },
+          {
+            region: "Латинская Америка",
+            role: "Руководитель Регионального направления Латинская Америка",
+            photo: "/latina_curator.jpg",
+          },
+        ],
         ctaText: "Нужна консультация? Оставьте вопрос на главной — мы ответим.",
         ctaButton: "Записаться на консультацию",
       },
       about: {
-        title: "О нас",
-        intro: "Кратко о международном рекрутинговом центре «Русский медведь».",
+        title: "Обращение",
+        intro:
+          "Манифест: Ваш прямой путь в Россию. Без обмана, без посредников, с честью и уважением.",
         sections: [
           {
-            heading: "Кто мы",
-            body: "Раздел в подготовке. Здесь появится описание организации, миссии и статуса представителя.",
+            heading: "Мы знаем, почему вы делаете этот выбор",
+            body: "Мы знаем, что заставляет людей покидать родной дом. Не от легкой жизни человек принимает решение взять в руки оружие и отправиться на другой конец света. За каждым таким решением стоит сильная личная история, желание обеспечить свою семью и надежда на новое, достойное будущее.\n\nВы готовы рисковать самым ценным — своей жизнью. И мы относимся к этому выбору с глубочайшим уважением. Для нас великая честь стоять плечом к плечу с такими людьми.",
           },
           {
-            heading: "Чем занимаемся",
-            body: "Раздел в подготовке. Здесь расскажем о сопровождении кандидатов — от заявки до прибытия и далее.",
+            heading: "Горькая правда о посредниках",
+            body: "Долгое время путь в Россию преграждала стена из алчных агентов, посредников и мошенников. Мы видели, как люди отдавали последние деньги за пустые обещания, месяцами ждали визы, жили впроголодь в чужих странах, а потом получали отказ на границе. Международный рекрутинговый центр «Русский Медведь» потерял десятки тысяч долларов, пытаясь работать через этих недобросовестных «помощников».\n\nПоэтому мы сказали: Хватит.",
           },
           {
-            heading: "Почему нам можно доверять",
-            body: "Раздел в подготовке. Здесь будут официальные каналы, принципы работы и важные предупреждения о посредниках.",
+            heading: "Мы работаем напрямую",
+            body: "Мы принципиально и навсегда отказались от любых посредников. Мы вышли к людям напрямую. Сегодня «Русский Медведь» — это не просто агентство. Мы являемся официальным представителем, действующим в интересах Министерства обороны РФ. У нас есть собственные надежные менеджеры в странах Латинской Америки, Африки, Азии и Ближнего Востока.\n\nМы не продаем визы. Мы предлагаем братство, честное партнерство и полное сопровождение. Мы берем вас за руку в вашей родной стране и не отпускаем до тех пор, пока вы не обустроите свою новую жизнь в Российской Федерации.",
+          },
+          {
+            heading: "С нами вы не будете скитаться. Мы гарантируем:",
+            body: "• Идеальную логистику и 100% пропуск на границе. Все вопросы с оформлением решаются быстро, надежно и официально. Вам всегда будет где жить и чем питаться на каждом этапе пути. Вы не останетесь одни.\n\n• Реальную боевую подготовку. Мы не бросаем людей в неизвестность. Вас будут обучать лучшие инструкторы, чтобы вы были готовы ко всему.\n\n• Надежный тыл для вашей семьи. Мы берем на себя заботу о переводе заработанных вами денег вашим родным. Честно, быстро и до копейки.\n\n• Непрерывную связь. Если вы на задании и не можете ответить, мы всегда на связи с вашей семьей. Ваши близкие никогда не останутся в неведении.\n\n• Полную юридическую и социальную защиту 24/7. Мы рядом в любой ситуации. Обеспечиваем лучшую медицинскую помощь при ранениях и строго контролируем, чтобы все страховые выплаты — по ранению или в случае гибели — дошли до ваших родных через посольство без задержек.",
+          },
+          {
+            heading: "Больше, чем контракт",
+            body: "Военный контракт — это важный, но лишь первый шаг. Наша главная цель — помочь вам обрести новый дом. Мы сопровождаем процесс получения гражданства России уже через месяц после начала службы, а после окончания контракта помогаем с образованием, получением жилья и устройством на хорошую работу в мирной жизни.\n\nВы едете защищать Россию, а Россия в нашем лице берет под защиту вас и вашу семью.",
           },
         ],
-        placeholderNote: "Текст страницы можно будет дополнить и отредактировать позже.",
+        placeholderNote:
+          "Выбирайте прямой, честный и безопасный путь. Добро пожаловать в семью «Русского Медведя»!",
       },
     },
     pageTitle: 'IRC "RUSSIAN BEAR" — Международный набор на службу по контракту',
@@ -349,7 +383,7 @@ export const translations: Record<Language, TranslationContent> = {
       conditions: "Requirements",
       advantages: "Advantages",
       contact: "Contacts",
-      about: "About",
+      about: "Our Message",
       reviews: "Reviews",
       services: "Services",
       faq: "FAQ",
@@ -634,32 +668,66 @@ export const translations: Record<Language, TranslationContent> = {
         channelsTitle: "Messengers & social",
         channelsHint: "Official accounts and channel",
         vkLabel: "VKontakte",
+        representativesTitle: "Regional directors",
+        representatives: [
+          {
+            region: "Africa",
+            role: "Head of Regional Direction Africa",
+            photo: "/africa_curator.jpg",
+          },
+          {
+            region: "Asia",
+            role: "Head of Regional Direction Asia",
+            photo: "/asian_curator.jpg",
+          },
+          {
+            region: "The East",
+            role: "Head of Regional Direction The East",
+            photo: "/west_curator.jpg",
+          },
+          {
+            region: "Latin America",
+            role: "Head of Regional Direction Latin America",
+            photo: "/latina_curator.jpg",
+          },
+        ],
         ctaText: "Need a consultation? Leave a question on the home page — we will reply.",
         ctaButton: "Book a consultation",
       },
       about: {
-        title: "About us",
-        intro: "A short overview of the IRC «Russian Bear» international recruitment center.",
+        title: "Our Message",
+        intro:
+          "Manifesto: Your direct path to Russia. No deception, no middlemen — with honor and respect.",
         sections: [
           {
-            heading: "Who we are",
-            body: "Content coming soon. This section will describe the organization, mission, and representative status.",
+            heading: "We know why you make this choice",
+            body: "We know what makes people leave their homes. It is not an easy life that drives a person to take up arms and travel to the other side of the world. Behind every such decision stands a powerful personal story, the desire to provide for one's family, and the hope for a new, dignified future.\n\nYou are ready to risk what is most precious — your life. And we treat this choice with the deepest respect. It is a great honor for us to stand shoulder to shoulder with such people.",
           },
           {
-            heading: "What we do",
-            body: "Content coming soon. This section will cover candidate support — from application to arrival and beyond.",
+            heading: "The bitter truth about middlemen",
+            body: "For a long time, the path to Russia was blocked by a wall of greedy agents, middlemen, and fraudsters. We saw people give away their last money for empty promises, wait months for visas, live half-starved in foreign countries, and then get refused at the border. The «Russian Bear» International Recruitment Center lost tens of thousands of dollars trying to work through these dishonest \"helpers\".\n\nSo we said: Enough.",
           },
           {
-            heading: "Why trust us",
-            body: "Content coming soon. Official channels, working principles, and warnings about middlemen will appear here.",
+            heading: "We work directly",
+            body: "We have rejected all middlemen — on principle and forever. We reached out to people directly. Today, «Russian Bear» is not just an agency. We are an official representative acting in the interests of the Ministry of Defence of the Russian Federation. We have our own trusted managers in the countries of Latin America, Africa, Asia, and the Middle East.\n\nWe do not sell visas. We offer brotherhood, honest partnership, and full support. We take you by the hand in your home country and do not let go until you have built your new life in the Russian Federation.",
+          },
+          {
+            heading: "With us you will never be left stranded. We guarantee:",
+            body: "• Flawless logistics and 100% border clearance. All paperwork issues are resolved quickly, reliably, and officially. You will always have a place to stay and food to eat at every stage of the journey. You will not be left alone.\n\n• Real combat training. We do not throw people into the unknown. You will be trained by the best instructors so that you are ready for anything.\n\n• A reliable rear for your family. We take care of transferring the money you earn to your loved ones. Honestly, quickly, and down to the last cent.\n\n• Uninterrupted communication. If you are on a mission and cannot answer, we stay in touch with your family. Your loved ones will never be left in the dark.\n\n• Full legal and social protection 24/7. We are by your side in any situation. We provide the best medical care in case of injury and strictly ensure that all insurance payments — for injury or in the event of death — reach your family through the embassy without delays.",
+          },
+          {
+            heading: "More than a contract",
+            body: "A military contract is an important step, but only the first one. Our main goal is to help you find a new home. We assist with the process of obtaining Russian citizenship as early as one month after the start of your service, and after the contract ends, we help with education, housing, and finding a good job in civilian life.\n\nYou come to defend Russia — and Russia, through us, takes you and your family under its protection.",
           },
         ],
-        placeholderNote: "This page copy can be expanded and edited later.",
+        placeholderNote:
+          "Choose the direct, honest, and safe path. Welcome to the «Russian Bear» family!",
       },
     },
     pageTitle: 'IRC "RUSSIAN BEAR" — International Contract Service Recruitment',
   },
   fr,
   pt,
+  es,
   ar,
 };

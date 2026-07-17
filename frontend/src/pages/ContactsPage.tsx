@@ -45,12 +45,60 @@ export function ContactsPage() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 px-4 py-14 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12 }}
+          className="mx-auto max-w-2xl"
+        >
+          <h2 className="mb-10 text-center text-sm font-semibold uppercase tracking-[0.18em] text-sand">
+            {p.representativesTitle}
+          </h2>
+
+          <div className="flex flex-col">
+            {p.representatives.map((rep, index) => (
+              <div key={rep.region}>
+                <motion.article
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.14 + index * 0.08 }}
+                  className="flex flex-col items-center text-center"
+                >
+                  <div className="overflow-hidden rounded-2xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                    <img
+                      src={rep.photo}
+                      alt={rep.role}
+                      className="h-auto w-full max-w-xs object-cover sm:max-w-sm"
+                    />
+                  </div>
+                  <p className="mt-5 max-w-md text-base font-semibold leading-snug text-cream sm:text-lg">
+                    {rep.role}
+                  </p>
+                </motion.article>
+
+                {index < p.representatives.length - 1 && (
+                  <div
+                    className="mx-auto my-10 flex w-full max-w-xs items-center gap-3"
+                    aria-hidden
+                  >
+                    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sand/50 to-sand/20" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-sand/70" />
+                    <span className="h-px flex-1 bg-gradient-to-l from-transparent via-sand/50 to-sand/20" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       <section className="px-4 py-14 sm:px-6">
         <div className="mx-auto grid max-w-4xl gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12 }}
+            transition={{ delay: 0.2 }}
           >
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-sand">
               {p.directTitle}
@@ -93,25 +141,15 @@ export function ContactsPage() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18 }}
+            transition={{ delay: 0.26 }}
+            className="text-center lg:text-start"
           >
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-sand">
               {p.channelsTitle}
             </h2>
             <p className="mt-2 text-sm text-muted">{p.channelsHint}</p>
-            <div className="mt-6 flex flex-col gap-3">
+            <div className="mt-6 flex flex-col items-center gap-3">
               <ContactLinks />
-              <a
-                href={t.site.vk}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition hover:border-sand/40 sm:w-auto sm:min-w-[14rem]"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-cream transition group-hover:bg-sand/20 group-hover:text-sand">
-                  VK
-                </span>
-                {p.vkLabel}
-              </a>
             </div>
           </motion.div>
         </div>
@@ -119,7 +157,7 @@ export function ContactsPage() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.24 }}
+          transition={{ delay: 0.32 }}
           className="mx-auto mt-14 max-w-4xl border-t border-white/10 pt-10 text-center"
         >
           <p className="text-base text-cream/85">{p.ctaText}</p>
