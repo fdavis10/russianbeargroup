@@ -35,7 +35,7 @@ class LandingContentView(APIView):
                     "email": "support@irc-russianbear.army",
                     "whatsapp": build_whatsapp_url(
                         whatsapp_digits,
-                        "Привет, я заинтересован",
+                        "Hello, im intrested",
                     ),
                     "whatsapp_phone": format_ru_phone(whatsapp_digits),
                     "vk": "https://vk.com/svo_recruit",
