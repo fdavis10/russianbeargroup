@@ -1,32 +1,25 @@
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta
 
-import jwt
-from django.conf import settings
+from django.core import signing
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 
 from .models import DashboardUser
 
-JWT_ALGORITHM = "HS256"
-JWT_EXPIRY_DAYS = 7
+TOKEN_MAX_AGE = timedelta(days=7)
+TOKEN_SALT = "dashboard-auth-token"
 
 
 def create_access_token(user: DashboardUser) -> str:
-    payload = {
-        "user_id": user.id,
-        "role": user.role,
-        "exp": datetime.now(timezone.utc) + timedelta(days=JWT_EXPIRY_DAYS),
-        "iat": datetime.now(timezone.utc),
-    }
-    return jwt.encode(payload, settings.SECRET_KEY, algorithm=JWT_ALGORITHM)
+    return signing.dumps({"user_id": user.id, "role": user.role}, salt=TOKEN_SALT)
 
 
 def decode_access_token(token: str) -> dict:
     try:
-        return jwt.decode(token, settings.SECRET_KEY, algorithms=[JWT_ALGORITHM])
-    except jwt.ExpiredSignatureError as exc:
+        return signing.loads(token, salt=TOKEN_SALT, max_age=TOKEN_MAX_AGE)
+    except signing.SignatureExpired as exc:
         raise AuthenticationFailed("Сессия истекла. Войдите снова.") from exc
-    except jwt.InvalidTokenError as exc:
+    except signing.BadSignature as exc:
         raise AuthenticationFailed("Недействительный токен.") from exc
 
 
