@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Contact, TelegramAdmin
+from .models import Contact, SiteSettings, TelegramAdmin
 
 
 @admin.register(Contact)
@@ -17,3 +17,9 @@ class TelegramAdminAdmin(admin.ModelAdmin):
     list_filter = ("is_active", "subscribed_at")
     search_fields = ("chat_id", "username", "first_name")
     readonly_fields = ("subscribed_at",)
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ("id", "whatsapp_phone", "updated_at")
+    readonly_fields = ("updated_at",)

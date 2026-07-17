@@ -4,9 +4,11 @@ from urllib.parse import quote
 
 import requests
 
+from .models import SiteSettings
 from telegram_bot.notifier import send_application_notification, send_consultation_notification
 
 logger = logging.getLogger(__name__)
+DEFAULT_WHATSAPP_PHONE = "79154083855"
 
 
 def notify_new_contact(
@@ -41,10 +43,37 @@ def notify_new_consultation(
     )
 
 
+def normalize_phone_digits(phone: str) -> str:
+    return "".join(c for c in phone if c.isdigit())
+
+
+def format_ru_phone(phone: str) -> str:
+    digits = normalize_phone_digits(phone)
+    if len(digits) == 11 and digits.startswith("7"):
+        return f"+7 {digits[1:4]} {digits[4:7]}-{digits[7:9]}-{digits[9:11]}"
+    return f"+{digits}" if digits else ""
+
+
+def get_site_whatsapp_phone_digits() -> str:
+    settings_obj = SiteSettings.objects.order_by("-id").first()
+    if settings_obj and normalize_phone_digits(settings_obj.whatsapp_phone):
+        return normalize_phone_digits(settings_obj.whatsapp_phone)
+    return normalize_phone_digits(os.getenv("WHATSAPP_PHONE", DEFAULT_WHATSAPP_PHONE))
+
+
+def set_site_whatsapp_phone(phone: str) -> str:
+    digits = normalize_phone_digits(phone)
+    if len(digits) < 10:
+        raise ValueError("Номер должен содержать минимум 10 цифр.")
+    settings_obj, _ = SiteSettings.objects.get_or_create(id=1)
+    settings_obj.whatsapp_phone = digits
+    settings_obj.save(update_fields=["whatsapp_phone", "updated_at"])
+    return digits
+
+
 def build_whatsapp_url(phone: str, text: str) -> str:
-    clean_phone = "".join(c for c in phone if c.isdigit())
-    default_phone = os.getenv("WHATSAPP_PHONE", "79154083855")
-    target = clean_phone if len(clean_phone) >= 10 else default_phone
+    clean_phone = normalize_phone_digits(phone)
+    target = clean_phone if len(clean_phone) >= 10 else get_site_whatsapp_phone_digits()
     return f"https://wa.me/{target}?text={quote(text)}"
 
 

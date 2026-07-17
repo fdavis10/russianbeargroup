@@ -33,3 +33,15 @@ class TelegramAdmin(models.Model):
     def __str__(self):
         label = self.username or self.first_name or str(self.chat_id)
         return f"@{label}" if self.username else label
+
+
+class SiteSettings(models.Model):
+    whatsapp_phone = models.CharField("WhatsApp номер", max_length=20, default="79154083855")
+    updated_at = models.DateTimeField("Обновлено", auto_now=True)
+
+    class Meta:
+        verbose_name = "Настройки сайта"
+        verbose_name_plural = "Настройки сайта"
+
+    def __str__(self):
+        return f"SiteSettings #{self.pk}"

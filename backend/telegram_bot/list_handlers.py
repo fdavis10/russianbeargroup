@@ -249,6 +249,8 @@ async def cb_filter_country(callback: CallbackQuery) -> None:
 ADMIN_COMMANDS = (
     "Команды:\n"
     "/list — поиск и фильтр заявок\n"
+    "/wa — показать текущий WhatsApp номер сайта\n"
+    "/setwa <номер> — изменить WhatsApp номер сайта\n"
     "/status — статус подписки\n"
     "/stop — отписаться"
 )

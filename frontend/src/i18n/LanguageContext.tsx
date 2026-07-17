@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { fetchLandingContent } from "../api";
 import { translations, type Language, type TranslationContent } from "./translations";
 
 const STORAGE_KEY = "site-language";
@@ -20,13 +21,44 @@ function getInitialLanguage(): Language {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+  const [siteOverride, setSiteOverride] = useState<Partial<TranslationContent["site"]> | null>(null);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem(STORAGE_KEY, lang);
   };
 
-  const t = useMemo(() => translations[language], [language]);
+  const t = useMemo(() => {
+    const base = translations[language];
+    if (!siteOverride) return base;
+    return {
+      ...base,
+      site: {
+        ...base.site,
+        ...siteOverride,
+      },
+    };
+  }, [language, siteOverride]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchLandingContent()
+      .then((content) => {
+        if (cancelled) return;
+        setSiteOverride({
+          whatsapp: content.site.whatsapp,
+          whatsapp_phone: content.site.whatsapp_phone,
+        });
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setSiteOverride(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;
