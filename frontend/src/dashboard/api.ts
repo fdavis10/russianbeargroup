@@ -20,6 +20,8 @@ export interface KpiStats {
   clicks_today: number;
   visitors_today: number;
   conversion_percent: number;
+  range_from?: string;
+  range_to?: string;
 }
 
 export interface TimeseriesPoint {
@@ -37,6 +39,16 @@ export interface HeatmapPoint {
 
 export type Period = "hour" | "day" | "week" | "month";
 
+export interface DateRange {
+  from: string;
+  to: string;
+}
+
+export interface AnalyticsQuery {
+  period: Period;
+  range?: DateRange | null;
+}
+
 const client = axios.create({ baseURL: API_BASE });
 
 client.interceptors.request.use((config) => {
@@ -46,6 +58,13 @@ client.interceptors.request.use((config) => {
   }
   return config;
 });
+
+function toParams(query: AnalyticsQuery) {
+  const params: Record<string, string> = { period: query.period };
+  if (query.range?.from) params.from = query.range.from;
+  if (query.range?.to) params.to = query.range.to;
+  return params;
+}
 
 export function getStoredToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
@@ -73,38 +92,61 @@ export async function fetchMe(): Promise<DashboardUser> {
   return data;
 }
 
-export async function fetchKpi(): Promise<KpiStats> {
-  const { data } = await client.get<KpiStats>("/dashboard/kpi/");
+export async function fetchKpi(query: AnalyticsQuery): Promise<KpiStats> {
+  const { data } = await client.get<KpiStats>("/dashboard/kpi/", { params: toParams(query) });
   return data;
 }
 
-export async function fetchClicks(period: Period) {
+export async function fetchClicks(query: AnalyticsQuery) {
   const { data } = await client.get<{ period: Period; data: TimeseriesPoint[] }>(
     "/dashboard/clicks/",
-    { params: { period } },
+    { params: toParams(query) },
   );
   return data.data;
 }
 
-export async function fetchVisitors(period: Period) {
+export async function fetchVisitors(query: AnalyticsQuery) {
   const { data } = await client.get<{ period: Period; data: TimeseriesPoint[] }>(
     "/dashboard/visitors/",
-    { params: { period } },
+    { params: toParams(query) },
   );
   return data.data;
 }
 
-export async function fetchSubmissions(period: Period) {
+export async function fetchSubmissions(query: AnalyticsQuery) {
   const { data } = await client.get<{ period: Period; data: TimeseriesPoint[] }>(
     "/dashboard/submissions/",
-    { params: { period } },
+    { params: toParams(query) },
   );
   return data.data;
 }
 
-export async function fetchSubmissionsHeatmap(): Promise<HeatmapPoint[]> {
-  const { data } = await client.get<{ data: HeatmapPoint[] }>(
-    "/dashboard/submissions-heatmap/",
-  );
+export async function fetchSubmissionsHeatmap(query: AnalyticsQuery): Promise<HeatmapPoint[]> {
+  const { data } = await client.get<{ data: HeatmapPoint[] }>("/dashboard/submissions-heatmap/", {
+    params: toParams(query),
+  });
   return data.data;
+}
+
+export async function downloadReport(query: AnalyticsQuery) {
+  const { data } = await client.get<Blob>("/dashboard/report/", {
+    params: toParams(query),
+    responseType: "blob",
+  });
+
+  const url = URL.createObjectURL(data);
+  const link = document.createElement("a");
+  const stamp = new Date().toISOString().slice(0, 16).replace("T", "_").replace(":", "");
+  link.href = url;
+  link.download = `analytics-report-${stamp}.html`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+/** Convert datetime-local value to ISO-like string for API */
+export function localInputToIso(value: string): string {
+  if (!value) return "";
+  return value.length === 16 ? `${value}:00` : value;
 }

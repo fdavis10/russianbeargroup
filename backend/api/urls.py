@@ -6,6 +6,7 @@ from .dashboard_views import (
     DashboardKpiView,
     DashboardLoginView,
     DashboardMeView,
+    DashboardReportView,
     DashboardSubmissionsHeatmapView,
     DashboardSubmissionsView,
     DashboardVisitorsView,
@@ -36,4 +37,5 @@ urlpatterns = [
         DashboardSubmissionsHeatmapView.as_view(),
         name="dashboard-submissions-heatmap",
     ),
+    path("dashboard/report/", DashboardReportView.as_view(), name="dashboard-report"),
 ]
