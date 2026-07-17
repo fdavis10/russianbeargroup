@@ -43,7 +43,7 @@ def notify_new_consultation(
 
 def build_whatsapp_url(phone: str, text: str) -> str:
     clean_phone = "".join(c for c in phone if c.isdigit())
-    default_phone = os.getenv("WHATSAPP_PHONE", "1234567890")
+    default_phone = os.getenv("WHATSAPP_PHONE", "79154083855")
     target = clean_phone if len(clean_phone) >= 10 else default_phone
     return f"https://wa.me/{target}?text={quote(text)}"
 
