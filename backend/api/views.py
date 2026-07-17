@@ -33,7 +33,10 @@ class LandingContentView(APIView):
                 "site": {
                     "title": 'IRC "RUSSIAN BEAR"',
                     "email": "support@irc-russianbear.army",
-                    "whatsapp": f"https://wa.me/{whatsapp_digits}?text=Заявка%20на%20СВО",
+                    "whatsapp": build_whatsapp_url(
+                        whatsapp_digits,
+                        "Привет, я заинтересован",
+                    ),
                     "whatsapp_phone": format_ru_phone(whatsapp_digits),
                     "vk": "https://vk.com/svo_recruit",
                 },
