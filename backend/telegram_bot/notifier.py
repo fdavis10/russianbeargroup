@@ -1,7 +1,6 @@
 import asyncio
 import logging
 from html import escape
-from urllib.parse import quote
 
 from aiogram import Bot
 from aiogram.enums import ParseMode
@@ -11,18 +10,6 @@ from api.models import TelegramAdmin
 from telegram_bot.config import get_bot_token
 
 logger = logging.getLogger(__name__)
-
-WHATSAPP_CONTACT_GREETING = (
-    "Hello! Thank you for contacting the 'Russian Bear' military contract recruitment center. "
-    "Please note that we are not intermediaries, but are the official representative of the "
-    "Russian Ministry of Defense. We operate strictly in an official capacity, with the mandatory "
-    "signing of contracts. If for any reason this does not suit you, please close this chat.\n\n"
-    "If everything is acceptable to you, please specify:\n"
-    "• Which messenger is most convenient for you to continue our communication?\n"
-    "• your citizenship?\n\n"
-    "Our company's representative for your country will contact you shortly. Please note that due "
-    "to the high volume of inquiries, the processing time for applications can take up to 5 hours."
-)
 
 
 def normalize_phone_digits(phone: str) -> str:
@@ -34,8 +21,7 @@ def build_contact_links_keyboard(phone: str, name: str = "") -> InlineKeyboardMa
     if len(digits) < 7:
         return None
 
-    greeting = WHATSAPP_CONTACT_GREETING
-    whatsapp_url = f"https://wa.me/{digits}?text={quote(greeting)}"
+    whatsapp_url = f"https://wa.me/{digits}"
     telegram_url = f"https://t.me/+{digits}"
 
     return InlineKeyboardMarkup(
