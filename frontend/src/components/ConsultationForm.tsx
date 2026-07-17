@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, CheckCircle2, MessageCircle } from "lucide-react";
+import { trackEvent } from "../analytics/track";
 import { useConsultationSubmit } from "../hooks/useTelegramBot";
 import { useLanguage } from "../i18n/LanguageContext";
 import { getApiErrorMessage } from "../utils/apiError";
@@ -23,6 +24,7 @@ export function ConsultationForm() {
   const f = t.consultationForm;
   const { submit } = useConsultationSubmit();
   const [submitted, setSubmitted] = useState(false);
+  const clickTracked = useRef(false);
   const {
     register,
     control,
@@ -47,6 +49,12 @@ export function ConsultationForm() {
 
   const inputClass =
     "w-full rounded-xl border border-white/10 bg-bg px-4 py-3 text-cream outline-none transition focus:border-sand/50 focus:ring-1 focus:ring-sand/30";
+
+  function handleFormInteraction() {
+    if (clickTracked.current) return;
+    clickTracked.current = true;
+    trackEvent("form_click", { form: "consultation" });
+  }
 
   async function onSubmit(data: FormValues) {
     if (!data.dialCode || !data.countryIso) {
@@ -156,6 +164,7 @@ export function ConsultationForm() {
               <motion.form
                 id="consultation-form"
                 onSubmit={handleSubmit(onSubmit)}
+                onFocus={handleFormInteraction}
                 className="glass-card scroll-mt-28 space-y-4 p-6 sm:p-8"
               >
                 <input type="hidden" {...register("website")} tabIndex={-1} autoComplete="off" />

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Contact, SiteSettings, TelegramAdmin
+from .models import AnalyticsEvent, Contact, DashboardUser, SiteSettings, TelegramAdmin
 
 
 @admin.register(Contact)
@@ -23,3 +23,19 @@ class TelegramAdminAdmin(admin.ModelAdmin):
 class SiteSettingsAdmin(admin.ModelAdmin):
     list_display = ("id", "whatsapp_phone", "updated_at")
     readonly_fields = ("updated_at",)
+
+
+@admin.register(DashboardUser)
+class DashboardUserAdmin(admin.ModelAdmin):
+    list_display = ("username", "name", "role", "is_active", "created_at")
+    list_filter = ("role", "is_active")
+    search_fields = ("username", "name")
+    readonly_fields = ("created_at",)
+
+
+@admin.register(AnalyticsEvent)
+class AnalyticsEventAdmin(admin.ModelAdmin):
+    list_display = ("event_type", "session_id", "created_at")
+    list_filter = ("event_type", "created_at")
+    search_fields = ("session_id",)
+    readonly_fields = ("created_at",)

@@ -51,7 +51,49 @@ python manage.py runtelegrambot
 | GET | `/api/documents/` | Список PDF-документов |
 | GET | `/api/documents/{id}/` | Скачать PDF |
 
-## Telegram-бот для админов (aiogram)
+## Дашборд аналитики (`/dashboard`)
+
+Защищённый раздел с графиками и KPI. Публичной регистрации нет — пользователи создаются вручную.
+
+**Аутентификация:** JWT (Bearer token, срок 7 дней). Пароли хранятся как bcrypt-хэш через Django hashers.
+
+**Роли:** `admin`, `manager`, `viewer` — все видят аналитику; управление пользователями — через CLI или Django Admin.
+
+### Создание пользователя
+
+```bash
+cd backend
+python manage.py create_dashboard_user \
+  --username admin \
+  --password "ваш-пароль" \
+  --name "Администратор" \
+  --role admin
+```
+
+На сервере (Docker):
+
+```bash
+docker compose exec backend python manage.py create_dashboard_user \
+  --username admin --password "..." --name "Админ" --role admin
+```
+
+### API дашборда
+
+| Метод | URL | Описание |
+|-------|-----|----------|
+| POST | `/api/dashboard/auth/login/` | Вход (username, password) |
+| GET | `/api/dashboard/auth/me/` | Текущий пользователь |
+| GET | `/api/dashboard/kpi/` | KPI-карточки |
+| GET | `/api/dashboard/clicks/?period=day` | Клики по форме |
+| GET | `/api/dashboard/visitors/?period=day` | Посетители |
+| GET | `/api/dashboard/submissions/?period=day` | Заявки |
+| GET | `/api/dashboard/submissions-heatmap/` | Заявки по времени суток |
+| POST | `/api/analytics/track/` | Трекинг событий (публичный) |
+
+Период: `hour`, `day`, `week`, `month`.
+
+Страницы: `/login` — вход, `/dashboard` — аналитика (только RU).
+
 
 1. Создайте бота: [@BotFather](https://t.me/BotFather) → `/newbot`
 2. Добавьте в `backend/.env`:

@@ -125,5 +125,6 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_THROTTLE_RATES": {
         "contact": "20/hour",
+        "analytics": "120/hour",
     },
 }
