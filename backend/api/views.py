@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
 
-from .models import Contact
+from .models import AnalyticsEvent, AnalyticsEventType, Contact
 from .serializers import ConsultationSerializer, ContactSerializer
 from .services import (
     build_whatsapp_url,
@@ -146,6 +146,11 @@ class ContactView(APIView):
             message=serializer.validated_data.get("message", ""),
         )
 
+        AnalyticsEvent.objects.create(
+            event_type=AnalyticsEventType.FORM_SUBMIT,
+            metadata={"source": "application"},
+        )
+
         contact.telegram_sent = notify_new_contact(
             name=contact.name,
             phone=contact.phone,
@@ -190,6 +195,11 @@ class ConsultationView(APIView):
             phone=serializer.validated_data["phone"],
             country=serializer.validated_data.get("country") or "Консультация",
             message=serializer.validated_data["question"],
+        )
+
+        AnalyticsEvent.objects.create(
+            event_type=AnalyticsEventType.FORM_SUBMIT,
+            metadata={"source": "consultation"},
         )
 
         contact.telegram_sent = notify_new_consultation(
