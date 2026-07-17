@@ -1,5 +1,6 @@
 import { ar } from "./locales/ar";
 import { fr } from "./locales/fr";
+import { pt } from "./locales/pt";
 import type { Language, TranslationContent } from "./types";
 
 export type { Language, TranslationContent } from "./types";
@@ -659,5 +660,6 @@ export const translations: Record<Language, TranslationContent> = {
     pageTitle: 'IRC "RUSSIAN BEAR" — International Contract Service Recruitment',
   },
   fr,
+  pt,
   ar,
 };

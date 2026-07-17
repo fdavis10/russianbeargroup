@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import { translations, type Language, type TranslationContent } from "./translations";
 
 const STORAGE_KEY = "site-language";
-const SUPPORTED: Language[] = ["ru", "en", "fr", "ar"];
+const SUPPORTED: Language[] = ["ru", "en", "fr", "pt", "ar"];
 
 interface LanguageContextValue {
   language: Language;

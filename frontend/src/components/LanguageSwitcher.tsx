@@ -8,6 +8,7 @@ const options: { lang: Language; code: string; label: string }[] = [
   { lang: "ru", code: "RU", label: "Русский" },
   { lang: "en", code: "GB", label: "English" },
   { lang: "fr", code: "FR", label: "Français" },
+  { lang: "pt", code: "PT", label: "Português" },
   { lang: "ar", code: "SA", label: "العربية" },
 ];
 
