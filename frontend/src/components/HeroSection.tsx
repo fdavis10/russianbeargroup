@@ -134,7 +134,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.45 }}
-            className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+            className="mt-4 flex w-full max-w-full flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
           >
             <ContactLinks />
           </motion.div>

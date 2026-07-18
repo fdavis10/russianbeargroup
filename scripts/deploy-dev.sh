@@ -19,7 +19,8 @@ fi
 
 COMPOSE=(docker compose -p russianbear-dev -f docker-compose.yml -f docker-compose.dev.yml)
 
-echo "==> Building images"
+echo "==> Building images (frontend without cache to avoid stale SPA)"
+"${COMPOSE[@]}" build --no-cache frontend
 "${COMPOSE[@]}" build
 
 echo "==> Restarting preview services"

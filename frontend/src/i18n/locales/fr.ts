@@ -7,8 +7,8 @@ export const fr: TranslationContent = {
     tagline: "Représentant officiel du Ministère de la Défense de la Fédération de Russie",
     email: "support@irc-russianbear.army",
     whatsapp:
-      "https://wa.me/79154083855?text=Hello%2C%20im%20intrested",
-    whatsapp_phone: "+7 915 408-38-55",
+      "https://wa.me/79167787177?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9",
+    whatsapp_phone: "+7 916 778-71-77",
     telegram_admin: "https://telegram.me/ircrussianbear",
     telegram_channel: "https://telegram.me/icr_russianbear",
     facebook: "https://www.facebook.com/people/IRC-Russian-Bear/61591894922054/",
@@ -19,10 +19,15 @@ export const fr: TranslationContent = {
     conditions: "Conditions",
     advantages: "Avantages",
     contact: "Contacts",
+    about: "Notre message",
     reviews: "Avis",
     services: "Services",
     faq: "FAQ",
     media: "Médias",
+    menu: "Menu",
+    language: "Langue",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
   },
   hero: {
     tagline: 'Agence internationale de recrutement « Russian Bear »',
@@ -53,7 +58,7 @@ export const fr: TranslationContent = {
   conditionsSection: {
     title: "Conditions pour les candidats",
     items: [
-      { label: "Âge", value: "21–45 ans" },
+      { label: "Âge", value: "20–55 ans" },
       {
         label: "Santé",
         value:
@@ -263,8 +268,6 @@ export const fr: TranslationContent = {
     ],
     name: "Nom *",
     phone: "Téléphone *",
-    phoneHint:
-      "Indiquez un numéro actif sur Telegram ou WhatsApp — les administrateurs vous contacteront via ces applications.",
     question: "Votre question *",
     submit: "Envoyer la question",
     submitting: "Envoi...",
@@ -295,6 +298,87 @@ export const fr: TranslationContent = {
     loadFailed:
       "Échec du chargement des données. Démarrez le backend : python manage.py runserver",
     retry: "Réessayer",
+  },
+  pages: {
+    contacts: {
+      title: "Contacts",
+      intro:
+        "Contactez-nous uniquement via les canaux officiels. Tous les moyens de joindre IRC « Russian Bear » sont listés ici.",
+      directTitle: "Contact direct",
+      directHint: "E-mail et téléphone pour une réponse rapide",
+      emailLabel: "E-mail",
+      phoneLabel: "Téléphone / WhatsApp",
+      phoneOnlyLabel: "Téléphone",
+      channelsTitle: "Messageries et réseaux",
+      channelsHint: "Comptes officiels et chaîne",
+      vkLabel: "VKontakte",
+      representativesTitle: "Directeurs régionaux",
+      representatives: [
+        {
+          region: "Afrique",
+          role: "Responsable de la direction régionale Afrique",
+          photo: "/africa_curator.jpg",
+          email: "support-africa@irc-russianbear.army",
+          phone: "+23415550142",
+          telegram: "AFR_russianbear",
+        },
+        {
+          region: "Asie",
+          role: "Responsable de la direction régionale Asie",
+          photo: "/asian_curator.jpg",
+          email: "support-asia@irc-russianbear.army",
+          phone: "+862155501873",
+          telegram: "ASIA_russianbear",
+        },
+        {
+          region: "Orient",
+          role: "Responsable de la direction régionale Orient",
+          photo: "/west_curator.jpg",
+          email: "support-me@irc-russianbear.army",
+          phone: "+97145550261",
+          telegram: "ME_russianbear",
+        },
+        {
+          region: "Amérique latine",
+          role: "Responsable de la direction régionale Amérique latine",
+          photo: "/latina_curator.jpg",
+          email: "support-latam@irc-russianbear.army",
+          phone: "+551155550398",
+          telegram: "LATAM_russianbear",
+        },
+      ],
+      ctaText: "Besoin d'une consultation ? Laissez une question sur la page d'accueil — nous répondrons.",
+      ctaButton: "Réserver une consultation",
+    },
+    about: {
+      title: "Notre message",
+      intro:
+        "Votre chemin direct vers la Russie. Sans tromperie, sans intermédiaires, avec honneur et respect.",
+      sections: [
+        {
+          heading: "Nous savons pourquoi vous faites ce choix",
+          body: "Nous savons ce qui pousse les gens à quitter leur foyer. Ce n'est pas une vie facile qui amène un homme à prendre les armes et à partir à l'autre bout du monde. Derrière chaque décision de ce genre se cache une histoire personnelle forte, le désir de subvenir aux besoins de sa famille et l'espoir d'un avenir nouveau et digne.\n\nVous êtes prêts à risquer ce que vous avez de plus précieux : votre vie. Et nous traitons ce choix avec le plus profond respect. C'est un grand honneur pour nous d'être aux côtés de tels hommes.",
+        },
+        {
+          heading: "L'amère vérité sur les intermédiaires",
+          body: "Pendant longtemps, le chemin vers la Russie a été barré par un mur d'agents cupides, d'intermédiaires et d'escrocs. Nous avons vu des gens donner leurs derniers sous pour des promesses vides, attendre des visas pendant des mois, vivre dans la misère dans des pays étrangers, puis se voir refuser l'entrée à la frontière. Le centre international de recrutement « Russian Bear » a perdu des dizaines de milliers de dollars en essayant de travailler avec ces « assistants » malhonnêtes.\n\nAlors nous avons dit : ça suffit.",
+        },
+        {
+          heading: "Nous travaillons en direct",
+          body: "Nous avons renoncé par principe et pour toujours à tout intermédiaire. Nous sommes allés directement vers les gens. Aujourd'hui, « Russian Bear » n'est pas une simple agence. Nous sommes un représentant officiel agissant dans l'intérêt du ministère de la Défense de la Fédération de Russie. Nous disposons de nos propres managers de confiance dans les pays d'Amérique latine, d'Afrique, d'Asie et du Moyen-Orient.\n\nNous ne vendons pas de visas. Nous offrons la fraternité, un partenariat honnête et un accompagnement complet. Nous vous prenons par la main dans votre pays natal et ne vous lâchons pas tant que vous n'avez pas construit votre nouvelle vie en Fédération de Russie.",
+        },
+        {
+          heading: "Avec nous, vous ne serez jamais livré à vous-même. Nous garantissons :",
+          body: "• Une logistique parfaite et un passage de frontière garanti à 100 %. Toutes les questions de formalités sont réglées rapidement, sûrement et officiellement. Vous aurez toujours un toit et de quoi manger à chaque étape du parcours. Vous ne serez pas seul.\n\n• Une véritable préparation au combat. Nous ne jetons personne dans l'inconnu. Vous serez formé par les meilleurs instructeurs pour être prêt à tout.\n\n• Des arrières solides pour votre famille. Nous prenons en charge le transfert de l'argent que vous gagnez à vos proches. Honnêtement, rapidement et jusqu'au dernier centime.\n\n• Une liaison permanente. Si vous êtes en mission et ne pouvez pas répondre, nous restons en contact avec votre famille. Vos proches ne resteront jamais dans l'ignorance.\n\n• Une protection juridique et sociale complète 24h/24 et 7j/7. Nous sommes à vos côtés en toute situation. Nous assurons les meilleurs soins médicaux en cas de blessure et veillons strictement à ce que toutes les indemnités d'assurance — en cas de blessure ou de décès — parviennent à vos proches via l'ambassade sans retard.",
+        },
+        {
+          heading: "Plus qu'un contrat",
+          body: "Le contrat militaire est une étape importante, mais ce n'est que la première. Notre objectif principal est de vous aider à trouver un nouveau foyer. Nous accompagnons le processus d'obtention de la citoyenneté russe dès un mois après le début du service, et après la fin du contrat, nous aidons pour les études, le logement et l'obtention d'un bon emploi dans la vie civile.\n\nVous venez défendre la Russie, et la Russie, à travers nous, vous prend sous sa protection, vous et votre famille.",
+        },
+      ],
+      placeholderNote:
+        "Choisissez le chemin direct, honnête et sûr. Bienvenue dans la famille « Russian Bear » !",
+    },
   },
   pageTitle:
     'IRC "RUSSIAN BEAR" — Recrutement international pour le service sous contrat',

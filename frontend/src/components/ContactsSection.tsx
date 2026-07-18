@@ -20,7 +20,7 @@ export function ContactsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+          className="flex w-full max-w-full flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
         >
           <ContactLinks />
         </motion.div>

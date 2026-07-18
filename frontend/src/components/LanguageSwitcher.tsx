@@ -4,14 +4,16 @@ import { FlagIcon } from "./icons/FlagIcon";
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/translations";
 
-const options: { lang: Language; code: string; label: string }[] = [
+export const LANGUAGE_OPTIONS: { lang: Language; code: string; label: string }[] = [
   { lang: "ru", code: "RU", label: "Русский" },
   { lang: "en", code: "GB", label: "English" },
   { lang: "fr", code: "FR", label: "Français" },
+  { lang: "pt", code: "PT", label: "Português" },
+  { lang: "es", code: "ES", label: "Español" },
 ];
 
-export function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage();
+export function LanguageSwitcher({ className = "" }: { className?: string }) {
+  const { language, setLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -37,11 +39,11 @@ export function LanguageSwitcher() {
   }, [open]);
 
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className={`relative ${className}`.trim()}>
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        aria-label="Language"
+        aria-label={t.nav.language}
         aria-haspopup="menu"
         aria-expanded={open}
         className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-sand transition hover:border-sand/40 hover:bg-white/[0.06]"
@@ -54,7 +56,7 @@ export function LanguageSwitcher() {
           role="menu"
           className="absolute end-0 top-[calc(100%+0.4rem)] z-50 min-w-[10.5rem] overflow-hidden rounded-xl border border-white/10 bg-bg-card/95 p-1 shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl"
         >
-          {options.map((opt) => {
+          {LANGUAGE_OPTIONS.map((opt) => {
             const active = language === opt.lang;
             return (
               <button
