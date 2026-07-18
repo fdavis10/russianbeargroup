@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { ContactLinks } from "../components/ContactLinks";
+import { TelegramIcon } from "../components/icons/BrandIcons";
 
 export function ContactsPage() {
   const { t } = useLanguage();
@@ -75,6 +76,52 @@ export function ContactsPage() {
                   <p className="mt-5 max-w-md text-base font-semibold leading-snug text-cream sm:text-lg">
                     {rep.role}
                   </p>
+
+                  <div className="mt-5 flex w-full max-w-sm flex-col gap-2.5">
+                    <a
+                      href={`mailto:${rep.email}`}
+                      className="group flex items-center gap-3 rounded-xl border border-white/10 bg-bg-card/80 px-3.5 py-3 text-start transition hover:border-sand/40"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sand/15 text-sand transition group-hover:bg-sand/25">
+                        <Mail size={18} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                          {p.emailLabel}
+                        </span>
+                        <span className="mt-0.5 block truncate text-sm font-semibold text-cream">
+                          {rep.email}
+                        </span>
+                      </span>
+                    </a>
+
+                    <a
+                      href={`tel:${rep.phone.replace(/\s/g, "")}`}
+                      className="group flex items-center gap-3 rounded-xl border border-white/10 bg-bg-card/80 px-3.5 py-3 text-start transition hover:border-sand/40"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sand/15 text-sand transition group-hover:bg-sand/25">
+                        <Phone size={18} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                          {p.phoneOnlyLabel}
+                        </span>
+                        <span className="mt-0.5 block text-sm font-semibold tracking-wide text-cream">
+                          {rep.phone}
+                        </span>
+                      </span>
+                    </a>
+
+                    <a
+                      href={`https://telegram.me/${rep.telegram}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-[#2AABEE]/30 bg-[#2AABEE]/10 px-4 py-3 text-sm font-semibold text-[#2AABEE] transition hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20"
+                    >
+                      <TelegramIcon size={18} />
+                      @{rep.telegram}
+                    </a>
+                  </div>
                 </motion.article>
 
                 {index < p.representatives.length - 1 && (

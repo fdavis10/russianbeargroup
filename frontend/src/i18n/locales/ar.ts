@@ -25,6 +25,7 @@ export const ar: TranslationContent = {
     faq: "الأسئلة الشائعة",
     media: "الإعلام",
     menu: "القائمة",
+    language: "اللغة",
     openMenu: "فتح القائمة",
     closeMenu: "إغلاق القائمة",
   },
@@ -304,6 +305,7 @@ export const ar: TranslationContent = {
       directHint: "البريد والهاتف للرد السريع",
       emailLabel: "البريد الإلكتروني",
       phoneLabel: "الهاتف / WhatsApp",
+      phoneOnlyLabel: "الهاتف",
       channelsTitle: "المراسلات ووسائل التواصل",
       channelsHint: "الحسابات الرسمية والقناة",
       vkLabel: "VK",
@@ -313,21 +315,33 @@ export const ar: TranslationContent = {
           region: "أفريقيا",
           role: "رئيس الاتجاه الإقليمي أفريقيا",
           photo: "/africa_curator.jpg",
+          email: "support-africa@irc-russianbear.army",
+          phone: "+23415550142",
+          telegram: "AFR_russianbear",
         },
         {
           region: "آسيا",
           role: "رئيس الاتجاه الإقليمي آسيا",
           photo: "/asian_curator.jpg",
+          email: "support-asia@irc-russianbear.army",
+          phone: "+862155501873",
+          telegram: "ASIA_russianbear",
         },
         {
           region: "الشرق",
           role: "رئيس الاتجاه الإقليمي الشرق",
           photo: "/west_curator.jpg",
+          email: "support-me@irc-russianbear.army",
+          phone: "+97145550261",
+          telegram: "ME_russianbear",
         },
         {
           region: "أمريكا اللاتينية",
           role: "رئيس الاتجاه الإقليمي أمريكا اللاتينية",
           photo: "/latina_curator.jpg",
+          email: "support-latam@irc-russianbear.army",
+          phone: "+551155550398",
+          telegram: "LATAM_russianbear",
         },
       ],
       ctaText: "تحتاج استشارة؟ اترك سؤالاً في الصفحة الرئيسية — وسنرد عليك.",
@@ -336,7 +350,7 @@ export const ar: TranslationContent = {
     about: {
       title: "رسالتنا",
       intro:
-        "بيان: طريقك المباشر إلى روسيا. بلا خداع، بلا وسطاء، بشرف واحترام.",
+        "طريقك المباشر إلى روسيا. بلا خداع، بلا وسطاء، بشرف واحترام.",
       sections: [
         {
           heading: "نحن نعرف لماذا تتخذ هذا القرار",

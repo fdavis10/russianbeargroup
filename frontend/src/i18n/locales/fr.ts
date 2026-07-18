@@ -25,6 +25,7 @@ export const fr: TranslationContent = {
     faq: "FAQ",
     media: "Médias",
     menu: "Menu",
+    language: "Langue",
     openMenu: "Ouvrir le menu",
     closeMenu: "Fermer le menu",
   },
@@ -307,6 +308,7 @@ export const fr: TranslationContent = {
       directHint: "E-mail et téléphone pour une réponse rapide",
       emailLabel: "E-mail",
       phoneLabel: "Téléphone / WhatsApp",
+      phoneOnlyLabel: "Téléphone",
       channelsTitle: "Messageries et réseaux",
       channelsHint: "Comptes officiels et chaîne",
       vkLabel: "VKontakte",
@@ -316,21 +318,33 @@ export const fr: TranslationContent = {
           region: "Afrique",
           role: "Responsable de la direction régionale Afrique",
           photo: "/africa_curator.jpg",
+          email: "support-africa@irc-russianbear.army",
+          phone: "+23415550142",
+          telegram: "AFR_russianbear",
         },
         {
           region: "Asie",
           role: "Responsable de la direction régionale Asie",
           photo: "/asian_curator.jpg",
+          email: "support-asia@irc-russianbear.army",
+          phone: "+862155501873",
+          telegram: "ASIA_russianbear",
         },
         {
           region: "Orient",
           role: "Responsable de la direction régionale Orient",
           photo: "/west_curator.jpg",
+          email: "support-me@irc-russianbear.army",
+          phone: "+97145550261",
+          telegram: "ME_russianbear",
         },
         {
           region: "Amérique latine",
           role: "Responsable de la direction régionale Amérique latine",
           photo: "/latina_curator.jpg",
+          email: "support-latam@irc-russianbear.army",
+          phone: "+551155550398",
+          telegram: "LATAM_russianbear",
         },
       ],
       ctaText: "Besoin d'une consultation ? Laissez une question sur la page d'accueil — nous répondrons.",
@@ -339,7 +353,7 @@ export const fr: TranslationContent = {
     about: {
       title: "Notre message",
       intro:
-        "Manifeste : votre chemin direct vers la Russie. Sans tromperie, sans intermédiaires, avec honneur et respect.",
+        "Votre chemin direct vers la Russie. Sans tromperie, sans intermédiaires, avec honneur et respect.",
       sections: [
         {
           heading: "Nous savons pourquoi vous faites ce choix",

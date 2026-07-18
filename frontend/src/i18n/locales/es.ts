@@ -25,6 +25,7 @@ export const es: TranslationContent = {
     faq: "FAQ",
     media: "Medios",
     menu: "Menú",
+    language: "Idioma",
     openMenu: "Abrir menú",
     closeMenu: "Cerrar menú",
   },
@@ -307,6 +308,7 @@ export const es: TranslationContent = {
       directHint: "Correo electrónico y teléfono para una respuesta rápida",
       emailLabel: "Correo electrónico",
       phoneLabel: "Teléfono / WhatsApp",
+      phoneOnlyLabel: "Teléfono",
       channelsTitle: "Mensajería y redes sociales",
       channelsHint: "Cuentas y canal oficiales",
       vkLabel: "VKontakte",
@@ -316,21 +318,33 @@ export const es: TranslationContent = {
           region: "África",
           role: "Jefe de la Dirección Regional África",
           photo: "/africa_curator.jpg",
+          email: "support-africa@irc-russianbear.army",
+          phone: "+23415550142",
+          telegram: "AFR_russianbear",
         },
         {
           region: "Asia",
           role: "Jefe de la Dirección Regional Asia",
           photo: "/asian_curator.jpg",
+          email: "support-asia@irc-russianbear.army",
+          phone: "+862155501873",
+          telegram: "ASIA_russianbear",
         },
         {
           region: "Oriente",
           role: "Jefe de la Dirección Regional Oriente",
           photo: "/west_curator.jpg",
+          email: "support-me@irc-russianbear.army",
+          phone: "+97145550261",
+          telegram: "ME_russianbear",
         },
         {
           region: "América Latina",
           role: "Jefe de la Dirección Regional América Latina",
           photo: "/latina_curator.jpg",
+          email: "support-latam@irc-russianbear.army",
+          phone: "+551155550398",
+          telegram: "LATAM_russianbear",
         },
       ],
       ctaText:
@@ -340,7 +354,7 @@ export const es: TranslationContent = {
     about: {
       title: "Nuestro mensaje",
       intro:
-        "Manifiesto: su camino directo a Rusia. Sin engaños, sin intermediarios, con honor y respeto.",
+        "Su camino directo a Rusia. Sin engaños, sin intermediarios, con honor y respeto.",
       sections: [
         {
           heading: "Sabemos por qué toma esta decisión",

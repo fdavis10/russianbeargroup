@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import { LANGUAGE_OPTIONS, LanguageSwitcher } from "./LanguageSwitcher";
+import { FlagIcon } from "./icons/FlagIcon";
 import { FacebookIcon, TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -48,7 +49,7 @@ function BurgerIcon({ open }: { open: boolean }) {
 }
 
 export function Header() {
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -145,7 +146,7 @@ export function Header() {
             <span className="hidden text-xs font-semibold sm:inline">FB</span>
           </a>
 
-          <LanguageSwitcher />
+          <LanguageSwitcher className="hidden lg:block" />
 
           <button
             type="button"
@@ -199,6 +200,45 @@ export function Header() {
                   </motion.div>
                 );
               })}
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.3, ease: "easeOut" }}
+                className="mt-2"
+              >
+                <div className="flex w-full items-center gap-3" aria-hidden>
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sand/50 to-sand/20" />
+                  <span className="shrink-0 text-xs font-black uppercase tracking-[0.22em] text-sand">
+                    {t.nav.language}
+                  </span>
+                  <span className="h-px flex-1 bg-gradient-to-l from-transparent via-sand/50 to-sand/20" />
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                  {LANGUAGE_OPTIONS.map((opt) => {
+                    const active = language === opt.lang;
+                    return (
+                      <button
+                        key={opt.lang}
+                        type="button"
+                        onClick={() => {
+                          setLanguage(opt.lang);
+                          setMenuOpen(false);
+                        }}
+                        className={`flex items-center gap-2.5 rounded-xl border px-3.5 py-3.5 text-start text-sm transition ${
+                          active
+                            ? "border-sand/45 bg-sand/15 font-semibold text-sand"
+                            : "border-white/10 bg-bg-card/90 text-cream/85 hover:border-sand/40 hover:bg-bg-elevated hover:text-cream"
+                        }`}
+                      >
+                        <FlagIcon code={opt.code} size={22} />
+                        <span>{opt.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
             </nav>
           </motion.div>
         )}

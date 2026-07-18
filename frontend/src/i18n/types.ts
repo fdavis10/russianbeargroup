@@ -23,6 +23,7 @@ export interface TranslationContent {
     faq: string;
     media: string;
     menu: string;
+    language: string;
     openMenu: string;
     closeMenu: string;
   };
@@ -149,11 +150,19 @@ export interface TranslationContent {
       directHint: string;
       emailLabel: string;
       phoneLabel: string;
+      phoneOnlyLabel: string;
       channelsTitle: string;
       channelsHint: string;
       vkLabel: string;
       representativesTitle: string;
-      representatives: { region: string; role: string; photo: string }[];
+      representatives: {
+        region: string;
+        role: string;
+        photo: string;
+        email: string;
+        phone: string;
+        telegram: string;
+      }[];
       ctaText: string;
       ctaButton: string;
     };

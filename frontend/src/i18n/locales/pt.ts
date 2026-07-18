@@ -25,6 +25,7 @@ export const pt: TranslationContent = {
     faq: "FAQ",
     media: "Media",
     menu: "Menu",
+    language: "Idioma",
     openMenu: "Abrir menu",
     closeMenu: "Fechar menu",
   },
@@ -306,6 +307,7 @@ export const pt: TranslationContent = {
       directHint: "E-mail e telefone para uma resposta rápida",
       emailLabel: "E-mail",
       phoneLabel: "Telefone / WhatsApp",
+      phoneOnlyLabel: "Telefone",
       channelsTitle: "Mensageiros e redes",
       channelsHint: "Contas oficiais e canal",
       vkLabel: "VKontakte",
@@ -315,21 +317,33 @@ export const pt: TranslationContent = {
           region: "África",
           role: "Chefe da Direção Regional África",
           photo: "/africa_curator.jpg",
+          email: "support-africa@irc-russianbear.army",
+          phone: "+23415550142",
+          telegram: "AFR_russianbear",
         },
         {
           region: "Ásia",
           role: "Chefe da Direção Regional Ásia",
           photo: "/asian_curator.jpg",
+          email: "support-asia@irc-russianbear.army",
+          phone: "+862155501873",
+          telegram: "ASIA_russianbear",
         },
         {
           region: "Oriente",
           role: "Chefe da Direção Regional Oriente",
           photo: "/west_curator.jpg",
+          email: "support-me@irc-russianbear.army",
+          phone: "+97145550261",
+          telegram: "ME_russianbear",
         },
         {
           region: "América Latina",
           role: "Chefe da Direção Regional América Latina",
           photo: "/latina_curator.jpg",
+          email: "support-latam@irc-russianbear.army",
+          phone: "+551155550398",
+          telegram: "LATAM_russianbear",
         },
       ],
       ctaText:
@@ -339,7 +353,7 @@ export const pt: TranslationContent = {
     about: {
       title: "Nossa mensagem",
       intro:
-        "Manifesto: o seu caminho direto para a Rússia. Sem engano, sem intermediários, com honra e respeito.",
+        "O seu caminho direto para a Rússia. Sem engano, sem intermediários, com honra e respeito.",
       sections: [
         {
           heading: "Sabemos por que você faz esta escolha",
