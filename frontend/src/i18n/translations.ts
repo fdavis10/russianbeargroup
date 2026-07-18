@@ -62,7 +62,7 @@ export const translations: Record<Language, TranslationContent> = {
     conditionsSection: {
       title: "Требования к кандидатам",
       items: [
-        { label: "Возраст", value: "21–45 лет" },
+        { label: "Возраст", value: "20–55 лет" },
         {
           label: "Здоровье",
           value:
@@ -436,7 +436,7 @@ export const translations: Record<Language, TranslationContent> = {
     conditionsSection: {
       title: "Candidate requirements",
       items: [
-        { label: "Age", value: "21–45 years" },
+        { label: "Age", value: "20–55 years" },
         {
           label: "Health",
           value:

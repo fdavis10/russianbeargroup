@@ -57,7 +57,7 @@ export const ar: TranslationContent = {
   conditionsSection: {
     title: "متطلبات المرشحين",
     items: [
-      { label: "العمر", value: "21–45 سنة" },
+      { label: "العمر", value: "20–55 سنة" },
       {
         label: "الصحة",
         value:

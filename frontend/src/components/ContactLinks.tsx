@@ -3,7 +3,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 import { FacebookIcon, TelegramIcon, WhatsAppIcon } from "./icons/BrandIcons";
 
 export const contactLinkClass =
-  "group inline-flex w-full max-w-sm items-center justify-center gap-3 rounded-xl border bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition";
+  "group inline-flex w-full max-w-full items-center justify-center gap-3 rounded-xl border bg-bg-card/90 px-4 py-3.5 text-sm font-semibold text-cream transition sm:max-w-sm";
 
 export function ContactLinks() {
   const { t } = useLanguage();

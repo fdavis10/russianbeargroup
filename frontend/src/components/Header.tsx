@@ -90,7 +90,10 @@ export function Header() {
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
       <div className="relative mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
-        <Link to="/" className="relative z-10 shrink-0 font-black tracking-tight text-sand">
+        <Link
+          to="/"
+          className="relative z-10 min-w-0 truncate pe-2 font-black tracking-tight text-sand"
+        >
           {t.site.title}
         </Link>
 

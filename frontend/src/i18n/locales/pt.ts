@@ -58,7 +58,7 @@ export const pt: TranslationContent = {
   conditionsSection: {
     title: "Requisitos para candidatos",
     items: [
-      { label: "Idade", value: "21–45 anos" },
+      { label: "Idade", value: "20–55 anos" },
       {
         label: "Saúde",
         value:

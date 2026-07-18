@@ -58,7 +58,7 @@ export const fr: TranslationContent = {
   conditionsSection: {
     title: "Conditions pour les candidats",
     items: [
-      { label: "Âge", value: "21–45 ans" },
+      { label: "Âge", value: "20–55 ans" },
       {
         label: "Santé",
         value:
