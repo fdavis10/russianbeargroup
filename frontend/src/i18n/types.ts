@@ -1,4 +1,4 @@
-export type Language = "ru" | "en" | "fr" | "pt" | "es" | "ar";
+export type Language = "ru" | "en" | "fr" | "pt" | "es";
 
 export interface TranslationContent {
   site: {
