@@ -14,6 +14,24 @@ interface SubmissionsHeatmapProps {
   loading: boolean;
 }
 
+function ChartTooltip({
+  active,
+  payload,
+  label,
+}: {
+  active?: boolean;
+  payload?: { value: number }[];
+  label?: string;
+}) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="rounded-lg border border-white/10 bg-bg-card px-3 py-2 text-sm">
+      <p className="text-muted">{label}</p>
+      <p className="font-semibold text-sand">{payload[0].value} заявок</p>
+    </div>
+  );
+}
+
 export function SubmissionsHeatmap({ data, loading }: SubmissionsHeatmapProps) {
   const byHour = Array.from({ length: 24 }, (_, hour) => {
     const total = data.filter((d) => d.hour === hour).reduce((s, d) => s + d.count, 0);
@@ -38,17 +56,7 @@ export function SubmissionsHeatmap({ data, loading }: SubmissionsHeatmapProps) {
               interval={2}
             />
             <YAxis tick={{ fill: "#9a9a9a", fontSize: 11 }} allowDecimals={false} />
-            <Tooltip
-              content={({ active, payload, label }) =>
-                active && payload?.length ? (
-                  <div className="rounded-lg border border-white/10 bg-bg-card px-3 py-2 text-sm">
-                    <p className="text-muted">{label}</p>
-                    <p className="font-semibold text-sand">{payload[0].value} заявок</p>
-                  </div>
-                ) : null
-              }
-              cursor={{ fill: "rgba(196,163,90,0.08)" }}
-            />
+            <Tooltip content={<ChartTooltip />} cursor={{ fill: "rgba(196,163,90,0.08)" }} />
             <Bar dataKey="count" fill="#c4a35a" fillOpacity={0.85} radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
