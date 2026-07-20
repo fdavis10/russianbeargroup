@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useLiteMotion } from "../hooks/useLiteMotion";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const stepIcons: LucideIcon[] = [
@@ -25,6 +26,7 @@ const stepIcons: LucideIcon[] = [
 export function ProcessTimeline() {
   const { t } = useLanguage();
   const s = t.processSection;
+  const lite = useLiteMotion();
 
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [lineStyle, setLineStyle] = useState({ top: 0, height: 0 });
@@ -45,26 +47,24 @@ export function ProcessTimeline() {
 
     const timelineTop = timeline.getBoundingClientRect().top;
     const startY =
-      startIcon.getBoundingClientRect().top +
-      startIcon.offsetHeight / 2 -
-      timelineTop;
+      startIcon.getBoundingClientRect().top + startIcon.offsetHeight / 2 - timelineTop;
     const endY =
-      targetIcon.getBoundingClientRect().top +
-      targetIcon.offsetHeight / 2 -
-      timelineTop;
+      targetIcon.getBoundingClientRect().top + targetIcon.offsetHeight / 2 - timelineTop;
 
     setLineStyle({ top: startY, height: Math.max(0, endY - startY) });
   }, []);
 
   useLayoutEffect(() => {
+    if (lite) return;
     updateLine(activeStep);
-  }, [activeStep, updateLine, s.steps]);
+  }, [activeStep, updateLine, s.steps, lite]);
 
   useLayoutEffect(() => {
+    if (lite) return;
     const onResize = () => updateLine(activeStep);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [activeStep, updateLine]);
+  }, [activeStep, updateLine, lite]);
 
   return (
     <section id="process" className="scroll-mt-24 px-4 py-16 sm:px-6">
@@ -79,30 +79,69 @@ export function ProcessTimeline() {
         <div
           ref={timelineRef}
           className="relative"
-          onMouseLeave={() => setActiveStep(null)}
+          onMouseLeave={lite ? undefined : () => setActiveStep(null)}
         >
-          <div
-            className="absolute bottom-4 left-6 top-4 w-px bg-white/10"
-            aria-hidden
-          />
+          <div className="absolute bottom-4 left-6 top-4 w-px bg-white/10" aria-hidden />
 
-          <motion.div
-            className="pointer-events-none absolute left-6 w-px bg-gradient-to-b from-sand via-sand/80 to-sand/30 shadow-[0_0_8px_rgba(196,163,90,0.45)]"
-            animate={{
-              top: lineStyle.top,
-              height: lineStyle.height,
-              opacity: activeStep !== null ? 1 : 0,
-            }}
-            transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
-            aria-hidden
-          />
+          {!lite && (
+            <motion.div
+              className="pointer-events-none absolute left-6 w-px bg-gradient-to-b from-sand via-sand/80 to-sand/30 shadow-[0_0_8px_rgba(196,163,90,0.45)]"
+              animate={{
+                top: lineStyle.top,
+                height: lineStyle.height,
+                opacity: activeStep !== null ? 1 : 0,
+              }}
+              transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+              aria-hidden
+            />
+          )}
 
           <ol className="relative space-y-0">
             {s.steps.map((step, i) => {
               const Icon = stepIcons[i] ?? FileText;
               const isLast = i === s.steps.length - 1;
-              const isActive = activeStep !== null && i <= activeStep;
-              const isHovered = activeStep === i;
+              const isActive = !lite && activeStep !== null && i <= activeStep;
+              const isHovered = !lite && activeStep === i;
+
+              const row = (
+                <>
+                  <div className="relative z-10 shrink-0">
+                    <div
+                      ref={(el) => {
+                        iconRefs.current[i] = el;
+                      }}
+                      className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-sand/50 bg-bg-card shadow-[0_0_20px_rgba(196,163,90,0.15)]"
+                    >
+                      <Icon size={20} className="text-sand" strokeWidth={2} />
+                    </div>
+                    <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-sand text-[10px] font-black text-bg">
+                      {i + 1}
+                    </span>
+                  </div>
+
+                  <div
+                    className={`glass-card flex min-h-12 flex-1 cursor-default items-center px-5 py-3.5 ${
+                      lite ? "" : "card-hover"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm font-semibold leading-snug sm:text-base ${
+                        isActive ? "text-cream" : "text-cream/85"
+                      }`}
+                    >
+                      {step}
+                    </p>
+                  </div>
+                </>
+              );
+
+              if (lite) {
+                return (
+                  <li key={step} className={`relative flex gap-5 ${isLast ? "pb-0" : "pb-8"}`}>
+                    {row}
+                  </li>
+                );
+              }
 
               return (
                 <motion.li
