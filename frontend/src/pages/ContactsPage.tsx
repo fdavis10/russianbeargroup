@@ -69,6 +69,10 @@ export function ContactsPage() {
                     <img
                       src={rep.photo}
                       alt={rep.name}
+                      width={384}
+                      height={384}
+                      loading="lazy"
+                      decoding="async"
                       className="h-auto w-full max-w-xs object-cover sm:max-w-sm"
                     />
                   </div>

@@ -19,6 +19,12 @@
     overflow-x: hidden;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     @apply bg-bg text-cream font-sans antialiased;
     overflow-x: hidden;
@@ -42,6 +48,14 @@
       linear-gradient(160deg, #161616 0%, #0a0a0a 45%, #050505 100%);
     background-attachment: fixed;
     min-height: 100vh;
+  }
+
+  /* Fixed patterned backgrounds thrash GPU on Android while scrolling */
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+      background-image: linear-gradient(160deg, #141414 0%, #0a0a0a 55%, #050505 100%);
+    }
   }
 
   ::selection {
@@ -70,6 +84,12 @@
       linear-gradient(145deg, #1c1c1c 0%, #101010 50%, #080808 100%);
   }
 
+  @media (max-width: 768px) {
+    .bg-carbon {
+      background-image: linear-gradient(145deg, #161616 0%, #0c0c0c 100%);
+    }
+  }
+
   .text-gradient-sand {
     @apply bg-gradient-to-r from-sand-light via-sand to-sand-light bg-clip-text text-transparent;
   }
@@ -91,6 +111,13 @@
         rgba(0, 0, 0, 0.25) 2px,
         rgba(0, 0, 0, 0.25) 3px
       );
+  }
+
+  @media (max-width: 768px) {
+    .glass-card {
+      @apply bg-bg-card backdrop-blur-none;
+      background-image: none;
+    }
   }
 
   .card-hover {
