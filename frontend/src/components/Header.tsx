@@ -89,15 +89,15 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
-      <div className="relative mx-auto flex w-full max-w-6xl items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
         <Link
           to="/"
-          className="relative z-10 shrink-0 text-[0.6875rem] font-black leading-snug tracking-tight text-sand sm:text-sm md:text-base"
+          className="col-start-1 justify-self-start text-[0.6875rem] font-black leading-snug tracking-tight text-sand sm:text-sm md:text-base"
         >
           {t.site.title}
         </Link>
 
-        <nav className="absolute inset-x-0 hidden items-center justify-center gap-5 px-4 sm:px-6 lg:flex">
+        <nav className="col-start-2 hidden items-center justify-center gap-5 lg:flex">
           {sectionLinks.map((item) =>
             item.type === "hash" ? (
               <SectionLink key={item.hash} hash={item.hash} label={item.label} className={linkClass} />
@@ -112,7 +112,7 @@ export function Header() {
           )}
         </nav>
 
-        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+        <div className="col-start-3 flex shrink-0 items-center justify-self-end gap-1 sm:gap-2">
           <a
             href={t.site.telegram_admin}
             target="_blank"
