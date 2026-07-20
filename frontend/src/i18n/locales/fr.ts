@@ -81,7 +81,7 @@ export const fr: TranslationContent = {
     "Participation aux programmes sociaux d'État pour les vétérans",
     "Aide aux soins médicaux gratuits et aux indemnités d'assurance en cas de blessure (9 000 €)",
     "Aide aux indemnités d'assurance en cas de décès (55 000 € — aux proches via l'ambassade de la Fédération de Russie)",
-    "Cours spécialisé de formation au combat (14–60 jours), selon l'affectation à l'unité",
+    "Cours spécialisé de formation au combat",
   ],
   services: [
     "Traitement des documents clé en main (visas, cartes de migration, assurances, invitations)",
@@ -190,7 +190,7 @@ export const fr: TranslationContent = {
         question:
           "On dit que je serai envoyé directement dans les tranchées sans formation. Est-ce vrai ?",
         answer:
-          "Non, c'est exclu. La société dispose d'un centre d'entraînement dont la tâche principale est de vous enseigner les compétences de combat nécessaires pour survivre. Avant le début du service, vous devez suivre un cours de préparation. Sa durée dépend de l'unité militaire à laquelle vous êtes affecté et dure de 21 à 60 jours.",
+          "Non, c'est exclu. La société dispose d'un centre d'entraînement dont la tâche principale est de vous enseigner les compétences de combat nécessaires pour survivre. Avant le début du service, vous devez suivre un cours de préparation.",
       },
       {
         question:

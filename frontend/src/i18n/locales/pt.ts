@@ -81,7 +81,7 @@ export const pt: TranslationContent = {
     "Participação em programas sociais estatais para veteranos",
     "Ajuda com tratamento médico gratuito e indemnizações de seguro em caso de ferimento ($10.000)",
     "Ajuda com indemnizações de seguro em caso de falecimento ($60.000 — aos familiares através da embaixada da RF)",
-    "Curso especializado de formação de combate (14–60 dias), conforme a unidade atribuída",
+    "Curso especializado de formação de combate",
   ],
   services: [
     "Tratamento de documentos chave na mão (vistos, cartões de migração, seguros, convites)",
@@ -190,7 +190,7 @@ export const pt: TranslationContent = {
         question:
           "Há informação de que serei enviado diretamente para as trincheiras sem formação. É verdade?",
         answer:
-          "Não, isso está excluído. A empresa tem um centro de treino cuja tarefa principal é ensinar-lhe as competências de combate necessárias para sobreviver. Antes de iniciar o serviço, deve concluir um curso de preparação. A sua duração depende da unidade militar a que for atribuído e dura de 21 a 60 dias.",
+          "Não, isso está excluído. A empresa tem um centro de treino cuja tarefa principal é ensinar-lhe as competências de combate necessárias para sobreviver. Antes de iniciar o serviço, deve concluir um curso de preparação.",
       },
       {
         question:
