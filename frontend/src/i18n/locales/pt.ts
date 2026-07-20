@@ -267,6 +267,7 @@ export const pt: TranslationContent = {
     ],
     name: "Nome *",
     phone: "Telefone *",
+    phoneHint: "O WhatsApp ou o Telegram deve estar instalado no número indicado",
     question: "A sua pergunta *",
     submit: "Enviar pergunta",
     submitting: "A enviar...",
@@ -312,11 +313,13 @@ export const pt: TranslationContent = {
       channelsHint: "Contas oficiais e canal",
       vkLabel: "VKontakte",
       representativesTitle: "Diretores regionais",
+      representativesEmailHint:
+        "Tem perguntas, objeções ou circunstâncias especiais na sua região? Escreva para este e-mail — o diretor regional responderá de forma oficial e objetiva.",
       representatives: [
         {
           region: "África",
           role: "Chefe da Direção Regional África",
-          photo: "/africa_curator.jpg",
+          photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
           phone: "+23415550142",
           telegram: "AFR_russianbear",
@@ -324,7 +327,7 @@ export const pt: TranslationContent = {
         {
           region: "Ásia",
           role: "Chefe da Direção Regional Ásia",
-          photo: "/asian_curator.jpg",
+          photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
           phone: "+862155501873",
           telegram: "ASIA_russianbear",
@@ -332,7 +335,7 @@ export const pt: TranslationContent = {
         {
           region: "Oriente",
           role: "Chefe da Direção Regional Oriente",
-          photo: "/west_curator.jpg",
+          photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
           phone: "+97145550261",
           telegram: "ME_russianbear",
@@ -340,7 +343,7 @@ export const pt: TranslationContent = {
         {
           region: "América Latina",
           role: "Chefe da Direção Regional América Latina",
-          photo: "/latina_curator.jpg",
+          photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",
           phone: "+551155550398",
           telegram: "LATAM_russianbear",

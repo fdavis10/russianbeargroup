@@ -266,6 +266,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       name: "Имя *",
       phone: "Телефон *",
+      phoneHint: "На указанном номере должен быть установлен WhatsApp или Telegram",
       question: "Ваш вопрос *",
       submit: "Отправить вопрос",
       submitting: "Отправка...",
@@ -310,11 +311,13 @@ export const translations: Record<Language, TranslationContent> = {
         channelsHint: "Официальные аккаунты и канал",
         vkLabel: "ВКонтакте",
         representativesTitle: "Региональные руководители",
+        representativesEmailHint:
+          "Есть вопросы, возражения или особые обстоятельства по вашему региону? Напишите на почту — региональный руководитель ответит официально и по делу.",
         representatives: [
           {
             region: "Африка",
             role: "Руководитель Регионального направления Африка",
-            photo: "/africa_curator.jpg",
+            photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
             phone: "+23415550142",
             telegram: "AFR_russianbear",
@@ -322,7 +325,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "Азия",
             role: "Руководитель Регионального направления Азия",
-            photo: "/asian_curator.jpg",
+            photo: "/asian_agent.jpg",
             email: "support-asia@irc-russianbear.army",
             phone: "+862155501873",
             telegram: "ASIA_russianbear",
@@ -330,7 +333,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "Восток",
             role: "Руководитель Регионального направления Восток",
-            photo: "/west_curator.jpg",
+            photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
             phone: "+97145550261",
             telegram: "ME_russianbear",
@@ -338,7 +341,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "Латинская Америка",
             role: "Руководитель Регионального направления Латинская Америка",
-            photo: "/latina_curator.jpg",
+            photo: "/latina_agent.jpg",
             email: "support-latam@irc-russianbear.army",
             phone: "+551155550398",
             telegram: "LATAM_russianbear",
@@ -640,6 +643,7 @@ export const translations: Record<Language, TranslationContent> = {
       ],
       name: "Name *",
       phone: "Phone *",
+      phoneHint: "WhatsApp or Telegram must be installed on the number you provide",
       question: "Your question *",
       submit: "Send question",
       submitting: "Sending...",
@@ -684,11 +688,13 @@ export const translations: Record<Language, TranslationContent> = {
         channelsHint: "Official accounts and channel",
         vkLabel: "VKontakte",
         representativesTitle: "Regional directors",
+        representativesEmailHint:
+          "Have questions, concerns, or special circumstances for your region? Write to this email — the regional director will reply officially and to the point.",
         representatives: [
           {
             region: "Africa",
             role: "Head of Regional Direction Africa",
-            photo: "/africa_curator.jpg",
+            photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
             phone: "+23415550142",
             telegram: "AFR_russianbear",
@@ -696,7 +702,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "Asia",
             role: "Head of Regional Direction Asia",
-            photo: "/asian_curator.jpg",
+            photo: "/asian_agent.jpg",
             email: "support-asia@irc-russianbear.army",
             phone: "+862155501873",
             telegram: "ASIA_russianbear",
@@ -704,7 +710,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "The East",
             role: "Head of Regional Direction The East",
-            photo: "/west_curator.jpg",
+            photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
             phone: "+97145550261",
             telegram: "ME_russianbear",
@@ -712,7 +718,7 @@ export const translations: Record<Language, TranslationContent> = {
           {
             region: "Latin America",
             role: "Head of Regional Direction Latin America",
-            photo: "/latina_curator.jpg",
+            photo: "/latina_agent.jpg",
             email: "support-latam@irc-russianbear.army",
             phone: "+551155550398",
             telegram: "LATAM_russianbear",
