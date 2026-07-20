@@ -260,6 +260,7 @@ certbot certonly --webroot -w /opt/russianbeargroup/certbot/www \
   -d irc-russianbear.army \
   -d www.irc-russianbear.army \
   -d development.irc-russianbear.army \
+  -d ar.irc-russianbear.army \
   --expand --non-interactive --agree-tos -m support@irc-russianbear.army
 ```
 
@@ -279,6 +280,24 @@ bash scripts/deploy-dev.sh
 ```
 
 Проверка: `https://development.irc-russianbear.army`
+
+### Арабский поддомен: `ar.irc-russianbear.army`
+
+Тот же прод (frontend-prod / backend-prod). На хосте `ar.*` сайт по умолчанию открывается на арабском (RTL); переключатель языков работает.
+
+1. DNS: A-запись `ar` → IP VPS.
+2. Расширить SSL (см. certbot выше с `-d ar.irc-russianbear.army`).
+3. В продовом `.env` (`/opt/russianbeargroup/.env`):
+
+```env
+DJANGO_ALLOWED_HOSTS=irc-russianbear.army,www.irc-russianbear.army,ar.irc-russianbear.army,localhost,127.0.0.1,backend
+CORS_ALLOWED_ORIGINS=https://irc-russianbear.army,https://www.irc-russianbear.army,https://ar.irc-russianbear.army
+CSRF_TRUSTED_ORIGINS=https://irc-russianbear.army,https://www.irc-russianbear.army,https://ar.irc-russianbear.army
+```
+
+4. Задеплоить прод (`bash scripts/deploy.sh`), чтобы подтянуть nginx с `server_name … ar.irc-russianbear.army`.
+
+Проверка: `https://ar.irc-russianbear.army` — арабский по умолчанию.
 
 ### Автодеплой preview
 
