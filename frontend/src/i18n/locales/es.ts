@@ -198,12 +198,6 @@ export const es: TranslationContent = {
         answer:
           "Sí, es posible, pero no basta con presentar un diploma al entrar en el país. Todo depende de su disposición a esforzarse: deberá aprender ruso, incluida la terminología profesional, validar sus cualificaciones y completar cursos de reciclaje. Durante el servicio tendrá la oportunidad de recibir formación militar especializada y, tras obtener la ciudadanía rusa, podrá trabajar oficialmente en su profesión en el sector civil.",
       },
-      {
-        question:
-          "Quiero viajar a Rusia y firmar un contrato, pero no tengo pasaporte y tramitarlo cuesta dinero. ¿Pueden ayudarme?",
-        answer:
-          "Existe un programa de financiación anticipada para las personas que desean viajar rápidamente a Rusia y firmar un contrato con el ejército. Para que nuestra empresa pueda asignarle fondos destinados, según usted, a la expedición urgente del pasaporte, necesitamos una garantía en forma de declaración en vídeo. En ella deberá confirmar que recibe dinero de la agencia para tramitar el documento con el que pretende entrar en Rusia y firmar un contrato militar. Para más detalles, póngase en contacto con nuestro asesor.",
-      },
     ],
   },
   media: {
