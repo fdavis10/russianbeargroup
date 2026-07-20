@@ -84,11 +84,7 @@ export function Header() {
     "inline-flex h-8 items-center gap-1.5 rounded-lg border px-2 transition sm:h-9 sm:px-3";
 
   return (
-    <motion.header
-      initial={{ y: -16, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
-    >
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-bg md:bg-bg/90 md:backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
         <Link
           to="/"
@@ -246,6 +242,6 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
