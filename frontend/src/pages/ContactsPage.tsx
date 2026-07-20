@@ -68,11 +68,14 @@ export function ContactsPage() {
                   <div className="overflow-hidden rounded-2xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
                     <img
                       src={rep.photo}
-                      alt={rep.role}
+                      alt={rep.name}
                       className="h-auto w-full max-w-xs object-cover sm:max-w-sm"
                     />
                   </div>
-                  <p className="mt-5 max-w-md text-base font-semibold leading-snug text-cream sm:text-lg">
+                  <h3 className="mt-5 text-2xl font-black tracking-[0.08em] text-sand sm:text-3xl">
+                    {rep.name}
+                  </h3>
+                  <p className="mt-2 max-w-md text-sm font-medium leading-snug text-cream/80 sm:text-base">
                     {rep.role}
                   </p>
 
