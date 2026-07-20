@@ -313,7 +313,7 @@ export const fr: TranslationContent = {
       representatives: [
         {
           region: "Afrique",
-          name: "David",
+          name: "Kamanga",
           role: "Responsable de la direction régionale Afrique",
           photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
@@ -331,7 +331,7 @@ export const fr: TranslationContent = {
         },
         {
           region: "Orient",
-          name: "Karim",
+          name: "Zafar",
           role: "Responsable de la direction régionale Orient",
           photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
