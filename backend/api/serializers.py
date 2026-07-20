@@ -9,10 +9,11 @@ PHONE_PATTERN = re.compile(r"^\+[1-9]\d{7,14}$")
 
 class ContactSerializer(serializers.ModelSerializer):
     website = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    locale = serializers.CharField(required=False, allow_blank=True, write_only=True, max_length=8)
 
     class Meta:
         model = Contact
-        fields = ["name", "phone", "country", "message", "website"]
+        fields = ["name", "phone", "country", "message", "website", "locale"]
 
     def validate_name(self, value):
         if len(value.strip()) < 2:
@@ -44,6 +45,7 @@ class ConsultationSerializer(serializers.Serializer):
     question = serializers.CharField(max_length=2000)
     country = serializers.CharField(max_length=100, required=False, allow_blank=True)
     website = serializers.CharField(required=False, allow_blank=True, write_only=True)
+    locale = serializers.CharField(required=False, allow_blank=True, write_only=True, max_length=8)
 
     def validate_name(self, value):
         if len(value.strip()) < 2:

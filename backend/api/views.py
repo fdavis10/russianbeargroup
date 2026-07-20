@@ -15,6 +15,7 @@ from .services import (
     get_site_whatsapp_phone_digits,
     notify_new_consultation,
     notify_new_contact,
+    resolve_notification_bot,
     send_whatsapp_via_twilio,
 )
 
@@ -146,9 +147,18 @@ class ContactView(APIView):
             message=serializer.validated_data.get("message", ""),
         )
 
+        notification_bot = resolve_notification_bot(
+            request,
+            serializer.validated_data.get("locale"),
+        )
+
         AnalyticsEvent.objects.create(
             event_type=AnalyticsEventType.FORM_SUBMIT,
-            metadata={"source": "application"},
+            metadata={
+                "source": "application",
+                "locale": serializer.validated_data.get("locale", ""),
+                "bot": notification_bot,
+            },
         )
 
         contact.telegram_sent = notify_new_contact(
@@ -157,6 +167,7 @@ class ContactView(APIView):
             country=contact.country,
             message=contact.message,
             contact_id=contact.pk,
+            bot=notification_bot,
         )
 
         wa_text = (
@@ -197,9 +208,18 @@ class ConsultationView(APIView):
             message=serializer.validated_data["question"],
         )
 
+        notification_bot = resolve_notification_bot(
+            request,
+            serializer.validated_data.get("locale"),
+        )
+
         AnalyticsEvent.objects.create(
             event_type=AnalyticsEventType.FORM_SUBMIT,
-            metadata={"source": "consultation"},
+            metadata={
+                "source": "consultation",
+                "locale": serializer.validated_data.get("locale", ""),
+                "bot": notification_bot,
+            },
         )
 
         contact.telegram_sent = notify_new_consultation(
@@ -208,6 +228,7 @@ class ConsultationView(APIView):
             country=contact.country,
             question=contact.message,
             contact_id=contact.pk,
+            bot=notification_bot,
         )
         contact.save()
 
