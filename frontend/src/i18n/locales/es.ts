@@ -81,7 +81,7 @@ export const es: TranslationContent = {
     "Participación en programas sociales estatales para veteranos",
     "Ayuda para recibir tratamiento médico gratuito y pagos del seguro en caso de lesión ($10.000)",
     "Ayuda para recibir pagos del seguro en caso de fallecimiento ($60.000 para los familiares a través de la embajada de la Federación de Rusia)",
-    "Curso especializado de preparación para el combate (14–60 días), según la unidad asignada",
+    "Curso especializado de preparación para el combate",
   ],
   services: [
     "Tramitación integral de documentos (visados, tarjetas migratorias, seguros e invitaciones)",
@@ -190,7 +190,7 @@ export const es: TranslationContent = {
         question:
           "He oído que me enviarán directamente a las trincheras sin entrenamiento. ¿Es cierto?",
         answer:
-          "No, eso está excluido. La empresa dispone de un centro de entrenamiento cuya principal tarea es enseñarle las habilidades de combate necesarias para sobrevivir. Antes de comenzar el servicio, deberá completar obligatoriamente un curso de preparación. Su duración depende de la unidad militar a la que sea asignado y es de 21 a 60 días.",
+          "No, eso está excluido. La empresa dispone de un centro de entrenamiento cuya principal tarea es enseñarle las habilidades de combate necesarias para sobrevivir. Antes de comenzar el servicio, deberá completar obligatoriamente un curso de preparación.",
       },
       {
         question:

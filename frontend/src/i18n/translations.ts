@@ -85,7 +85,7 @@ export const translations: Record<Language, TranslationContent> = {
       "Участие в государственных социальных программах для ветеранов",
       "Помощь в получении бесплатного медицинского лечения и страховых выплат в случае ранения ($10 000)",
       "Помощь в получении страховых выплат в случае гибели ($60 000 — родственникам через посольство РФ)",
-      "Прохождение специализированного курса боевой подготовки (14–60 дней), в зависимости от назначения в ВЧ",
+      "Прохождение специализированного курса боевой подготовки",
     ],
     services: [
       "Оформление документов под ключ (визы, миграционные карты, страховки, приглашения)",
@@ -190,7 +190,7 @@ export const translations: Record<Language, TranslationContent> = {
           question:
             "Есть информация, что меня сразу отправят в окоп без тренировок. Это так?",
           answer:
-            "Нет, это исключено. Компания располагает тренировочным центром, главная задача которого — обучить вас необходимым боевым навыкам для выживания. Перед началом службы вы в обязательном порядке пройдёте курс подготовки. Его длительность зависит от воинской части, в которую вас направят, и составляет от 21 до 60 дней.",
+            "Нет, это исключено. Компания располагает тренировочным центром, главная задача которого — обучить вас необходимым боевым навыкам для выживания. Перед началом службы вы в обязательном порядке пройдёте курс подготовки.",
         },
         {
           question:
@@ -460,7 +460,7 @@ export const translations: Record<Language, TranslationContent> = {
       "Participation in state social programs for veterans",
       "Assistance with free medical treatment and insurance payments in case of injury ($10,000)",
       "Assistance with insurance payments in case of death ($60,000 — to relatives via the RF embassy)",
-      "Specialized combat training course (14–60 days), depending on unit assignment",
+      "Specialized combat training course",
     ],
     services: [
       "Turnkey document processing (visas, migration cards, insurance, invitations)",
@@ -565,7 +565,7 @@ export const translations: Record<Language, TranslationContent> = {
           question:
             "There is information that I will be sent straight to the trenches without training. Is that true?",
           answer:
-            "No, that is excluded. The company has a training center whose main task is to teach you the combat skills needed to survive. Before starting service you must complete a preparation course. Its length depends on the military unit you are assigned to and lasts from 21 to 60 days.",
+            "No, that is excluded. The company has a training center whose main task is to teach you the combat skills needed to survive. Before starting service you must complete a preparation course.",
         },
         {
           question:
