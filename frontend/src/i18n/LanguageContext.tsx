@@ -3,6 +3,8 @@ import { fetchLandingContent } from "../api";
 import { translations, type Language, type TranslationContent } from "./translations";
 
 const SUPPORTED: Language[] = ["ru", "en", "fr", "pt", "es", "ar"];
+const PROD_APEX = "irc-russianbear.army";
+const PROD_AR_HOST = `ar.${PROD_APEX}`;
 
 function isArabicHost(hostname = window.location.hostname): boolean {
   return hostname === "ar" || hostname.startsWith("ar.");
@@ -10,6 +12,16 @@ function isArabicHost(hostname = window.location.hostname): boolean {
 
 function storageKeyForHost(hostname = window.location.hostname): string {
   return isArabicHost(hostname) ? "site-language:ar" : "site-language";
+}
+
+/** On prod family hosts, Arabic lives on ar.*; other languages on the apex. */
+function targetHostForLanguage(lang: Language, hostname = window.location.hostname): string | null {
+  const isProdFamily =
+    hostname === PROD_APEX || hostname === `www.${PROD_APEX}` || hostname === PROD_AR_HOST;
+  if (!isProdFamily) return null;
+
+  if (lang === "ar") return hostname === PROD_AR_HOST ? null : PROD_AR_HOST;
+  return hostname === PROD_AR_HOST ? PROD_APEX : null;
 }
 
 interface LanguageContextValue {
@@ -20,7 +32,23 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+function consumeLangQueryParam(): Language | null {
+  const params = new URLSearchParams(window.location.search);
+  const fromQuery = params.get("lang");
+  if (!fromQuery || !SUPPORTED.includes(fromQuery as Language)) return null;
+
+  localStorage.setItem(storageKeyForHost(), fromQuery);
+  params.delete("lang");
+  const search = params.toString();
+  const clean = `${window.location.pathname}${search ? `?${search}` : ""}${window.location.hash}`;
+  window.history.replaceState(null, "", clean);
+  return fromQuery as Language;
+}
+
 function getInitialLanguage(): Language {
+  const fromQuery = consumeLangQueryParam();
+  if (fromQuery) return fromQuery;
+
   const key = storageKeyForHost();
   const saved = localStorage.getItem(key);
   if (saved && SUPPORTED.includes(saved as Language)) return saved as Language;
@@ -35,6 +63,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 
   const setLanguage = (lang: Language) => {
+    const targetHost = targetHostForLanguage(lang);
+    if (targetHost && targetHost !== window.location.hostname) {
+      const url = new URL(window.location.href);
+      url.hostname = targetHost;
+      if (lang === "ar") {
+        url.searchParams.delete("lang");
+      } else {
+        url.searchParams.set("lang", lang);
+      }
+      window.location.assign(url.toString());
+      return;
+    }
+
     setLanguageState(lang);
     localStorage.setItem(storageKeyForHost(), lang);
   };
