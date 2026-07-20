@@ -198,12 +198,6 @@ export const translations: Record<Language, TranslationContent> = {
           answer:
             "Да, это возможно, но одного наличия диплома при въезде в страну недостаточно. Всё зависит от вашего желания приложить усилия: потребуется выучить русский язык (включая профессиональную терминологию), подтвердить квалификацию и пройти курсы переподготовки. Во время службы вам будет предоставлен шанс пройти профильное армейское обучение, а после получения гражданства РФ вы сможете официально устроиться на работу по своей специальности уже в гражданском секторе.",
         },
-        {
-          question:
-            "Хочу поехать в Россию и подписать контракт, но нет загранпаспорта, а чтобы его сделать, нужны деньги. Поможете?",
-          answer:
-            "Программа авансирования для людей, желающих в ускоренном порядке выехать в Россию и подписать контракт с армией, есть. Чтобы наша компания смогла выделить вам средства, которые, с ваших слов, планируется потратить на срочное изготовление заграничного паспорта, нам нужна страховка в формате видеообращения, в котором вы подтверждаете, что берёте у агентства деньги, которые планируете потратить на изготовление документа, по которому собираетесь заехать в Россию и подписать военный контракт. За деталями обратитесь к нашему консультанту.",
-        },
       ],
     },
     media: {
@@ -574,12 +568,6 @@ export const translations: Record<Language, TranslationContent> = {
             "If I have a narrow specialization (for example, a doctor or an engineer), can I serve in my profession?",
           answer:
             "Yes, it is possible, but simply having a diploma when you enter the country is not enough. Everything depends on your willingness to put in the effort: you will need to learn Russian (including professional terminology), confirm your qualifications, and complete retraining courses. During service you will get a chance to take specialized military training, and after obtaining Russian citizenship you will be able to officially work in your field in the civilian sector.",
-        },
-        {
-          question:
-            "I want to go to Russia and sign a contract, but I do not have a passport, and getting one costs money. Will you help?",
-          answer:
-            "There is an advance-funding program for people who want to travel to Russia quickly and sign a contract with the army. For our company to allocate funds that, according to you, will be spent on urgent passport issuance, we need insurance in the form of a video statement in which you confirm that you are taking money from the agency to produce the document you intend to use to enter Russia and sign a military contract. For details, contact our consultant.",
         },
       ],
     },
