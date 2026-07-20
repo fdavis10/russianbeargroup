@@ -41,7 +41,7 @@ export const translations: Record<Language, TranslationContent> = {
       headline:
         "Набор граждан Африки, Востока, Азии, Латинской Америки на военную службу по контракту — полное сопровождение от заявки до прибытия.",
       subheadline:
-        "Помощь в оформлении документов, визовое сопровождение, размещение, питание, трансфер — оказываем полную поддержку на территории России. Срок от начала оформления документов до прибытия в РФ занимает около 7 дней.",
+        "Помощь в оформлении документов, визовое сопровождение, размещение, питание, трансфер — оказываем полную поддержку на территории России. Срок от начала оформления документов до прибытия в РФ занимает около 7–14 дней.",
       cta: "Отправить заявку",
       consultation: "Получить консультацию",
       warning: {
@@ -415,7 +415,7 @@ export const translations: Record<Language, TranslationContent> = {
       headline:
         "Recruitment of citizens from Africa, the East, Asia, and Latin America for military contract service — full support from application to arrival.",
       subheadline:
-        "Assistance with document processing, visa support, accommodation, meals, and transfer — full support within Russia. From the start of paperwork to arrival in the Russian Federation takes about 7 days.",
+        "Assistance with document processing, visa support, accommodation, meals, and transfer — full support within Russia. From the start of paperwork to arrival in the Russian Federation takes about 7–14 days.",
       cta: "Submit application",
       consultation: "Get a consultation",
       warning: {

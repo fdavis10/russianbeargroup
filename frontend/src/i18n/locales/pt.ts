@@ -36,7 +36,7 @@ export const pt: TranslationContent = {
     headline:
       "Recrutamento de cidadãos de África, Oriente, Ásia e América Latina para o serviço militar por contrato — acompanhamento completo desde a candidatura até à chegada.",
     subheadline:
-      "Ajuda com documentos, apoio de visto, alojamento, refeições e transferência — apoio completo na Rússia. Desde o início das formalidades até à chegada à Federação Russa: cerca de 7 dias.",
+      "Ajuda com documentos, apoio de visto, alojamento, refeições e transferência — apoio completo na Rússia. Desde o início das formalidades até à chegada à Federação Russa: cerca de 7–14 dias.",
     cta: "Enviar candidatura",
     consultation: "Obter consulta",
     warning: {

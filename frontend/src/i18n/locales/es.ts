@@ -36,7 +36,7 @@ export const es: TranslationContent = {
     headline:
       "Reclutamiento de ciudadanos de África, Oriente, Asia y América Latina para el servicio militar por contrato, con acompañamiento completo desde la solicitud hasta la llegada.",
     subheadline:
-      "Ayuda con la documentación, visados, alojamiento, alimentación y traslado; ofrecemos apoyo completo en Rusia. El plazo desde el inicio de los trámites hasta la llegada a la Federación de Rusia es de aproximadamente 7 días.",
+      "Ayuda con la documentación, visados, alojamiento, alimentación y traslado; ofrecemos apoyo completo en Rusia. El plazo desde el inicio de los trámites hasta la llegada a la Federación de Rusia es de aproximadamente 7–14 días.",
     cta: "Enviar solicitud",
     consultation: "Solicitar una consulta",
     warning: {
