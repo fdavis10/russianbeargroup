@@ -198,12 +198,6 @@ export const pt: TranslationContent = {
         answer:
           "Sim, é possível, mas ter apenas um diploma à entrada no país não basta. Tudo depende da sua vontade de se esforçar: terá de aprender russo (incluindo terminologia profissional), confirmar as qualificações e concluir cursos de reconversão. Durante o serviço terá oportunidade de formação militar especializada e, após obter a cidadania russa, poderá trabalhar oficialmente na sua área no setor civil.",
       },
-      {
-        question:
-          "Quero ir para a Rússia e assinar um contrato, mas não tenho passaporte, e obtê-lo custa dinheiro. Ajudam?",
-        answer:
-          "Existe um programa de adiantamento para pessoas que querem viajar rapidamente para a Rússia e assinar um contrato com o exército. Para a nossa empresa atribuir fundos que, segundo si, serão gastos na emissão urgente de passaporte, precisamos de uma garantia sob a forma de declaração em vídeo na qual confirma que recebe dinheiro da agência para produzir o documento com o qual pretende entrar na Rússia e assinar um contrato militar. Para detalhes, contacte o nosso consultor.",
-      },
     ],
   },
   media: {
