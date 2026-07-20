@@ -66,6 +66,7 @@ export function ContactForm() {
         country: data.country,
         message: data.message,
         website: data.website,
+        locale: language,
       });
       trackLead("application");
       reset();

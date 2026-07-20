@@ -13,8 +13,8 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(TelegramAdmin)
 class TelegramAdminAdmin(admin.ModelAdmin):
-    list_display = ("chat_id", "username", "first_name", "is_active", "subscribed_at")
-    list_filter = ("is_active", "subscribed_at")
+    list_display = ("chat_id", "bot", "username", "first_name", "is_active", "subscribed_at")
+    list_filter = ("bot", "is_active", "subscribed_at")
     search_fields = ("chat_id", "username", "first_name")
     readonly_fields = ("subscribed_at",)
 

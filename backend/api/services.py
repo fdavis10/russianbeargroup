@@ -17,6 +17,7 @@ def notify_new_contact(
     country: str,
     message: str = "",
     contact_id: int | None = None,
+    bot: str = "main",
 ) -> bool:
     return send_application_notification(
         name=name,
@@ -24,6 +25,7 @@ def notify_new_contact(
         country=country,
         message=message,
         contact_id=contact_id,
+        bot=bot,
     )
 
 
@@ -33,6 +35,7 @@ def notify_new_consultation(
     question: str,
     country: str = "",
     contact_id: int | None = None,
+    bot: str = "main",
 ) -> bool:
     return send_consultation_notification(
         name=name,
@@ -40,6 +43,7 @@ def notify_new_consultation(
         question=question,
         country=country,
         contact_id=contact_id,
+        bot=bot,
     )
 
 
@@ -100,3 +104,20 @@ def send_whatsapp_via_twilio(phone: str, text: str) -> bool:
     except requests.RequestException as exc:
         logger.error("WhatsApp/Twilio send failed: %s", exc)
         return False
+
+
+def resolve_notification_bot(request, locale: str | None = None) -> str:
+    cleaned = (locale or "").strip().lower()
+    if cleaned == "ar":
+        return "ar"
+
+    host = request.get_host().split(":")[0].lower()
+    if host == "ar" or host.startswith("ar."):
+        return "ar"
+
+    for header in ("HTTP_REFERER", "HTTP_ORIGIN"):
+        value = request.META.get(header, "")
+        if "ar.irc-russianbear.army" in value or "://ar." in value:
+            return "ar"
+
+    return "main"

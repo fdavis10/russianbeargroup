@@ -55,6 +55,7 @@ export interface ContactPayload {
   country: string;
   message?: string;
   website?: string;
+  locale?: string;
 }
 
 export interface ConsultationPayload {
@@ -63,6 +64,7 @@ export interface ConsultationPayload {
   country?: string;
   question: string;
   website?: string;
+  locale?: string;
 }
 
 export interface ContactResponse {

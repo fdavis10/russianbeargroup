@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class TelegramBotChannel(models.TextChoices):
+    MAIN = "main", "Основной"
+    AR = "ar", "Арабский"
+
+
 class Contact(models.Model):
     name = models.CharField("Имя", max_length=120)
     phone = models.CharField("Телефон", max_length=20)
@@ -20,7 +25,13 @@ class Contact(models.Model):
 
 
 class TelegramAdmin(models.Model):
-    chat_id = models.BigIntegerField("Chat ID", unique=True)
+    chat_id = models.BigIntegerField("Chat ID")
+    bot = models.CharField(
+        "Бот",
+        max_length=16,
+        choices=TelegramBotChannel.choices,
+        default=TelegramBotChannel.MAIN,
+    )
     username = models.CharField("Username", max_length=100, blank=True)
     first_name = models.CharField("Имя", max_length=100, blank=True)
     is_active = models.BooleanField("Активен", default=True)
@@ -29,6 +40,9 @@ class TelegramAdmin(models.Model):
     class Meta:
         verbose_name = "Telegram-админ"
         verbose_name_plural = "Telegram-админы"
+        constraints = [
+            models.UniqueConstraint(fields=["chat_id", "bot"], name="unique_telegram_admin_per_bot"),
+        ]
 
     def __str__(self):
         label = self.username or self.first_name or str(self.chat_id)

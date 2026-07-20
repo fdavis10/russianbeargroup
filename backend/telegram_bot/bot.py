@@ -153,30 +153,36 @@ def create_dispatcher() -> Dispatcher:
     return dp
 
 
-async def run_polling() -> None:
-    token = get_bot_token()
+async def run_polling(bot_channel: str = "main") -> None:
+    token = get_bot_token(bot_channel)
     if not token:
+        env_key = "TELEGRAM_AR_BOT_TOKEN" if bot_channel == "ar" else "TELEGRAM_BOT_TOKEN"
         raise RuntimeError(
-            "TELEGRAM_BOT_TOKEN не задан. Создайте бота через @BotFather "
+            f"{env_key} не задан. Создайте бота через @BotFather "
             "и добавьте токен в backend/.env"
         )
 
     bot = Bot(token=token)
     dp = create_dispatcher()
 
-    logger.info("Admin Telegram-бот запущен (polling)")
+    logger.info("Admin Telegram-бот запущен (polling, channel=%s)", bot_channel)
     try:
         await dp.start_polling(bot)
     finally:
         await bot.session.close()
 
 
-def main() -> None:
+def main(bot_channel: str | None = None) -> None:
+    from telegram_bot.config import get_bot_channel
+
+    if bot_channel:
+        os.environ["TELEGRAM_BOT_CHANNEL"] = bot_channel
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     )
-    asyncio.run(run_polling())
+    asyncio.run(run_polling(bot_channel or get_bot_channel()))
 
 
 if __name__ == "__main__":

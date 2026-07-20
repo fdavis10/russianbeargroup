@@ -70,6 +70,7 @@ export function ConsultationForm() {
         country,
         question: data.question,
         website: data.website,
+        locale: language,
       });
       trackLead("consultation");
       reset();

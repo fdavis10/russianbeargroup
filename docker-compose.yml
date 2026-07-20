@@ -26,7 +26,24 @@ services:
       - .env
     environment:
       DATABASE_PATH: /app/data/db.sqlite3
-    entrypoint: ["python", "manage.py", "runtelegrambot"]
+      TELEGRAM_BOT_CHANNEL: main
+    entrypoint: ["python", "manage.py", "runtelegrambot", "--bot", "main"]
+    volumes:
+      - backend_data:/app/data
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  bot-ar:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_PATH: /app/data/db.sqlite3
+      TELEGRAM_BOT_CHANNEL: ar
+    entrypoint: ["python", "manage.py", "runtelegrambot", "--bot", "ar"]
     volumes:
       - backend_data:/app/data
     depends_on:
