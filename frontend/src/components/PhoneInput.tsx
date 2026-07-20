@@ -97,18 +97,18 @@ export function PhoneInput({
   }, [open]);
 
   return (
-    <div ref={rootRef} className="space-y-1">
-      <div className="flex gap-2">
+    <div ref={rootRef} className="min-w-0 space-y-1">
+      <div className="flex min-w-0 gap-2">
         <div className="relative shrink-0">
           <button
             type="button"
             onClick={() => setOpen((prev) => !prev)}
             aria-label={dialPlaceholder}
             aria-expanded={open}
-            className="flex h-[50px] min-w-[7.5rem] items-center justify-between gap-2 rounded-xl border border-white/10 bg-bg px-3 text-cream outline-none transition focus:border-sand/50 focus:ring-1 focus:ring-sand/30"
+            className="flex h-[50px] min-w-[6.5rem] items-center justify-between gap-1.5 rounded-xl border border-white/10 bg-bg px-2.5 text-cream outline-none transition focus:border-sand/50 focus:ring-1 focus:ring-sand/30 sm:min-w-[7.5rem] sm:gap-2 sm:px-3"
           >
             {selected ? (
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 sm:gap-2">
                 <FlagIcon code={selected.iso} size={18} />
                 <span className="text-sm font-medium">+{selected.dial}</span>
               </span>
@@ -122,7 +122,7 @@ export function PhoneInput({
           </button>
 
           {open && (
-            <div className="absolute start-0 z-30 mt-1 w-[min(100vw-2rem,20rem)] overflow-hidden rounded-xl border border-white/10 bg-bg-elevated shadow-xl">
+            <div className="absolute start-0 z-30 mt-1 w-[min(18rem,calc(100vw-2.5rem))] max-w-[calc(100vw-2.5rem)] overflow-hidden rounded-xl border border-white/10 bg-bg-elevated shadow-xl">
               <div className="border-b border-white/10 p-2">
                 <input
                   ref={searchRef}

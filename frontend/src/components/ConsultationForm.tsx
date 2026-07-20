@@ -85,10 +85,10 @@ export function ConsultationForm() {
   }
 
   return (
-    <section id="consultation" className="scroll-mt-24 px-4 py-16 sm:px-6">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="mb-8 text-center text-2xl font-black uppercase tracking-wide text-cream sm:text-3xl">
-          <span className="relative inline-block">
+    <section id="consultation" className="scroll-mt-24 overflow-x-hidden px-4 py-16 sm:px-6">
+      <div className="mx-auto w-full max-w-5xl min-w-0">
+        <h2 className="mb-8 text-center text-xl font-black uppercase tracking-wide text-cream sm:text-3xl">
+          <span className="relative inline-block max-w-full px-1">
             {f.headline}
             <span className="absolute -bottom-2 left-1/2 h-0.5 w-16 -translate-x-1/2 bg-sand" />
           </span>
@@ -102,7 +102,7 @@ export function ConsultationForm() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -12 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="glass-card relative mx-auto max-w-xl overflow-hidden p-8 text-center sm:p-10"
+              className="glass-card relative mx-auto max-w-xl overflow-hidden p-6 text-center sm:p-10"
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sand/10 via-transparent to-transparent" />
               <motion.div
@@ -130,16 +130,16 @@ export function ConsultationForm() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              className="grid items-start gap-8 lg:grid-cols-2 lg:gap-10"
+              className="grid min-w-0 items-start gap-6 lg:grid-cols-2 lg:gap-10"
             >
-              <div className="glass-card p-6 sm:p-8">
-                <p className="text-base leading-relaxed text-cream/90">{f.description}</p>
+              <div className="glass-card min-w-0 p-4 sm:p-8">
+                <p className="text-sm leading-relaxed text-cream/90 sm:text-base">{f.description}</p>
                 <ul className="mt-6 space-y-3">
                   {f.benefits.map((benefit, i) => (
                     <motion.li
                       key={benefit}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.06 }}
                       className="flex items-start gap-3"
@@ -147,7 +147,7 @@ export function ConsultationForm() {
                       <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sand/15 text-sand">
                         <Check size={14} strokeWidth={3} />
                       </span>
-                      <span className="text-sm leading-relaxed text-cream/85 sm:text-base">{benefit}</span>
+                      <span className="min-w-0 text-sm leading-relaxed text-cream/85 sm:text-base">{benefit}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -156,7 +156,7 @@ export function ConsultationForm() {
               <motion.form
                 id="consultation-form"
                 onSubmit={handleSubmit(onSubmit)}
-                className="glass-card scroll-mt-28 space-y-4 p-6 sm:p-8"
+                className="glass-card min-w-0 scroll-mt-28 space-y-4 overflow-hidden p-4 sm:p-8"
               >
                 <input type="hidden" {...register("website")} tabIndex={-1} autoComplete="off" />
                 <input type="hidden" {...register("countryIso")} />
