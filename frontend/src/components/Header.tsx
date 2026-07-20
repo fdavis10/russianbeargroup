@@ -81,7 +81,7 @@ export function Header() {
 
   const linkClass = "text-sm text-muted transition hover:text-sand";
   const socialBtn =
-    "inline-flex h-9 items-center gap-1.5 rounded-lg border px-2.5 transition sm:px-3";
+    "inline-flex h-8 items-center gap-1.5 rounded-lg border px-2 transition sm:h-9 sm:px-3";
 
   return (
     <motion.header
@@ -89,10 +89,10 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
-      <div className="relative mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3 sm:px-6">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
         <Link
           to="/"
-          className="relative z-10 min-w-0 truncate pe-2 font-black tracking-tight text-sand"
+          className="relative z-10 shrink-0 text-[0.6875rem] font-black leading-snug tracking-tight text-sand sm:text-sm md:text-base"
         >
           {t.site.title}
         </Link>
@@ -112,7 +112,7 @@ export function Header() {
           )}
         </nav>
 
-        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
+        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
           <a
             href={t.site.telegram_admin}
             target="_blank"
@@ -121,7 +121,7 @@ export function Header() {
             title={t.contactsSection.links.telegramAdmin}
             className={`${socialBtn} border-[#2AABEE]/30 bg-[#2AABEE]/10 text-[#2AABEE] hover:border-[#2AABEE]/55 hover:bg-[#2AABEE]/20`}
           >
-            <TelegramIcon size={16} />
+            <TelegramIcon size={15} />
             <span className="hidden text-xs font-semibold sm:inline">TG</span>
           </a>
 
@@ -133,7 +133,7 @@ export function Header() {
             title={t.contactsSection.links.whatsappAdmin}
             className={`${socialBtn} border-[#25D366]/30 bg-[#25D366]/10 text-[#25D366] hover:border-[#25D366]/55 hover:bg-[#25D366]/20`}
           >
-            <WhatsAppIcon size={16} />
+            <WhatsAppIcon size={15} />
             <span className="hidden text-xs font-semibold sm:inline">WA</span>
           </a>
 
@@ -145,7 +145,7 @@ export function Header() {
             title={t.contactsSection.links.facebook}
             className={`${socialBtn} border-[#1877F2]/30 bg-[#1877F2]/10 text-[#1877F2] hover:border-[#1877F2]/55 hover:bg-[#1877F2]/20`}
           >
-            <FacebookIcon size={16} />
+            <FacebookIcon size={15} />
             <span className="hidden text-xs font-semibold sm:inline">FB</span>
           </a>
 
@@ -153,7 +153,7 @@ export function Header() {
 
           <button
             type="button"
-            className="ms-2 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-cream transition hover:border-sand/40 hover:text-sand sm:ms-3 lg:hidden"
+            className="ms-1 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 text-cream transition hover:border-sand/40 hover:text-sand sm:ms-3 sm:h-9 sm:w-9 lg:hidden"
             aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
