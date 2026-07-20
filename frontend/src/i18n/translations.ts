@@ -311,7 +311,7 @@ export const translations: Record<Language, TranslationContent> = {
         representatives: [
           {
             region: "Африка",
-            name: "David",
+            name: "Kamanga",
             role: "Руководитель Регионального направления Африка",
             photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
@@ -329,7 +329,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Восток",
-            name: "Karim",
+            name: "Zafar",
             role: "Руководитель Регионального направления Восток",
             photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
@@ -686,7 +686,7 @@ export const translations: Record<Language, TranslationContent> = {
         representatives: [
           {
             region: "Africa",
-            name: "David",
+            name: "Kamanga",
             role: "Head of Regional Direction Africa",
             photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
@@ -704,7 +704,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "The East",
-            name: "Karim",
+            name: "Zafar",
             role: "Head of Regional Direction The East",
             photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
