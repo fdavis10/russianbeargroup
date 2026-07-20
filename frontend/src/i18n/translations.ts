@@ -1,3 +1,4 @@
+import { ar } from "./locales/ar";
 import { es } from "./locales/es";
 import { fr } from "./locales/fr";
 import { pt } from "./locales/pt";
@@ -750,4 +751,5 @@ export const translations: Record<Language, TranslationContent> = {
   fr,
   pt,
   es,
+  ar,
 };
