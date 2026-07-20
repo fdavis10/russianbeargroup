@@ -89,10 +89,10 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 backdrop-blur-xl"
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
         <Link
           to="/"
-          className="col-start-1 justify-self-start text-[0.6875rem] font-black leading-snug tracking-tight text-sand sm:text-sm md:text-base"
+          className="col-start-1 justify-self-start whitespace-nowrap text-sm font-black leading-tight tracking-tight text-sand md:text-base"
         >
           {t.site.title}
         </Link>
