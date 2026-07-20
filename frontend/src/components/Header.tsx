@@ -92,7 +92,7 @@ export function Header() {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1.5 px-3 py-3 sm:gap-2 sm:px-6">
         <Link
           to="/"
-          className="col-start-1 justify-self-start whitespace-nowrap text-sm font-black leading-tight tracking-tight text-sand md:text-base"
+          className="col-start-1 justify-self-start whitespace-nowrap text-base font-black leading-tight tracking-tight text-sand md:text-lg"
         >
           {t.site.title}
         </Link>
