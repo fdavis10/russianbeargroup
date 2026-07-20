@@ -311,6 +311,7 @@ export const translations: Record<Language, TranslationContent> = {
         representatives: [
           {
             region: "Африка",
+            name: "David",
             role: "Руководитель Регионального направления Африка",
             photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
@@ -319,6 +320,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Азия",
+            name: "Wei",
             role: "Руководитель Регионального направления Азия",
             photo: "/asian_agent.jpg",
             email: "support-asia@irc-russianbear.army",
@@ -327,6 +329,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Восток",
+            name: "Karim",
             role: "Руководитель Регионального направления Восток",
             photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
@@ -335,6 +338,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Латинская Америка",
+            name: "Carlos",
             role: "Руководитель Регионального направления Латинская Америка",
             photo: "/latina_agent.jpg",
             email: "support-latam@irc-russianbear.army",
@@ -682,6 +686,7 @@ export const translations: Record<Language, TranslationContent> = {
         representatives: [
           {
             region: "Africa",
+            name: "David",
             role: "Head of Regional Direction Africa",
             photo: "/africa_agent.jpg",
             email: "support-africa@irc-russianbear.army",
@@ -690,6 +695,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Asia",
+            name: "Wei",
             role: "Head of Regional Direction Asia",
             photo: "/asian_agent.jpg",
             email: "support-asia@irc-russianbear.army",
@@ -698,6 +704,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "The East",
+            name: "Karim",
             role: "Head of Regional Direction The East",
             photo: "/west_agent.jpg",
             email: "support-me@irc-russianbear.army",
@@ -706,6 +713,7 @@ export const translations: Record<Language, TranslationContent> = {
           },
           {
             region: "Latin America",
+            name: "Carlos",
             role: "Head of Regional Direction Latin America",
             photo: "/latina_agent.jpg",
             email: "support-latam@irc-russianbear.army",

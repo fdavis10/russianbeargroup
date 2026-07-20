@@ -310,6 +310,7 @@ export const ar: TranslationContent = {
       representatives: [
         {
           region: "أفريقيا",
+          name: "David",
           role: "رئيس الاتجاه الإقليمي أفريقيا",
           photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
@@ -318,6 +319,7 @@ export const ar: TranslationContent = {
         },
         {
           region: "آسيا",
+          name: "Wei",
           role: "رئيس الاتجاه الإقليمي آسيا",
           photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
@@ -326,6 +328,7 @@ export const ar: TranslationContent = {
         },
         {
           region: "الشرق",
+          name: "Karim",
           role: "رئيس الاتجاه الإقليمي الشرق",
           photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
@@ -334,6 +337,7 @@ export const ar: TranslationContent = {
         },
         {
           region: "أمريكا اللاتينية",
+          name: "Carlos",
           role: "رئيس الاتجاه الإقليمي أمريكا اللاتينية",
           photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",
