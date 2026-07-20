@@ -268,6 +268,7 @@ export const fr: TranslationContent = {
     ],
     name: "Nom *",
     phone: "Téléphone *",
+    phoneHint: "WhatsApp ou Telegram doit être installé sur le numéro indiqué",
     question: "Votre question *",
     submit: "Envoyer la question",
     submitting: "Envoi...",
@@ -313,11 +314,13 @@ export const fr: TranslationContent = {
       channelsHint: "Comptes officiels et chaîne",
       vkLabel: "VKontakte",
       representativesTitle: "Directeurs régionaux",
+      representativesEmailHint:
+        "Vous avez des questions, des objections ou une situation particulière dans votre région ? Écrivez à cette adresse — le directeur régional vous répondra officiellement et concrètement.",
       representatives: [
         {
           region: "Afrique",
           role: "Responsable de la direction régionale Afrique",
-          photo: "/africa_curator.jpg",
+          photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
           phone: "+23415550142",
           telegram: "AFR_russianbear",
@@ -325,7 +328,7 @@ export const fr: TranslationContent = {
         {
           region: "Asie",
           role: "Responsable de la direction régionale Asie",
-          photo: "/asian_curator.jpg",
+          photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
           phone: "+862155501873",
           telegram: "ASIA_russianbear",
@@ -333,7 +336,7 @@ export const fr: TranslationContent = {
         {
           region: "Orient",
           role: "Responsable de la direction régionale Orient",
-          photo: "/west_curator.jpg",
+          photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
           phone: "+97145550261",
           telegram: "ME_russianbear",
@@ -341,7 +344,7 @@ export const fr: TranslationContent = {
         {
           region: "Amérique latine",
           role: "Responsable de la direction régionale Amérique latine",
-          photo: "/latina_curator.jpg",
+          photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",
           phone: "+551155550398",
           telegram: "LATAM_russianbear",

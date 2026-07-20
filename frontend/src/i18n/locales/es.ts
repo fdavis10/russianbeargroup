@@ -268,6 +268,7 @@ export const es: TranslationContent = {
     ],
     name: "Nombre *",
     phone: "Teléfono *",
+    phoneHint: "WhatsApp o Telegram debe estar instalado en el número indicado",
     question: "Su pregunta *",
     submit: "Enviar pregunta",
     submitting: "Enviando...",
@@ -313,11 +314,13 @@ export const es: TranslationContent = {
       channelsHint: "Cuentas y canal oficiales",
       vkLabel: "VKontakte",
       representativesTitle: "Directores regionales",
+      representativesEmailHint:
+        "¿Tiene preguntas, objeciones o circunstancias especiales en su región? Escriba a este correo: el director regional le responderá de forma oficial y concreta.",
       representatives: [
         {
           region: "África",
           role: "Jefe de la Dirección Regional África",
-          photo: "/africa_curator.jpg",
+          photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
           phone: "+23415550142",
           telegram: "AFR_russianbear",
@@ -325,7 +328,7 @@ export const es: TranslationContent = {
         {
           region: "Asia",
           role: "Jefe de la Dirección Regional Asia",
-          photo: "/asian_curator.jpg",
+          photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
           phone: "+862155501873",
           telegram: "ASIA_russianbear",
@@ -333,7 +336,7 @@ export const es: TranslationContent = {
         {
           region: "Oriente",
           role: "Jefe de la Dirección Regional Oriente",
-          photo: "/west_curator.jpg",
+          photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
           phone: "+97145550261",
           telegram: "ME_russianbear",
@@ -341,7 +344,7 @@ export const es: TranslationContent = {
         {
           region: "América Latina",
           role: "Jefe de la Dirección Regional América Latina",
-          photo: "/latina_curator.jpg",
+          photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",
           phone: "+551155550398",
           telegram: "LATAM_russianbear",

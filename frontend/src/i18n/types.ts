@@ -112,6 +112,7 @@ export interface TranslationContent {
     benefits: string[];
     name: string;
     phone: string;
+    phoneHint: string;
     question: string;
     submit: string;
     submitting: string;
@@ -155,6 +156,7 @@ export interface TranslationContent {
       channelsHint: string;
       vkLabel: string;
       representativesTitle: string;
+      representativesEmailHint: string;
       representatives: {
         region: string;
         role: string;

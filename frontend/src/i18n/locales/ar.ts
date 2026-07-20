@@ -265,6 +265,7 @@ export const ar: TranslationContent = {
     ],
     name: "الاسم *",
     phone: "الهاتف *",
+    phoneHint: "يجب أن يكون واتساب أو تيليجرام مثبتاً على الرقم المحدد",
     question: "سؤالك *",
     submit: "إرسال السؤال",
     submitting: "جاري الإرسال...",
@@ -310,11 +311,13 @@ export const ar: TranslationContent = {
       channelsHint: "الحسابات الرسمية والقناة",
       vkLabel: "VK",
       representativesTitle: "المديرون الإقليميون",
+      representativesEmailHint:
+        "هل لديك أسئلة أو اعتراضات أو ظروف خاصة في منطقتك؟ راسل هذا البريد — سيرد المدير الإقليمي رسمياً وبوضوح.",
       representatives: [
         {
           region: "أفريقيا",
           role: "رئيس الاتجاه الإقليمي أفريقيا",
-          photo: "/africa_curator.jpg",
+          photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
           phone: "+23415550142",
           telegram: "AFR_russianbear",
@@ -322,7 +325,7 @@ export const ar: TranslationContent = {
         {
           region: "آسيا",
           role: "رئيس الاتجاه الإقليمي آسيا",
-          photo: "/asian_curator.jpg",
+          photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
           phone: "+862155501873",
           telegram: "ASIA_russianbear",
@@ -330,7 +333,7 @@ export const ar: TranslationContent = {
         {
           region: "الشرق",
           role: "رئيس الاتجاه الإقليمي الشرق",
-          photo: "/west_curator.jpg",
+          photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
           phone: "+97145550261",
           telegram: "ME_russianbear",
@@ -338,7 +341,7 @@ export const ar: TranslationContent = {
         {
           region: "أمريكا اللاتينية",
           role: "رئيس الاتجاه الإقليمي أمريكا اللاتينية",
-          photo: "/latina_curator.jpg",
+          photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",
           phone: "+551155550398",
           telegram: "LATAM_russianbear",
