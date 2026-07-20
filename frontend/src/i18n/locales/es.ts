@@ -313,6 +313,7 @@ export const es: TranslationContent = {
       representatives: [
         {
           region: "África",
+          name: "David",
           role: "Jefe de la Dirección Regional África",
           photo: "/africa_agent.jpg",
           email: "support-africa@irc-russianbear.army",
@@ -321,6 +322,7 @@ export const es: TranslationContent = {
         },
         {
           region: "Asia",
+          name: "Wei",
           role: "Jefe de la Dirección Regional Asia",
           photo: "/asian_agent.jpg",
           email: "support-asia@irc-russianbear.army",
@@ -329,6 +331,7 @@ export const es: TranslationContent = {
         },
         {
           region: "Oriente",
+          name: "Karim",
           role: "Jefe de la Dirección Regional Oriente",
           photo: "/west_agent.jpg",
           email: "support-me@irc-russianbear.army",
@@ -337,6 +340,7 @@ export const es: TranslationContent = {
         },
         {
           region: "América Latina",
+          name: "Carlos",
           role: "Jefe de la Dirección Regional América Latina",
           photo: "/latina_agent.jpg",
           email: "support-latam@irc-russianbear.army",

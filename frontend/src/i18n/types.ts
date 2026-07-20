@@ -159,6 +159,7 @@ export interface TranslationContent {
       representativesEmailHint: string;
       representatives: {
         region: string;
+        name: string;
         role: string;
         photo: string;
         email: string;
